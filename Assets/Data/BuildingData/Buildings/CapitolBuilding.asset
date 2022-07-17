@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9710acaf6ae64d249fee5fd4ec0dff99, type: 3}
+  m_Name: CapitolBuilding
+  m_EditorClassIdentifier: 
+  buildingName: Capitol
+  buildingDetails: Give 30 gold a turn
+  buildingThumbnail: 
+  costRequirements:
+    resources:
+    - amount: 200
+      type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
+  buildingRequirement: {fileID: 0}
+  removeFromPurchasableOnPurchase: 0
+  repeatablePurchase: 1
+  timesPurchased: 0
+  buildingReplacementOnPurchase: {fileID: 0}
+  priority: 1
+  onPurchaseTrigger: []
+  onTurnEndTrigger:
+  - {fileID: 11400000, guid: 98688a4323d1fdc44992b95350ce4c78, type: 2}

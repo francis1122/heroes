@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9710acaf6ae64d249fee5fd4ec0dff99, type: 3}
+  m_Name: MetroBuilding
+  m_EditorClassIdentifier: 
+  buildingName: Metro Building
+  buildingDetails: give 20 gold a turn
+  buildingThumbnail: 
+  costRequirements:
+    resources:
+    - amount: 50
+      type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
+    - amount: 10
+      type: {fileID: 11400000, guid: a8d2874b560b46344b232f8891c70426, type: 2}
+    - amount: 10
+      type: {fileID: 11400000, guid: bc91da6924ab7454fb88eb0b49da03c7, type: 2}
+  buildingRequirement: {fileID: 0}
+  removeFromPurchasableOnPurchase: 1
+  repeatablePurchase: 0
+  addToOwnedBuildings: 1
+  buildingAdditionsOnPurchase:
+  - {fileID: 11400000, guid: 4d0ee45c0291e73449d5517e2f96068e, type: 2}
+  priority: 1
+  onPurchaseTrigger: []
+  onTurnEndTrigger:
+  - {fileID: 11400000, guid: 05bfd636596d0484d97c31c31807aed1, type: 2}

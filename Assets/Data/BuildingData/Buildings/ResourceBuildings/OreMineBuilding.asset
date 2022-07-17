@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9710acaf6ae64d249fee5fd4ec0dff99, type: 3}
+  m_Name: OreMineBuilding
+  m_EditorClassIdentifier: 
+  buildingName: Ore Mine
+  buildingDetails: mine 1 ore a turn
+  buildingThumbnail: 
+  costRequirements:
+    resources:
+    - amount: 10
+      type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
+    - amount: 1
+      type: {fileID: 11400000, guid: 9f5801a6ba0a9b3498c008b65fb1c18d, type: 2}
+  buildingRequirement: {fileID: 0}
+  removeFromPurchasableOnPurchase: 0
+  repeatablePurchase: 1
+  addToOwnedBuildings: 1
+  buildingAdditionsOnPurchase: []
+  priority: 4
+  onPurchaseTrigger: []
+  onTurnEndTrigger:
+  - {fileID: 11400000, guid: fa0829ea2ee976344bfd49fdc3a052e8, type: 2}

@@ -1,0 +1,5 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:GroupBox name="empire-panel-label" text="Empire of Heroes" style="justify-content: flex-start; align-items: center;">
+        <ui:ListView focusable="true" name="empire-list" style="width: 90%;" />
+    </ui:GroupBox>
+</ui:UXML>

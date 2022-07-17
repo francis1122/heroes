@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/test-style.uss?fileID=7433441132597879392&amp;guid=ffd0982c942ed974984ce114b7546031&amp;type=3#test-style" />
+    <ui:GroupBox style="align-items: center; height: 399px; justify-content: center;">
+        <ui:Label text="Heroes the game" display-tooltip-when-elided="true" name="ui_title_label" style="font-size: 200px; -unity-text-align: upper-center; -unity-font: url(&apos;project://database/Assets/TextMesh%20Pro/Examples%20&amp;%20Extras/Fonts/Bangers.ttf?fileID=12800000&amp;guid=5dd49b3eacc540408c98eee0de38e0f1&amp;type=3#Bangers&apos;); -unity-font-style: bold;" />
+        <ui:Button text="Start" display-tooltip-when-elided="true" name="ui_start_button" style="font-size: 48px; top: auto; bottom: auto; width: 40%; height: auto; align-items: center; justify-content: center; flex-basis: auto; transform-origin: center; left: auto; right: auto; -unity-text-align: middle-center; flex-shrink: 0; position: relative; flex-direction: column; flex-grow: 0; overflow: hidden; visibility: visible; white-space: nowrap; max-width: 40%; min-width: 40%; margin-top: 100px;" />
+    </ui:GroupBox>
+    <ui:Button text="Button" display-tooltip-when-elided="true" name="exit" style="align-items: center; height: 300px; width: 300px; justify-content: center; font-size: 60px; -unity-text-align: middle-center;" />
+</ui:UXML>

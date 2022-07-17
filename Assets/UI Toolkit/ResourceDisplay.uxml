@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:GroupBox style="align-items: stretch; justify-content: space-between; flex-direction: row;">
+        <ui:Label text="money: 1" display-tooltip-when-elided="true" name="player-money-label" style="align-items: auto; justify-content: center; flex-basis: auto;" />
+        <ui:GroupBox style="align-items: center; flex-direction: row;">
+            <ui:Label text="turn 1" display-tooltip-when-elided="true" name="turn-number-label" style="white-space: normal; -unity-text-align: upper-left; flex-direction: column; flex-basis: auto; right: auto; left: auto; align-items: center;" />
+            <ui:Button text="End Turn" display-tooltip-when-elided="true" name="end-turn-button" />
+        </ui:GroupBox>
+    </ui:GroupBox>
+    <ui:GroupBox name="building-panel" style="justify-content: flex-start; flex-direction: column; align-items: flex-start; flex-basis: 100%; height: 100%; width: 100%;" />
+</ui:UXML>

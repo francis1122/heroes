@@ -10,6 +10,8 @@ public class EventManager : MonoBehaviour {
     private static EventManager eventManager;
 
     public static string EVENT_END_TURN = "EVENT_END_TURN";
+    public static string EVENT_END_YEAR = "EVENT_END_YEAR";
+    
     public static string RESOURCES_CHANGED = "RESOURCES_CHANGED";
     public static string BUILDING_CHANGED = "BUILDING_CHANGED";
     public static string EVENT_START_NIGHT = "EVENT_START_NIGHT";

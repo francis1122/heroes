@@ -10,26 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9710acaf6ae64d249fee5fd4ec0dff99, type: 3}
-  m_Name: TavernBuilding
+  m_Name: BasicHousing
   m_EditorClassIdentifier: 
-  buildingName: Tavern
-  buildingDetails: Go on adventures to far off lands
+  buildingName: Housing
+  buildingDetails: increases population
   buildingThumbnail: 
   costRequirements:
     resources:
-    - amount: 10
+    - amount: 1
+      type: {fileID: 11400000, guid: d0486e35f66495b47b8bcb629a698965, type: 2}
+    - amount: 4
+      type: {fileID: 11400000, guid: b2893bf1cfb204843a747a9615b6f347, type: 2}
+    - amount: 15
       type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
-    - amount: 2
-      type: {fileID: 11400000, guid: bc91da6924ab7454fb88eb0b49da03c7, type: 2}
-    - amount: 2
-      type: {fileID: 11400000, guid: a8d2874b560b46344b232f8891c70426, type: 2}
   buildingRequirement: {fileID: 0}
-  removeFromPurchasableOnPurchase: 1
-  repeatablePurchase: 0
+  removeFromPurchasableOnPurchase: 0
+  repeatablePurchase: 1
   addToOwnedBuildings: 1
-  buildingAdditionsOnPurchase:
-  - {fileID: 11400000, guid: e9ac03f2a2e17ca4d896ca0a76034462, type: 2}
-  priority: 10
-  onPurchaseTrigger: []
+  buildingAdditionsOnPurchase: []
+  priority: 1
+  onPurchaseTrigger:
+  - {fileID: 11400000, guid: 15cc53d6d85c7fb488f55d2113768cd1, type: 2}
   onTurnEndTrigger: []
   onYearEndTrigger: []

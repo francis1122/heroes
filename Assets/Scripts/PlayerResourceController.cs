@@ -11,11 +11,18 @@ public class PlayerResourceController : MonoBehaviour
     // Start is called before the first frame update
     VisualElement root;
 
-    private Label playerMoneyLabel;
+    //private Label playerMoneyLabel;
     private Label currentTurnLabel;
     private Button endTurnButton;
 
     private ListView empireList;
+    
+    
+    [SerializeField]
+    VisualTreeAsset resourceTemplate;
+
+    private GroupBox resourceContainer;
+    
     void Start()
     {
         UIDocument menu = GetComponent<UIDocument>();
@@ -30,9 +37,10 @@ public class PlayerResourceController : MonoBehaviour
     public void RegisterUI()
     {
         //ui_start_button
-        playerMoneyLabel = root.Q<Label>("player-money-label");
+        //playerMoneyLabel = root.Q<Label>("player-money-label");
         currentTurnLabel = root.Q<Label>("turn-number-label");
         endTurnButton = root.Q<Button>("end-turn-button");
+        resourceContainer = root.Q<GroupBox>("resource-container");
         //SetupEmpireList();
         
         
@@ -41,6 +49,32 @@ public class PlayerResourceController : MonoBehaviour
             GameCenter.instance.EndTurn();
         }));
         UpdateUI();
+    }
+
+    public void CreateResourceUnits()
+    {
+        foreach (var resource in GameCenter.instance.playerResources.resources)
+        {
+            TemplateContainer buildingBox = resourceTemplate.Instantiate();
+
+            //buildingBox.Q<Label>("resource-thumbnail")
+            buildingBox.Q<Label>("resource-owned").text = resource.type.resourceName + ": " + resource.amount.ToString();
+            
+            buildingBox.Q<Label>("resource-gain").text = "";
+            if (resource.type.UITexture != null)
+            {
+                buildingBox.Q<UIToolKitImage>("resource-thumbnail").image = resource.type.UITexture;
+            }
+
+            resourceContainer.Add(buildingBox.Q<GroupBox>("resource-unit"));
+            
+
+        }
+    }
+
+    public void ClearResourceUnits()
+    {
+        resourceContainer.Clear();
     }
 
     /*
@@ -98,8 +132,10 @@ public class PlayerResourceController : MonoBehaviour
     
     public void UpdateUI()
     {
-        currentTurnLabel.text = "turn " + GameCenter.instance.currentTurn;
-        playerMoneyLabel.text = GameCenter.instance.playerResources.GetStringDisplay();
+        ClearResourceUnits();
+        CreateResourceUnits();
+        currentTurnLabel.text = "season " + (GameCenter.instance.currentTurn % GameCenter.instance.seasonsInAYear) + " year " + GameCenter.instance.currentTurn / 4;
+        //playerMoneyLabel.text = GameCenter.instance.playerResources.GetStringDisplay();
 
     }
 }

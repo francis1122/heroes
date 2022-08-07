@@ -33,6 +33,8 @@ public class GameCenter : MonoBehaviour {
     [SerializeField]
     public int currentTurn = 1;
 
+    public int seasonsInAYear = 4;
+    
     //Awake is always called before any Start functions
     void Awake()
     {
@@ -105,10 +107,25 @@ public class GameCenter : MonoBehaviour {
             foreach (var trigger in buildingObject.buildingData.onTurnEndTrigger)
             {
                 trigger.Trigger();
-            }    
+            }
+
+            if (currentTurn % seasonsInAYear == 0)
+            {
+                foreach (var trigger in buildingObject.buildingData.onYearEndTrigger)
+                {
+                    Debug.Log("END OF YEAR");
+                    trigger.Trigger();
+                }
+            }
         }
-        
-        currentTurn += 1;
+
+
+        if (currentTurn % seasonsInAYear == 0)
+        {
+            EventManager.TriggerEvent(EventManager.EVENT_END_YEAR);
+            
+        }
         EventManager.TriggerEvent(EventManager.EVENT_END_TURN);
+        currentTurn += 1;
     }
 }

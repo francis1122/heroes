@@ -10,33 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9710acaf6ae64d249fee5fd4ec0dff99, type: 3}
-  m_Name: CityBuilding
+  m_Name: MilitiaTrainingGrounds
   m_EditorClassIdentifier: 
-  buildingName: City
-  buildingDetails: gives 10 gold a turn
+  buildingName: Militia Training Grounds
+  buildingDetails: generate 3 soldiers a year
   buildingThumbnail: 
   costRequirements:
     resources:
-    - amount: 20
+    - amount: 75
       type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
-    - amount: 2
+    - amount: 4
       type: {fileID: 11400000, guid: a8d2874b560b46344b232f8891c70426, type: 2}
-    - amount: 2
+    - amount: 4
       type: {fileID: 11400000, guid: bc91da6924ab7454fb88eb0b49da03c7, type: 2}
   buildingRequirement: {fileID: 0}
   removeFromPurchasableOnPurchase: 1
   repeatablePurchase: 0
   addToOwnedBuildings: 1
-  buildingAdditionsOnPurchase:
-  - {fileID: 11400000, guid: d6c91d4bcd5bfcc4088faaf0d445c260, type: 2}
-  - {fileID: 11400000, guid: e84eb46c16bf0fd4aa864690c522dc81, type: 2}
-  - {fileID: 11400000, guid: 16bf63f4b90912e418431585e3d98feb, type: 2}
-  - {fileID: 11400000, guid: 607ce6671e3c62243af7805449090fd5, type: 2}
-  - {fileID: 11400000, guid: 312f876666163334ca1c8f74de927e20, type: 2}
-  - {fileID: 11400000, guid: 5007c42cda9ee0b448d2e47c3fa03155, type: 2}
-  - {fileID: 11400000, guid: 98bc4a8deb6a04f4e829adf019ef0951, type: 2}
+  buildingAdditionsOnPurchase: []
   priority: 1
   onPurchaseTrigger: []
-  onTurnEndTrigger:
-  - {fileID: 11400000, guid: 71e236a6a1b8cb14098ecf57fd927c8a, type: 2}
-  onYearEndTrigger: []
+  onTurnEndTrigger: []
+  onYearEndTrigger:
+  - {fileID: 11400000, guid: d5e344ea747349f43bca3440dc4f92cc, type: 2}

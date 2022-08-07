@@ -162,6 +162,7 @@ MonoBehaviour:
     timesPurchased: 0
   buildingsOwned: []
   currentTurn: 1
+  seasonsInAYear: 4
 --- !u!4 &970420824
 Transform:
   m_ObjectHideFlags: 0
@@ -318,6 +319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e844ea43cffaa94787e50e7a227b97d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resourceTemplate: {fileID: 9197481963319205126, guid: 91aa1076bd5012b4293b6ce6682d4e11, type: 3}
 --- !u!114 &1535595314
 MonoBehaviour:
   m_ObjectHideFlags: 0

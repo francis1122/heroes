@@ -8,8 +8,10 @@ namespace Data
         public string resourceName = "";
         public string resourceShortHand = "";
         public string tempThumbnailResource;
+        public Texture UITexture;
         public GameObject dropObject;
         public Sprite dropSprite;
+        
         
         
         [MenuItem("Tools/ResourceType")]

@@ -15,5 +15,6 @@ MonoBehaviour:
   resourceName: Gold
   resourceShortHand: g
   tempThumbnailResource: 
+  UITexture: {fileID: -1370369239255903200, guid: 6ed29e8b17396fe44b61c376ec80fedf, type: 3}
   dropObject: {fileID: 0}
   dropSprite: {fileID: 0}

@@ -23,7 +23,10 @@ namespace Data
 
         [SerializeField]
         public List<GameTriggers> onPurchaseTrigger;
+        [SerializeField]
         public List<GameTriggers> onTurnEndTrigger;
+        [SerializeField]
+        public List<GameTriggers> onYearEndTrigger;
         
         [MenuItem("Tools/BuildingData")]
         public static void CreateMyAsset()

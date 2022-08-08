@@ -157,6 +157,11 @@ MonoBehaviour:
     resources:
     - amount: 10
       type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
+    - amount: 10
+      type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
+  authGain:
+    amount: 10
+    type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
   purchasableBuildings:
   - buildingData: {fileID: 11400000, guid: db3a778940cf1b8449f1bd64a9df88ae, type: 2}
     timesPurchased: 0

@@ -26,6 +26,7 @@ public class GameCenter : MonoBehaviour {
     //private BoardManager boardScript;                       //Store a reference to our BoardManager which will set up the level.
     
     public ResourceBundle playerResources;
+    public ResourceData authGain;
 
     public List<BuildingObject> purchasableBuildings = new();
     public List<BuildingObject> buildingsOwned = new();
@@ -102,6 +103,20 @@ public class GameCenter : MonoBehaviour {
     public void EndTurn()
     {
 
+        //
+        // Trigger resource affects first
+        //
+        foreach (var resourceData in playerResources.resources)
+        {
+            foreach (var trigger in resourceData.type.playerEndOfTurnTriggers)
+            {
+                trigger.Trigger();
+            }
+        }
+        
+        //
+        // Building end of turn and year triggers
+        //
         foreach (var buildingObject in buildingsOwned)
         {
             foreach (var trigger in buildingObject.buildingData.onTurnEndTrigger)
@@ -118,14 +133,21 @@ public class GameCenter : MonoBehaviour {
                 }
             }
         }
-
-
+        //
+        // resource clean up
+        //
+        playerResources.AddResourceData(authGain);
+        
+        //
+        // UI update
+        //
         if (currentTurn % seasonsInAYear == 0)
         {
             EventManager.TriggerEvent(EventManager.EVENT_END_YEAR);
             
         }
         EventManager.TriggerEvent(EventManager.EVENT_END_TURN);
+
         currentTurn += 1;
     }
 }

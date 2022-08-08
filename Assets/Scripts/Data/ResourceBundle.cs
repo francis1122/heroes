@@ -9,10 +9,9 @@ namespace Data
     [System.Serializable]
     public class ResourceBundle
     {
-        [SerializeField]
-        public List<ResourceData> resources = new();
-        
-        private ResourceData GetOrCreateMatchingResourceType(ResourceType resourceType)
+        [SerializeField] public List<ResourceData> resources = new();
+
+        public ResourceData GetOrCreateMatchingResourceType(ResourceType resourceType)
         {
             foreach (ResourceData resource in resources)
             {
@@ -37,42 +36,51 @@ namespace Data
 
             return resourceString;
         }
-        
+
         public bool CanSubtractResource(ResourceBundle subtractResourceBundle)
         {
             //test if this resource matches type and has proper amount to subtract 
             /*if (this.amount >= subtractionAmount.amount && this.type == subtractionAmount.type)
                 return true;*/
-            
+
             foreach (var subtractResourceData in subtractResourceBundle.resources)
             {
                 ResourceData resourceData = GetOrCreateMatchingResourceType(subtractResourceData.type);
-                if (resourceData.amount < subtractResourceData.amount)
+                if (!resourceData.CanSubtractResource(subtractResourceData))
                 {
-                    Debug.Log("dont have enough resources of type " + resourceData.type);
+                    Debug.Log("dont have enough resources of type " + resourceData.type.resourceName);
                     return false;
                 }
             }
+
             return true;
         }
 
-        public bool SubtractResource(ResourceBundle subtractResourceBundle)
+        public bool SubtractResourceBundle(ResourceBundle subtractResourceBundle)
         {
-            
+
             foreach (var subtractResourceData in subtractResourceBundle.resources)
             {
-                ResourceData resourceData = GetOrCreateMatchingResourceType(subtractResourceData.type);
-                if (resourceData.amount >= subtractResourceData.amount)
+                if (!SubtractResourceData(subtractResourceData))
                 {
-                    resourceData.amount -= subtractResourceData.amount;
-                }
-                else
-                {
-                    Debug.Log("Should call CanSubtractResources to check purchase before");
+                    Debug.Log("Should call CanSubtractBundle to check purchase before");
                     return false;
                 }
             }
+
             return true;
+        }
+
+        public bool SubtractResourceData(ResourceData subtractResourceData)
+        {
+            ResourceData resourceData = GetOrCreateMatchingResourceType(subtractResourceData.type);
+            if (resourceData.amount >= subtractResourceData.amount || resourceData.type.amountCanBeNegative)
+            {
+                resourceData.amount -= subtractResourceData.amount;
+                return true;
+            }
+            Debug.Log("Should call CanSubtractResources to check purchase before " + subtractResourceData.type.resourceName);
+            return false;
         }
 
         /*
@@ -94,17 +102,16 @@ namespace Data
  
         }
         */
-       
+
         // returns the amount that was added
-        public void AddResource(ResourceBundle addResourceData)
+        public void AddResourceBundle(ResourceBundle addResourceBundle)
         {
-            foreach (var addResource in addResourceData.resources)
+            foreach (var addResourceData in addResourceBundle.resources)
             {
-                ResourceData resourceData = GetOrCreateMatchingResourceType(addResource.type);
-                resourceData.amount += addResource.amount;
+                AddResourceData(addResourceData);
 
             }
-            
+
             /*this.amount += addResourceData.amount;
             return addResourceData;*/
             /*int spaceAvailable = this.maxAmount - this.amount;
@@ -114,19 +121,25 @@ namespace Data
             subtracted.amount = amountToAdd; 
             return subtracted;*/
         }
-        
-        
-        
+
+        public void AddResourceData(ResourceData addResourceData)
+        {
+            ResourceData resourceData = GetOrCreateMatchingResourceType(addResourceData.type);
+            resourceData.amount += addResourceData.amount;
+        }
+
+
+
         /*[MenuItem("Tools/ResourceBundle")]
         public static void CreateMyAsset()
         {
             ResourceBundle asset = ScriptableObject.CreateInstance<ResourceBundle>();
-
+    
             AssetDatabase.CreateAsset(asset, "Assets/Data/ResourceBundle/NewResourceBundle.asset");
             AssetDatabase.SaveAssets();
-
+    
             EditorUtility.FocusProjectWindow();
-
+    
             Selection.activeObject = asset;
         }*/
     }

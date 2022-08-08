@@ -30,8 +30,8 @@ namespace Data
        
        public bool CanSubtractResource(ResourceData subtractionAmount)
        {
-            //test if this resource matches type and has proper amount to subtract 
-            if (this.amount >= subtractionAmount.amount && this.type == subtractionAmount.type)
+            // test if this resource matches type and has proper amount to subtract 
+            if ((this.amount >= subtractionAmount.amount || this.type.amountCanBeNegative ) && this.type == subtractionAmount.type)
                 return true;
             return false;
        }

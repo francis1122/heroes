@@ -12,7 +12,7 @@ namespace Triggers
 
         public override void Trigger()
         {
-            GameCenter.instance.playerResources.AddResource(resourceBundle);
+            GameCenter.instance.playerResources.AddResourceBundle(resourceBundle);
             EventManager.TriggerEvent(EventManager.RESOURCES_CHANGED);
         }
 

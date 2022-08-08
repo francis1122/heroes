@@ -15,5 +15,7 @@ MonoBehaviour:
   resourceName: soldier
   resourceShortHand: 
   tempThumbnailResource: 
+  UITexture: {fileID: 0}
   dropObject: {fileID: 0}
   dropSprite: {fileID: 0}
+  resourceCategory: 2

@@ -18,7 +18,7 @@ namespace GameObjects
         {
             if (GameCenter.instance.playerResources.CanSubtractResource(buildingData.costRequirements))
             {
-                GameCenter.instance.playerResources.SubtractResource(buildingData.costRequirements);
+                GameCenter.instance.playerResources.SubtractResourceBundle(buildingData.costRequirements);
                 if (buildingData.addToOwnedBuildings)
                 {
                     GameCenter.instance.buildingsOwned.Add(this);
@@ -40,6 +40,7 @@ namespace GameObjects
                 foreach (var trigger in buildingData.onPurchaseTrigger)
                 {
                     trigger.Trigger();
+                    GameCenter.instance.playerResources.SubtractResourceData(GameCenter.instance.authGain);
                 }
                 
                 EventManager.TriggerEvent(EventManager.RESOURCES_CHANGED);

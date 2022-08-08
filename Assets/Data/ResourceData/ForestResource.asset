@@ -15,5 +15,7 @@ MonoBehaviour:
   resourceName: Forest
   resourceShortHand: forest
   tempThumbnailResource: 
+  UITexture: {fileID: 0}
   dropObject: {fileID: 0}
   dropSprite: {fileID: 0}
+  resourceCategory: 1

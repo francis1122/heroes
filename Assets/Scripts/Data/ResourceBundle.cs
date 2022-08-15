@@ -10,7 +10,7 @@ namespace Data
     public class ResourceBundle
     {
         [SerializeField] public List<ResourceData> resources = new();
-
+        public Boolean isPlayersResourceBundle = false;
         public ResourceData GetOrCreateMatchingResourceType(ResourceType resourceType)
         {
             foreach (ResourceData resource in resources)
@@ -37,7 +37,7 @@ namespace Data
             return resourceString;
         }
 
-        public bool CanSubtractResource(ResourceBundle subtractResourceBundle)
+        public bool CanSubtractResourceBundle(ResourceBundle subtractResourceBundle)
         {
             //test if this resource matches type and has proper amount to subtract 
             /*if (this.amount >= subtractionAmount.amount && this.type == subtractionAmount.type)
@@ -45,15 +45,50 @@ namespace Data
 
             foreach (var subtractResourceData in subtractResourceBundle.resources)
             {
-                ResourceData resourceData = GetOrCreateMatchingResourceType(subtractResourceData.type);
-                if (!resourceData.CanSubtractResource(subtractResourceData))
+
+                if (!CanSubtractResourceData(subtractResourceData))
+                {
+                    Debug.Log("can't build");
+                    return false;
+                }
+                
+                /*if (!resourceData.CanSubtractResource(subtractResourceData))
                 {
                     Debug.Log("dont have enough resources of type " + resourceData.type.resourceName);
                     return false;
-                }
+                }*/
+            }
+            Debug.Log("can build");
+            return true;
+        }
+        
+        public bool CanSubtractResourceData(ResourceData subtractResourceData)
+        {
+            //test if this resource matches type and has proper amount to subtract 
+            /*if (this.amount >= subtractionAmount.amount && this.type == subtractionAmount.type)
+                return true;*/
+            ResourceData resourceData = GetOrCreateMatchingResourceType(subtractResourceData.type);
+            // test if this resource matches type and has proper amount to subtract 
+
+            if (resourceData.type != subtractResourceData.type)
+            {
+                return false;
             }
 
-            return true;
+            if (resourceData.amount >= subtractResourceData.amount || resourceData.type.amountCanBeNegative)
+            {
+                if (isPlayersResourceBundle && resourceData.type.checkForPlayerResourceMinLimit) 
+                {
+                    ResourceData playerMinResource = GameCenter.instance.playerMinResourceAmounts.GetOrCreateMatchingResourceType(resourceData.type);
+                    if (resourceData.amount - subtractResourceData.amount < playerMinResource.amount)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+                return true;
+            }
+            return false;
         }
 
         public bool SubtractResourceBundle(ResourceBundle subtractResourceBundle)
@@ -76,6 +111,17 @@ namespace Data
             ResourceData resourceData = GetOrCreateMatchingResourceType(subtractResourceData.type);
             if (resourceData.amount >= subtractResourceData.amount || resourceData.type.amountCanBeNegative)
             {
+                if (isPlayersResourceBundle && resourceData.type.checkForPlayerResourceMinLimit)
+                {
+                    ResourceData playerMinResource = GameCenter.instance.playerMinResourceAmounts.GetOrCreateMatchingResourceType(resourceData.type);
+                    if (resourceData.amount - subtractResourceData.amount >= playerMinResource.amount)
+                    {
+                        resourceData.amount -= subtractResourceData.amount;
+                        return true;
+                    }
+                    Debug.Log("Should call CanSubtractResources to check purchase before player " + subtractResourceData.type.resourceName);
+                    return false;
+                }
                 resourceData.amount -= subtractResourceData.amount;
                 return true;
             }
@@ -126,6 +172,22 @@ namespace Data
         {
             ResourceData resourceData = GetOrCreateMatchingResourceType(addResourceData.type);
             resourceData.amount += addResourceData.amount;
+            Debug.Log("cull max res 0");
+            // check and reduce to max limit if resource 
+            if (isPlayersResourceBundle)
+            {
+                Debug.Log("cull max res 1");
+                if (resourceData.type.checkForPlayerResourceMaxLimit)
+                {
+                    Debug.Log("cull max res 2");
+                    ResourceData playerMaxResource = GameCenter.instance.playerMaxResourceAmounts.GetOrCreateMatchingResourceType(resourceData.type);
+                    if (resourceData.amount > playerMaxResource.amount)
+                    {
+                        Debug.Log("cull max res 3");
+                        resourceData.amount = playerMaxResource.amount;
+                    }
+                }
+            }
         }
 
 

@@ -26,6 +26,8 @@ public class GameCenter : MonoBehaviour {
     //private BoardManager boardScript;                       //Store a reference to our BoardManager which will set up the level.
     
     public ResourceBundle playerResources;
+    public ResourceBundle playerMaxResourceAmounts;
+    public ResourceBundle playerMinResourceAmounts;
     public ResourceData authGain;
 
     public List<BuildingObject> purchasableBuildings = new();

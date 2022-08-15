@@ -28,6 +28,8 @@ namespace Data
         public Sprite dropSprite;
 
         public bool amountCanBeNegative = false;
+        public bool checkForPlayerResourceMaxLimit = false;
+        public bool checkForPlayerResourceMinLimit = false;
         public List<GameTriggers> playerEndOfTurnTriggers;
         
 

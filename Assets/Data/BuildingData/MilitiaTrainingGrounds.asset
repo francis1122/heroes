@@ -23,12 +23,13 @@ MonoBehaviour:
       type: {fileID: 11400000, guid: a8d2874b560b46344b232f8891c70426, type: 2}
     - amount: 4
       type: {fileID: 11400000, guid: bc91da6924ab7454fb88eb0b49da03c7, type: 2}
+    isPlayersResourceBundle: 0
   buildingRequirement: {fileID: 0}
   removeFromPurchasableOnPurchase: 1
   repeatablePurchase: 0
   addToOwnedBuildings: 1
   buildingAdditionsOnPurchase: []
-  priority: 1
+  priority: 10
   onPurchaseTrigger: []
   onTurnEndTrigger: []
   onYearEndTrigger:

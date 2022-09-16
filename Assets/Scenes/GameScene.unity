@@ -159,9 +159,17 @@ MonoBehaviour:
       type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
     - amount: 10
       type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
-  authGain:
-    amount: 10
-    type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
+    - amount: 4
+      type: {fileID: 11400000, guid: f96cf640c8b239a4a9ec32a78d1c5721, type: 2}
+    - amount: 20
+      type: {fileID: 11400000, guid: b2893bf1cfb204843a747a9615b6f347, type: 2}
+    isPlayersResourceBundle: 0
+  playerMaxResourceAmounts:
+    resources: []
+    isPlayersResourceBundle: 0
+  playerMinResourceAmounts:
+    resources: []
+    isPlayersResourceBundle: 0
   purchasableBuildings:
   - buildingData: {fileID: 11400000, guid: db3a778940cf1b8449f1bd64a9df88ae, type: 2}
     timesPurchased: 0
@@ -274,6 +282,8 @@ GameObject:
   - component: {fileID: 1535595311}
   - component: {fileID: 1535595313}
   - component: {fileID: 1535595314}
+  - component: {fileID: 1535595315}
+  - component: {fileID: 1535595316}
   m_Layer: 5
   m_Name: UI_ResourceDisplay
   m_TagString: Untagged
@@ -339,6 +349,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingGroupTemplate: {fileID: 9197481963319205126, guid: 11d68d9ec3faa0a4683492a4240ee238, type: 3}
   buildingTemplate: {fileID: 9197481963319205126, guid: c3ab994634b568b469133630160fdf52, type: 3}
+  rootPanel: building-panel
+  category: 0
+--- !u!114 &1535595315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1535595310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f558a630a8ff4ce0aa2a9a0ce6a24261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1535595316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1535595310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d64d5a6af83cc44a9d207a4bf40c287, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingGroupTemplate: {fileID: 9197481963319205126, guid: 11d68d9ec3faa0a4683492a4240ee238, type: 3}
+  buildingTemplate: {fileID: 9197481963319205126, guid: c3ab994634b568b469133630160fdf52, type: 3}
+  rootPanel: action-panel
+  category: 1
 --- !u!1 &1684018722
 GameObject:
   m_ObjectHideFlags: 0

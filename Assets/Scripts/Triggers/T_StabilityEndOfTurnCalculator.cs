@@ -9,17 +9,11 @@ namespace Triggers
     [System.Serializable]
     public class T_StabilityEndOfTurnCalculator : GameTriggers
     {
-
-        public ResourceBundle resourceBundle;
-
-        [SerializeField]
-        public ResourceType stabilityType;
-        [SerializeField]
-        public ResourceType authorityType;
         
         public override void Trigger()
         {
-            ResourceData playerAuthority = GameCenter.instance.playerResources.GetOrCreateMatchingResourceType(authorityType);
+            
+            ResourceData playerAuthority = GameCenter.instance.playerResources.GetOrCreateMatchingResourceType(GameCenter.instance.resourceOrganizer.GetResourceType(ResourceType.LinkType.Authority));
             if (playerAuthority.amount < 0)
             {
                 double playerAuthF = Math.Abs(playerAuthority.amount);
@@ -28,7 +22,7 @@ namespace Triggers
                 
                 
                 
-                GameCenter.instance.playerResources.SubtractResourceData(new ResourceData( loss, stabilityType));
+                GameCenter.instance.playerResources.SubtractResourceData(GameCenter.instance.resourceOrganizer.CreateResourceData(loss, ResourceType.LinkType.Stability));
                //ResourceData playerStabilityType = GameCenter.instance.playerResources.GetOrCreateMatchingResourceType(stabilityType);
                 
             }
@@ -36,12 +30,12 @@ namespace Triggers
             EventManager.TriggerEvent(EventManager.RESOURCES_CHANGED);
         }
 
-        [MenuItem("Tools/Triggers/T_StabilityEndOfTurnCalculator")]
+        [MenuItem("Tools/Triggers/Managers/T_StabilityEndOfTurnCalculator")]
         public static void CreateMyAsset()
         {
             T_StabilityEndOfTurnCalculator asset = ScriptableObject.CreateInstance<T_StabilityEndOfTurnCalculator>();
 
-            AssetDatabase.CreateAsset(asset, "Assets/Data/Triggers/T_StabilityEndOfTurnCalculator.asset");
+            AssetDatabase.CreateAsset(asset, "Assets/Data/Triggers/Managers/T_StabilityEndOfTurnCalculator.asset");
             AssetDatabase.SaveAssets();
 
             EditorUtility.FocusProjectWindow();

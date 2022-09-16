@@ -10,12 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07084ce277534e9cb2a1351adf6fa156, type: 3}
-  m_Name: AuthorityResource
+  m_Name: LumberResource
   m_EditorClassIdentifier: 
-  resourceName: Authority
-  resourceShortHand: Auth
+  type: 6
+  resourceName: Lumber
+  resourceShortHand: l
   tempThumbnailResource: 
-  UITexture: {fileID: 8972146087853794435, guid: 6ed29e8b17396fe44b61c376ec80fedf, type: 3}
+  UIPriority: 11
+  UITexture: {fileID: -6090568113533005507, guid: 6ed29e8b17396fe44b61c376ec80fedf, type: 3}
   dropObject: {fileID: 0}
   dropSprite: {fileID: 0}
-  resourceCategory: 4
+  amountCanBeNegative: 0
+  checkForPlayerResourceMaxLimit: 0
+  checkForPlayerResourceMinLimit: 0
+  playerEndOfTurnTriggers: []
+  resourceCategory: 0

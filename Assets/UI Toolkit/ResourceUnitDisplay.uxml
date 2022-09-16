@@ -1,9 +1,9 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:GroupBox name="resource-unit" style="align-items: flex-start; flex-direction: column; flex-basis: auto; flex-grow: initial; flex-shrink: initial; flex-wrap: nowrap; overflow: visible; justify-content: flex-start; max-width: initial; max-height: initial; width: auto; visibility: visible; background-color: rgba(77, 113, 69, 255);">
-        <ui:GroupBox style="flex-direction: row; background-color: rgba(152, 121, 121, 255);">
-            <UIToolKitImage name="resource-thumbnail" style="align-items: auto; background-color: rgba(180, 100, 165, 255);" />
+    <ui:GroupBox name="resource-unit" style="align-items: flex-start; flex-direction: column; flex-basis: auto; flex-grow: initial; flex-shrink: initial; flex-wrap: nowrap; overflow: visible; justify-content: flex-start; max-width: initial; max-height: initial; width: auto; visibility: visible; background-color: rgb(135, 135, 135);">
+        <ui:GroupBox style="flex-direction: row; background-color: rgb(124, 101, 121);">
+            <UIToolKitImage name="resource-thumbnail" style="align-items: auto; background-color: rgb(180, 100, 165);" />
             <ui:Label text="5" display-tooltip-when-elided="true" name="resource-owned" />
         </ui:GroupBox>
-        <ui:Label text="+ 10" display-tooltip-when-elided="true" name="resource-gain" style="background-color: rgba(157, 0, 0, 255);" />
+        <ui:Label text="+ 10" display-tooltip-when-elided="true" name="resource-gain" style="background-color: rgb(55, 48, 49);" />
     </ui:GroupBox>
 </ui:UXML>

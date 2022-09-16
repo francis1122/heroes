@@ -10,6 +10,22 @@ namespace Data
     public class ResourceType : ScriptableObject
     {
         
+        public enum LinkType
+        {
+            Unset,
+            Authority,
+            Gold,
+            Food,
+            Population,
+            Soldier,
+            Lumber,
+            Ore,
+            BasicLand,
+            Forest,
+            OreDeposit,
+            Stability
+        }
+        
         public enum ResourceCategory
         {
             Material,
@@ -19,10 +35,11 @@ namespace Data
             Unique
         }
 
-        
+        public LinkType type = LinkType.Unset;
         public string resourceName = "";
         public string resourceShortHand = "";
         public string tempThumbnailResource;
+        public int UIPriority;
         public Texture UITexture;
         public GameObject dropObject;
         public Sprite dropSprite;
@@ -44,7 +61,7 @@ namespace Data
         {
             ResourceType asset = ScriptableObject.CreateInstance<ResourceType>();
 
-            AssetDatabase.CreateAsset(asset, "Assets/Data/ResourceData/NewResourceType.asset");
+            AssetDatabase.CreateAsset(asset, "Assets/Resources/ResourceData/NewResourceType.asset");
             AssetDatabase.SaveAssets();
 
             EditorUtility.FocusProjectWindow();

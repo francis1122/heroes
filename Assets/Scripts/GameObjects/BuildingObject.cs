@@ -13,41 +13,45 @@ namespace GameObjects
         {
             this.buildingData = buildingData;
         }
-        
+
         public void PurchaseBuilding()
         {
-            if (GameCenter.instance.playerResources.CanSubtractResourceBundle(buildingData.costRequirements))
+            if (GameCenter.instance.playerResources.CanSubtractResourceData(GameCenter.instance.resourceOrganizer.CreateResourceData(10, ResourceType.LinkType.Authority)))
             {
-                if (GameCenter.instance.playerResources.SubtractResourceBundle(buildingData.costRequirements))
+
+                if (GameCenter.instance.playerResources.CanSubtractResourceBundle(buildingData.costRequirements))
                 {
-                    if (buildingData.addToOwnedBuildings)
+                    if (GameCenter.instance.playerResources.SubtractResourceBundle(buildingData.costRequirements))
                     {
-                        GameCenter.instance.buildingsOwned.Add(this);
-                    }
-
-                    if (buildingData.buildingAdditionsOnPurchase != null)
-                    {
-                        foreach (var buildingAdditionData in buildingData.buildingAdditionsOnPurchase)
+                        if (buildingData.addToOwnedBuildings)
                         {
-                            GameCenter.instance.purchasableBuildings.Add(new BuildingObject(buildingAdditionData));
+                            GameCenter.instance.buildingsOwned.Add(this);
                         }
+
+                        if (buildingData.buildingAdditionsOnPurchase != null)
+                        {
+                            foreach (var buildingAdditionData in buildingData.buildingAdditionsOnPurchase)
+                            {
+                                GameCenter.instance.purchasableBuildings.Add(new BuildingObject(buildingAdditionData));
+                            }
+                        }
+
+                        if (buildingData.removeFromPurchasableOnPurchase)
+                        {
+                            GameCenter.instance.purchasableBuildings.Remove(this);
+                        }
+
+                        foreach (var trigger in buildingData.onPurchaseTrigger)
+                        {
+                            trigger.Trigger();
+                            GameCenter.instance.playerResources.SubtractResourceData(GameCenter.instance.resourceOrganizer.CreateResourceData(10, ResourceType.LinkType.Authority));
+                        }
+
+                        EventManager.TriggerEvent(EventManager.RESOURCES_CHANGED);
+                        EventManager.TriggerEvent(EventManager.BUILDING_CHANGED);
                     }
 
-                    if (buildingData.removeFromPurchasableOnPurchase)
-                    {
-                        GameCenter.instance.purchasableBuildings.Remove(this);
-                    }
-
-                    foreach (var trigger in buildingData.onPurchaseTrigger)
-                    {
-                        trigger.Trigger();
-                        GameCenter.instance.playerResources.SubtractResourceData(GameCenter.instance.authGain);
-                    }
-
-                    EventManager.TriggerEvent(EventManager.RESOURCES_CHANGED);
-                    EventManager.TriggerEvent(EventManager.BUILDING_CHANGED);
                 }
-
             }
         }
         

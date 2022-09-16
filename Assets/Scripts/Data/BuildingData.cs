@@ -7,11 +7,20 @@ namespace Data
 {
     public class BuildingData : ScriptableObject
     {
+        
+        
+        public enum BuildingCategory
+        {
+            Building,
+            Action,
+        }
+        
         public string buildingName = "";
         public string buildingDetails = "";
         public string buildingThumbnail;
 
         public ResourceBundle costRequirements;
+        public BuildingCategory category = BuildingCategory.Building;
         public BuildingData buildingRequirement;
 
         public bool removeFromPurchasableOnPurchase = true;

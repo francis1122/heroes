@@ -24,11 +24,10 @@ public class GameCenter : MonoBehaviour {
     //public AStarGrid _aStarGrid;
 
     //private BoardManager boardScript;                       //Store a reference to our BoardManager which will set up the level.
-    
+    public ResourceOrganizer resourceOrganizer;
     public ResourceBundle playerResources;
     public ResourceBundle playerMaxResourceAmounts;
     public ResourceBundle playerMinResourceAmounts;
-    public ResourceData authGain;
 
     public List<BuildingObject> purchasableBuildings = new();
     public List<BuildingObject> buildingsOwned = new();
@@ -66,7 +65,8 @@ public class GameCenter : MonoBehaviour {
     //Initializes the game for each level.
     void InitGame()
     {
-
+        resourceOrganizer = new ResourceOrganizer(Resources.LoadAll<ResourceType>("ResourceData"));
+        
         //playerResources = Instantiate(playerResources);
 
         
@@ -102,6 +102,35 @@ public class GameCenter : MonoBehaviour {
         
     }
 
+    private void ManagePopulation()
+    {
+        
+        
+        ResourceData playerPopulation = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Population);
+        ResourceData playerFood = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Food);
+        if (playerFood.amount < playerPopulation.amount)
+        {
+            /*
+            double playerAuthF = Math.Abs(playerAuthority.amount);
+
+            int loss = (int)Math.Ceiling((playerAuthF / 10.0f));
+            
+            
+            
+            GameCenter.instance.playerResources.SubtractResourceData(new ResourceData( loss, stabilityType));
+            //ResourceData playerStabilityType = GameCenter.instance.playerResources.GetOrCreateMatchingResourceType(stabilityType);
+            */
+                
+        }
+        else
+        {
+                
+            GameCenter.instance.playerResources.SubtractResourceData(resourceOrganizer.CreateResourceData(playerPopulation.amount, ResourceType.LinkType.Food));
+            
+        }
+
+    }
+    
     public void EndTurn()
     {
 
@@ -115,6 +144,8 @@ public class GameCenter : MonoBehaviour {
                 trigger.Trigger();
             }
         }
+        
+        ManagePopulation();
         
         //
         // Building end of turn and year triggers
@@ -138,8 +169,7 @@ public class GameCenter : MonoBehaviour {
         //
         // resource clean up
         //
-        playerResources.AddResourceData(authGain);
-        
+        playerResources.AddResourceData(resourceOrganizer.CreateResourceData(10, ResourceType.LinkType.Authority));
         //
         // UI update
         //

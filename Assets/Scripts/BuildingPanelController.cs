@@ -19,25 +19,28 @@ public class BuildingPanelController : MonoBehaviour
     
     [SerializeField]
     VisualTreeAsset buildingTemplate;
+
+    public String rootPanel;
+
+    public BuildingData.BuildingCategory category = BuildingData.BuildingCategory.Building;
     
     private GroupBox buildingPanel;
     
     private List<GroupBox> buildingGroups = new List<GroupBox>();
 
     private List<GroupBox> buildingBoxes = new List<GroupBox>();
-    
+
     void Start()
     {
         UIDocument menu = GetComponent<UIDocument>();
         root = menu.rootVisualElement;
-        buildingPanel = root.Q<GroupBox>("building-panel");
+        buildingPanel = root.Q<GroupBox>(rootPanel);
         CreateBuildingBoxes();
         
         EventManager.StartListening(EventManager.EVENT_END_TURN, UpdateUI );
         EventManager.StartListening(EventManager.RESOURCES_CHANGED, UpdateUI );
         EventManager.StartListening(EventManager.BUILDING_CHANGED, UpdateUI );
         
-
     }
 
     public void SortBuildingsPriority()
@@ -51,10 +54,10 @@ public class BuildingPanelController : MonoBehaviour
     {
         SortBuildingsPriority();
         List<BuildingObject> buildings = GameCenter.instance.purchasableBuildings;
-
+        List<BuildingObject> onlyCategory = buildings.FindAll(e => e.buildingData.category == category);
         GroupBox currentGroup = null;
         int count = 0;
-        foreach (BuildingObject buildingObject in buildings)
+        foreach (BuildingObject buildingObject in onlyCategory)
         {
 
             if (count % 4 == 0)

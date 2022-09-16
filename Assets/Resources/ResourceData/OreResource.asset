@@ -12,9 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07084ce277534e9cb2a1351adf6fa156, type: 3}
   m_Name: OreResource
   m_EditorClassIdentifier: 
+  type: 7
   resourceName: Ore
   resourceShortHand: o
   tempThumbnailResource: 
+  UIPriority: 12
   UITexture: {fileID: 2458833806249540190, guid: 6ed29e8b17396fe44b61c376ec80fedf, type: 3}
   dropObject: {fileID: 0}
   dropSprite: {fileID: 0}
+  amountCanBeNegative: 0
+  checkForPlayerResourceMaxLimit: 0
+  checkForPlayerResourceMinLimit: 0
+  playerEndOfTurnTriggers: []
+  resourceCategory: 0

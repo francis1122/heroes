@@ -10,11 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07084ce277534e9cb2a1351adf6fa156, type: 3}
-  m_Name: GoldResource
+  m_Name: OreDepositResource
   m_EditorClassIdentifier: 
-  resourceName: Gold
-  resourceShortHand: g
+  type: 10
+  resourceName: Ore Deposit
+  resourceShortHand: od
   tempThumbnailResource: 
-  UITexture: {fileID: -1370369239255903200, guid: 6ed29e8b17396fe44b61c376ec80fedf, type: 3}
+  UIPriority: 100
+  UITexture: {fileID: 0}
   dropObject: {fileID: 0}
   dropSprite: {fileID: 0}
+  amountCanBeNegative: 0
+  checkForPlayerResourceMaxLimit: 0
+  checkForPlayerResourceMinLimit: 0
+  playerEndOfTurnTriggers: []
+  resourceCategory: 1

@@ -25,6 +25,11 @@ namespace Data
             resources.Add(newResourceData);
             return newResourceData;
         }
+        
+        public ResourceData GetOrCreateMatchingResourceLinkType(ResourceType.LinkType linkType)
+        {
+            return GetOrCreateMatchingResourceType(GameCenter.instance.resourceOrganizer.GetResourceType(linkType));
+        }
 
         public String GetStringDisplay()
         {

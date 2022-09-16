@@ -9,13 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07084ce277534e9cb2a1351adf6fa156, type: 3}
-  m_Name: PopulationResource
+  m_Script: {fileID: 11500000, guid: 7f49e67e04cd423e8a2dec95e8992657, type: 3}
+  m_Name: HuntFoodResources
   m_EditorClassIdentifier: 
-  resourceName: Population
-  resourceShortHand: 
-  tempThumbnailResource: 
-  UITexture: {fileID: 0}
-  dropObject: {fileID: 0}
-  dropSprite: {fileID: 0}
-  resourceCategory: 2
+  resourceBundle:
+    resources:
+    - amount: 10
+      type: {fileID: 11400000, guid: b2893bf1cfb204843a747a9615b6f347, type: 2}
+    isPlayersResourceBundle: 0

@@ -19,6 +19,8 @@ MonoBehaviour:
     resources:
     - amount: 5
       type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
+    isPlayersResourceBundle: 0
+  category: 0
   buildingRequirement: {fileID: 0}
   removeFromPurchasableOnPurchase: 1
   repeatablePurchase: 0
@@ -26,7 +28,9 @@ MonoBehaviour:
   buildingAdditionsOnPurchase:
   - {fileID: 11400000, guid: 5251babc32c90bb4ea0b78cb9e2f9637, type: 2}
   - {fileID: 11400000, guid: 8327300b2a29e3543ba0993f3a1c6d00, type: 2}
+  - {fileID: 11400000, guid: 46cdf8b160ba31f43841182059b6f148, type: 2}
   priority: 1
   onPurchaseTrigger: []
   onTurnEndTrigger:
   - {fileID: 11400000, guid: 0cd121a096ae3ce458d51e5bfd9b628e, type: 2}
+  onYearEndTrigger: []

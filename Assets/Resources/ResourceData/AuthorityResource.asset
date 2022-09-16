@@ -10,15 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07084ce277534e9cb2a1351adf6fa156, type: 3}
-  m_Name: StabilityResource
+  m_Name: AuthorityResource
   m_EditorClassIdentifier: 
-  resourceName: Stability
-  resourceShortHand: 
+  type: 1
+  resourceName: Authority
+  resourceShortHand: Auth
   tempThumbnailResource: 
-  UITexture: {fileID: 8258446088978791389, guid: 6ed29e8b17396fe44b61c376ec80fedf, type: 3}
+  UIPriority: 2
+  UITexture: {fileID: 8972146087853794435, guid: 6ed29e8b17396fe44b61c376ec80fedf, type: 3}
   dropObject: {fileID: 0}
   dropSprite: {fileID: 0}
-  amountCanBeNegative: 1
-  playerEndOfTurnTriggers:
-  - {fileID: 11400000, guid: 0268998399e419f47a6a6b1284d93ad7, type: 2}
-  resourceCategory: 3
+  amountCanBeNegative: 0
+  checkForPlayerResourceMaxLimit: 0
+  checkForPlayerResourceMinLimit: 0
+  playerEndOfTurnTriggers: []
+  resourceCategory: 4

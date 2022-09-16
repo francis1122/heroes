@@ -12,8 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07084ce277534e9cb2a1351adf6fa156, type: 3}
   m_Name: FoodResource
   m_EditorClassIdentifier: 
+  type: 3
   resourceName: Food
   resourceShortHand: 
   tempThumbnailResource: 
+  UIPriority: 50
+  UITexture: {fileID: 0}
   dropObject: {fileID: 0}
   dropSprite: {fileID: 0}
+  amountCanBeNegative: 0
+  checkForPlayerResourceMaxLimit: 0
+  checkForPlayerResourceMinLimit: 0
+  playerEndOfTurnTriggers: []
+  resourceCategory: 0

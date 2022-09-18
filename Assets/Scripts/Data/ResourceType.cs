@@ -16,14 +16,15 @@ namespace Data
             Authority,
             Gold,
             Food,
-            Population,
+            Villager,
             Soldier,
             Lumber,
             Ore,
             BasicLand,
             Forest,
             OreDeposit,
-            Stability
+            Stability,
+            MaxPopulation
         }
         
         public enum ResourceCategory

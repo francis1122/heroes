@@ -16,7 +16,7 @@ MonoBehaviour:
   resourceName: Land
   resourceShortHand: land
   tempThumbnailResource: 
-  UIPriority: 99
+  UIPriority: 100
   UITexture: {fileID: 0}
   dropObject: {fileID: 0}
   dropSprite: {fileID: 0}

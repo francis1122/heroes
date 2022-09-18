@@ -156,13 +156,15 @@ MonoBehaviour:
   playerResources:
     resources:
     - amount: 10
-      type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
-    - amount: 10
       type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
-    - amount: 4
-      type: {fileID: 11400000, guid: f96cf640c8b239a4a9ec32a78d1c5721, type: 2}
+    - amount: 10
+      type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
     - amount: 20
       type: {fileID: 11400000, guid: b2893bf1cfb204843a747a9615b6f347, type: 2}
+    - amount: 4
+      type: {fileID: 11400000, guid: f96cf640c8b239a4a9ec32a78d1c5721, type: 2}
+    - amount: 5
+      type: {fileID: 11400000, guid: b90f7c0d1c1cb3b4c876de78eb99c57a, type: 2}
     isPlayersResourceBundle: 0
   playerMaxResourceAmounts:
     resources: []
@@ -285,6 +287,8 @@ GameObject:
   - component: {fileID: 1535595315}
   - component: {fileID: 1535595316}
   - component: {fileID: 1535595317}
+  - component: {fileID: 1535595318}
+  - component: {fileID: 1535595319}
   m_Layer: 5
   m_Name: UI_ResourceDisplay
   m_TagString: Untagged
@@ -395,6 +399,36 @@ MonoBehaviour:
   populationGroupTemplate: {fileID: 9197481963319205126, guid: edb88b5cb0969b44e8f0581d2353e608, type: 3}
   populationTemplate: {fileID: 9197481963319205126, guid: 9019c7fac6564b94baa4632fed779c16, type: 3}
   rootPanel: population-panel
+  category: 2
+--- !u!114 &1535595318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1535595310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20c1c9afaa614348a9c1df2a4252ec47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  container: land-container
+  landResourceTemplate: {fileID: 9197481963319205126, guid: 5b96b1181bff28f4e9897a67f8545eda, type: 3}
+  category: 1
+--- !u!114 &1535595319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1535595310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20c1c9afaa614348a9c1df2a4252ec47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  container: population-container
+  landResourceTemplate: {fileID: 9197481963319205126, guid: 5b96b1181bff28f4e9897a67f8545eda, type: 3}
   category: 2
 --- !u!1 &1684018722
 GameObject:

@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07084ce277534e9cb2a1351adf6fa156, type: 3}
-  m_Name: OreDepositResource
+  m_Name: MaxPopulationResource
   m_EditorClassIdentifier: 
-  type: 10
-  resourceName: Ore Deposit
-  resourceShortHand: od
+  type: 12
+  resourceName: Population Limit
+  resourceShortHand: Max Pop
   tempThumbnailResource: 
-  UIPriority: 102
+  UIPriority: 0
   UITexture: {fileID: 0}
   dropObject: {fileID: 0}
   dropSprite: {fileID: 0}
@@ -24,4 +24,4 @@ MonoBehaviour:
   checkForPlayerResourceMaxLimit: 0
   checkForPlayerResourceMinLimit: 0
   playerEndOfTurnTriggers: []
-  resourceCategory: 1
+  resourceCategory: 3

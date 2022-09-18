@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Data;
 using GameObjects;
 using TMPro;
@@ -106,7 +107,7 @@ public class GameCenter : MonoBehaviour {
     {
         
         
-        ResourceData playerPopulation = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Population);
+        ResourceData playerPopulation = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Villager);
         ResourceData soldier = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Soldier);
         ResourceData playerFood = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Food);
 
@@ -130,6 +131,19 @@ public class GameCenter : MonoBehaviour {
             GameCenter.instance.playerResources.SubtractResourceData(resourceOrganizer.CreateResourceData(totalPopulation, ResourceType.LinkType.Food));
         }
 
+    }
+
+    private void PopulationGrowth()
+    {
+        ResourceData maxPop = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.MaxPopulation);
+        List<ResourceData> pops = playerResources.GetMatchingResourceCategory(ResourceType.ResourceCategory.People);
+        int popsTotal = pops.Sum(e => e.amount);
+        ResourceData playerFood = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Food);
+        if (playerFood.amount >= popsTotal && popsTotal < maxPop.amount )
+        {
+            GameCenter.instance.playerResources.SubtractResourceData(resourceOrganizer.CreateResourceData(popsTotal, ResourceType.LinkType.Food));
+            GameCenter.instance.playerResources.AddResourceData(resourceOrganizer.CreateResourceData(1, ResourceType.LinkType.Villager));
+        }
     }
     
     public void EndTurn()
@@ -174,12 +188,14 @@ public class GameCenter : MonoBehaviour {
         //
         // UI update
         //
-        if (currentTurn % seasonsInAYear == 0)
-        {
-            EventManager.TriggerEvent(EventManager.EVENT_END_YEAR);
-            
-        }
+
         EventManager.TriggerEvent(EventManager.EVENT_END_TURN);
+        
+        if (currentTurn % seasonsInAYear == 3)
+        {
+            PopulationGrowth();
+            EventManager.TriggerEvent(EventManager.EVENT_END_YEAR);
+        }
 
         currentTurn += 1;
     }

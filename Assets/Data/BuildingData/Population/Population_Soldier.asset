@@ -30,6 +30,6 @@ MonoBehaviour:
   buildingAdditionsOnPurchase: []
   priority: 1
   onPurchaseTrigger:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 79a463159799f334f819a6ab9222d85c, type: 2}
   onTurnEndTrigger: []
   onYearEndTrigger: []

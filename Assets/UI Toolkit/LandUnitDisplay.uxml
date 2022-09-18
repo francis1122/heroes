@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:GroupBox name="land-unit" style="align-items: flex-start; flex-direction: column; flex-basis: auto; flex-grow: initial; flex-shrink: initial; flex-wrap: nowrap; overflow: visible; justify-content: flex-start; max-width: initial; max-height: initial; width: auto; visibility: visible; background-color: rgb(135, 135, 135);">
+        <ui:GroupBox style="flex-direction: row; background-color: rgb(124, 101, 121);">
+            <UIToolKitImage name="land-thumbnail" style="align-items: auto; background-color: rgb(180, 100, 165);" />
+            <ui:Label text="5" display-tooltip-when-elided="true" name="land-owned" />
+        </ui:GroupBox>
+    </ui:GroupBox>
+</ui:UXML>

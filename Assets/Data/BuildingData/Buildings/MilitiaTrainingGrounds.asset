@@ -24,13 +24,14 @@ MonoBehaviour:
     - amount: 4
       type: {fileID: 11400000, guid: bc91da6924ab7454fb88eb0b49da03c7, type: 2}
     isPlayersResourceBundle: 0
+  category: 0
   buildingRequirement: {fileID: 0}
   removeFromPurchasableOnPurchase: 1
   repeatablePurchase: 0
   addToOwnedBuildings: 1
-  buildingAdditionsOnPurchase: []
+  buildingAdditionsOnPurchase:
+  - {fileID: 11400000, guid: 1e14707abbcfc8343bcfe94d4327bd88, type: 2}
   priority: 10
   onPurchaseTrigger: []
   onTurnEndTrigger: []
-  onYearEndTrigger:
-  - {fileID: 11400000, guid: d5e344ea747349f43bca3440dc4f92cc, type: 2}
+  onYearEndTrigger: []

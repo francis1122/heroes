@@ -16,7 +16,7 @@ MonoBehaviour:
   resourceName: Authority
   resourceShortHand: Auth
   tempThumbnailResource: 
-  UIPriority: 2
+  UIPriority: 1
   UITexture: {fileID: 8972146087853794435, guid: 6ed29e8b17396fe44b61c376ec80fedf, type: 3}
   dropObject: {fileID: 0}
   dropSprite: {fileID: 0}

@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Data;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,6 +16,7 @@ public class PlayerResourceController : MonoBehaviour
     //private Label playerMoneyLabel;
     private Label currentTurnLabel;
     private Button endTurnButton;
+    private Label populationLimitLabel;
 
     private ListView empireList;
     
@@ -40,6 +43,7 @@ public class PlayerResourceController : MonoBehaviour
         //playerMoneyLabel = root.Q<Label>("player-money-label");
         currentTurnLabel = root.Q<Label>("turn-number-label");
         endTurnButton = root.Q<Button>("end-turn-button");
+        populationLimitLabel = root.Q<Label>("population-limit-text");
         resourceContainer = root.Q<GroupBox>("resource-container");
         //SetupEmpireList();
         
@@ -53,7 +57,7 @@ public class PlayerResourceController : MonoBehaviour
 
     public void CreateResourceUnits()
     {
-        foreach (var resource in GameCenter.instance.playerResources.resources)
+        foreach (var resource in GameCenter.instance.playerResources.resources.FindAll(e=> e.type.resourceCategory is ResourceType.ResourceCategory.Material or ResourceType.ResourceCategory.Unique))
         {
             TemplateContainer buildingBox = resourceTemplate.Instantiate();
 
@@ -65,10 +69,7 @@ public class PlayerResourceController : MonoBehaviour
             {
                 buildingBox.Q<UIToolKitImage>("resource-thumbnail").image = resource.type.UITexture;
             }
-
             resourceContainer.Add(buildingBox.Q<GroupBox>("resource-unit"));
-            
-
         }
     }
 
@@ -135,6 +136,11 @@ public class PlayerResourceController : MonoBehaviour
         ClearResourceUnits();
         CreateResourceUnits();
         currentTurnLabel.text = "season " + (GameCenter.instance.currentTurn % GameCenter.instance.seasonsInAYear) + " year " + GameCenter.instance.currentTurn / 4;
+        populationLimitLabel.text = "Pops " + GameCenter.instance.playerResources
+                                        .GetMatchingResourceCategory(ResourceType.ResourceCategory.People)
+                                        .Sum(e => e.amount) +
+                                    "/" + GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(
+                                        ResourceType.LinkType.MaxPopulation).amount;
         //playerMoneyLabel.text = GameCenter.instance.playerResources.GetStringDisplay();
 
     }

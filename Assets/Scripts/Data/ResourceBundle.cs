@@ -31,6 +31,11 @@ namespace Data
             return GetOrCreateMatchingResourceType(GameCenter.instance.resourceOrganizer.GetResourceType(linkType));
         }
 
+        public List<ResourceData> GetMatchingResourceCategory(ResourceType.ResourceCategory category)
+        {
+            return resources.FindAll(e => e.type.resourceCategory == category);
+        }
+
         public String GetStringDisplay()
         {
             String resourceString = "";

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Triggers;
 using UnityEditor;
 using UnityEngine;
@@ -21,8 +22,22 @@ namespace Data
         public string buildingThumbnail;
 
         public ResourceBundle costRequirements;
+
+        [System.Serializable]
+        public struct BuildingBundle
+        {
+            [SerializeField]
+            public int amount;
+            [SerializeField]
+            public BuildingData buildingData;
+        }
+        public int amount;
+        public ResourceType type;
+
+        
         public BuildingCategory category = BuildingCategory.Building;
-        public BuildingData buildingRequirement;
+        public BuildingBundle[] buildingRequirement = Array.Empty<BuildingBundle>();
+        public bool destroyRequiredBuildings = false;
 
         public bool removeFromPurchasableOnPurchase = true;
         public bool repeatablePurchase = false;

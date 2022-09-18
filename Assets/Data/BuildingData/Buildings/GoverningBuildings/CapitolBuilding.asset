@@ -19,12 +19,18 @@ MonoBehaviour:
     resources:
     - amount: 200
       type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
-  buildingRequirement: {fileID: 0}
+    isPlayersResourceBundle: 0
+  amount: 0
+  type: {fileID: 0}
+  category: 0
+  buildingRequirement: []
+  destroyRequiredBuildings: 0
   removeFromPurchasableOnPurchase: 0
   repeatablePurchase: 1
-  timesPurchased: 0
-  buildingReplacementOnPurchase: {fileID: 0}
+  addToOwnedBuildings: 1
+  buildingAdditionsOnPurchase: []
   priority: 1
   onPurchaseTrigger: []
   onTurnEndTrigger:
   - {fileID: 11400000, guid: 98688a4323d1fdc44992b95350ce4c78, type: 2}
+  onYearEndTrigger: []

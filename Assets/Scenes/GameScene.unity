@@ -161,10 +161,6 @@ MonoBehaviour:
       type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
     - amount: 20
       type: {fileID: 11400000, guid: b2893bf1cfb204843a747a9615b6f347, type: 2}
-    - amount: 4
-      type: {fileID: 11400000, guid: f96cf640c8b239a4a9ec32a78d1c5721, type: 2}
-    - amount: 5
-      type: {fileID: 11400000, guid: b90f7c0d1c1cb3b4c876de78eb99c57a, type: 2}
     isPlayersResourceBundle: 0
   playerMaxResourceAmounts:
     resources: []

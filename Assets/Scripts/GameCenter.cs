@@ -107,8 +107,11 @@ public class GameCenter : MonoBehaviour {
         
         
         ResourceData playerPopulation = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Population);
+        ResourceData soldier = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Soldier);
         ResourceData playerFood = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Food);
-        if (playerFood.amount < playerPopulation.amount)
+
+        var totalPopulation = soldier.amount + playerPopulation.amount;
+        if (playerFood.amount < totalPopulation)
         {
             /*
             double playerAuthF = Math.Abs(playerAuthority.amount);
@@ -124,9 +127,7 @@ public class GameCenter : MonoBehaviour {
         }
         else
         {
-                
-            GameCenter.instance.playerResources.SubtractResourceData(resourceOrganizer.CreateResourceData(playerPopulation.amount, ResourceType.LinkType.Food));
-            
+            GameCenter.instance.playerResources.SubtractResourceData(resourceOrganizer.CreateResourceData(totalPopulation, ResourceType.LinkType.Food));
         }
 
     }

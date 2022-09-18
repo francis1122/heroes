@@ -13,6 +13,7 @@ namespace Data
         {
             Building,
             Action,
+            Population
         }
         
         public string buildingName = "";

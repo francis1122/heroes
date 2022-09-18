@@ -284,6 +284,7 @@ GameObject:
   - component: {fileID: 1535595314}
   - component: {fileID: 1535595315}
   - component: {fileID: 1535595316}
+  - component: {fileID: 1535595317}
   m_Layer: 5
   m_Name: UI_ResourceDisplay
   m_TagString: Untagged
@@ -379,6 +380,22 @@ MonoBehaviour:
   buildingTemplate: {fileID: 9197481963319205126, guid: c3ab994634b568b469133630160fdf52, type: 3}
   rootPanel: action-panel
   category: 1
+--- !u!114 &1535595317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1535595310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef12e05575a54d17a638b41dd785af1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populationGroupTemplate: {fileID: 9197481963319205126, guid: edb88b5cb0969b44e8f0581d2353e608, type: 3}
+  populationTemplate: {fileID: 9197481963319205126, guid: 9019c7fac6564b94baa4632fed779c16, type: 3}
+  rootPanel: population-panel
+  category: 2
 --- !u!1 &1684018722
 GameObject:
   m_ObjectHideFlags: 0

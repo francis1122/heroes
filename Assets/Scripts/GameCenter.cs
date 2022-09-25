@@ -129,6 +129,7 @@ public class GameCenter : MonoBehaviour {
         else
         {
             GameCenter.instance.playerResources.SubtractResourceData(resourceOrganizer.CreateResourceData(totalPopulation, ResourceType.LinkType.Food));
+            GameCenter.instance.playerResources.AddResourceData(resourceOrganizer.CreateResourceData(totalPopulation, ResourceType.LinkType.Gold));
         }
 
     }
@@ -184,7 +185,8 @@ public class GameCenter : MonoBehaviour {
         //
         // resource clean up
         //
-        playerResources.AddResourceData(resourceOrganizer.CreateResourceData(10, ResourceType.LinkType.Authority));
+        
+        
         //
         // UI update
         //
@@ -198,5 +200,6 @@ public class GameCenter : MonoBehaviour {
         }
 
         currentTurn += 1;
+        EventManager.TriggerEvent(EventManager.RESOURCES_CHANGED);
     }
 }

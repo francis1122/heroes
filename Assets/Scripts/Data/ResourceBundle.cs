@@ -39,7 +39,7 @@ namespace Data
         public String GetStringDisplay()
         {
             String resourceString = "";
-            foreach (ResourceData resource in resources)
+            foreach (ResourceData resource in resources.FindAll(e=> e.type.type != ResourceType.LinkType.Authority))
             {
                 resourceString += resource.type.resourceName + " " + resource.amount + "   ";
             }

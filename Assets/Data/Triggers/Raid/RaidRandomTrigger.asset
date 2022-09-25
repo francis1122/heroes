@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a691e3dc3508458ebdf3fd0ad5ba88f4, type: 3}
+  m_Name: RaidRandomTrigger
+  m_EditorClassIdentifier: 
+  Triggers:
+  - weight: 2
+    triggers: {fileID: 11400000, guid: ec86b445556bdee40a82bfb89f9984c1, type: 2}
+  - weight: 1
+    triggers: {fileID: 11400000, guid: afb24da983460e649bc0d39daf431ecb, type: 2}

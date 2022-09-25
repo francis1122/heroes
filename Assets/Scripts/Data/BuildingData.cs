@@ -8,8 +8,6 @@ namespace Data
 {
     public class BuildingData : ScriptableObject
     {
-        
-        
         public enum BuildingCategory
         {
             Building,
@@ -56,8 +54,9 @@ namespace Data
         [MenuItem("Tools/BuildingData")]
         public static void CreateMyAsset()
         {
+            
             BuildingData asset = ScriptableObject.CreateInstance<BuildingData>();
-
+            asset.costRequirements.AddResourceData(GameCenter.instance.resourceOrganizer.CreateResourceData(10, ResourceType.LinkType.Authority));
             AssetDatabase.CreateAsset(asset, "Assets/Data/BuildingData/NewBuilding.asset");
             AssetDatabase.SaveAssets();
 

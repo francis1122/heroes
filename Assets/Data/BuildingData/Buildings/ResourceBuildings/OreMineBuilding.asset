@@ -21,7 +21,16 @@ MonoBehaviour:
       type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
     - amount: 1
       type: {fileID: 11400000, guid: 9f5801a6ba0a9b3498c008b65fb1c18d, type: 2}
-  buildingRequirement: {fileID: 0}
+    - amount: 10
+      type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
+    isPlayersResourceBundle: 0
+  amount: 0
+  type: {fileID: 0}
+  category: 0
+  buildingRequirement:
+  - amount: 0
+    buildingData: {fileID: 0}
+  destroyRequiredBuildings: 0
   removeFromPurchasableOnPurchase: 0
   repeatablePurchase: 1
   addToOwnedBuildings: 1
@@ -30,3 +39,4 @@ MonoBehaviour:
   onPurchaseTrigger: []
   onTurnEndTrigger:
   - {fileID: 11400000, guid: fa0829ea2ee976344bfd49fdc3a052e8, type: 2}
+  onYearEndTrigger: []

@@ -55,14 +55,12 @@ namespace GameObjects
         {
             if (CheckBuildingRequirement())
             {
-                if (GameCenter.instance.playerResources.CanSubtractResourceData(
-                        GameCenter.instance.resourceOrganizer.CreateResourceData(10, ResourceType.LinkType.Authority)))
-                {
 
-                    if (GameCenter.instance.playerResources.CanSubtractResourceBundle(buildingData.costRequirements))
+                if (GameCenter.instance.playerResources.CanSubtractResourceBundle(buildingData.costRequirements))
                     {
                         if (GameCenter.instance.playerResources.SubtractResourceBundle(buildingData.costRequirements))
                         {
+
                             if (buildingData.addToOwnedBuildings)
                             {
                                 GameCenter.instance.buildingsOwned.Add(this);
@@ -87,12 +85,11 @@ namespace GameObjects
                                 DestroyBuildingRequirements();
                             }
 
+                            
                             foreach (var trigger in buildingData.onPurchaseTrigger)
                             {
                                 trigger.Trigger();
-                                GameCenter.instance.playerResources.SubtractResourceData(
-                                    GameCenter.instance.resourceOrganizer.CreateResourceData(10,
-                                        ResourceType.LinkType.Authority));
+                                
                             }
 
                             EventManager.TriggerEvent(EventManager.RESOURCES_CHANGED);
@@ -100,7 +97,6 @@ namespace GameObjects
                         }
 
                     }
-                }
             }
         }
         

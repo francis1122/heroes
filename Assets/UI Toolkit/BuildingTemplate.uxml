@@ -1,6 +1,9 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:GroupBox name="building_box_group" style="flex-basis: auto; flex-direction: column; width: 25%; height: 100%; align-items: center; justify-content: flex-start; background-color: rgb(121, 128, 130);">
-        <ui:Label text="Label" display-tooltip-when-elided="true" name="building_name_label" />
+        <ui:GroupBox style="flex-direction: row; justify-content: space-between; align-items: stretch; width: 100%;">
+            <ui:Label text="Label" display-tooltip-when-elided="true" name="building_name_label" />
+            <ui:Label text="Label" display-tooltip-when-elided="true" name="building_auth_label" />
+        </ui:GroupBox>
         <ui:Label text="Label" display-tooltip-when-elided="true" name="building_details_label" />
         <ui:Label text="Label" display-tooltip-when-elided="true" name="building_cost_label" />
         <ui:Button text="Button" display-tooltip-when-elided="true" name="building_purchase_button" />

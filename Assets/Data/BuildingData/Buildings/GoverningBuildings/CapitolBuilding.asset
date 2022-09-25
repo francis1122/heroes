@@ -19,6 +19,8 @@ MonoBehaviour:
     resources:
     - amount: 200
       type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
+    - amount: 20
+      type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
     isPlayersResourceBundle: 0
   amount: 0
   type: {fileID: 0}

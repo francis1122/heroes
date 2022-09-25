@@ -10,31 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9710acaf6ae64d249fee5fd4ec0dff99, type: 3}
-  m_Name: Action_Hunting
+  m_Name: Action_Raid
   m_EditorClassIdentifier: 
-  buildingName: Hunting
-  buildingDetails: Hunt for food
+  buildingName: Raid
+  buildingDetails: Raid nearby settlements for resources
   buildingThumbnail: 
   costRequirements:
     resources:
-    - amount: 5
-      type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
+    - amount: 2
+      type: {fileID: 11400000, guid: ca0781a52c5d7944db3c8f1a0086a428, type: 2}
     - amount: 5
       type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
     isPlayersResourceBundle: 0
   amount: 0
   type: {fileID: 0}
-  category: 1
-  buildingRequirement:
-  - amount: 0
-    buildingData: {fileID: 0}
+  category: 0
+  buildingRequirement: []
   destroyRequiredBuildings: 0
   removeFromPurchasableOnPurchase: 0
   repeatablePurchase: 1
   addToOwnedBuildings: 0
   buildingAdditionsOnPurchase: []
-  priority: 100
-  onPurchaseTrigger:
-  - {fileID: 11400000, guid: 81474f7b14003624ea15ef5cc6e7c534, type: 2}
+  priority: 1
+  onPurchaseTrigger: []
   onTurnEndTrigger: []
   onYearEndTrigger: []

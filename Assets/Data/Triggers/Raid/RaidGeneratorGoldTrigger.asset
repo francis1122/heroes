@@ -10,12 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f49e67e04cd423e8a2dec95e8992657, type: 3}
-  m_Name: MetroGenerateResources
+  m_Name: RaidGeneratorGoldTrigger
   m_EditorClassIdentifier: 
   resourceBundle:
     resources:
-    - amount: 40
+    - amount: 60
       type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
-    - amount: 20
-      type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
     isPlayersResourceBundle: 0

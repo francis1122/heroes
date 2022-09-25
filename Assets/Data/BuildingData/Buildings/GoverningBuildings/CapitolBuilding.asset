@@ -22,13 +22,13 @@ MonoBehaviour:
     - amount: 20
       type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
     isPlayersResourceBundle: 0
-  amount: 0
-  type: {fileID: 0}
   category: 0
-  buildingRequirement: []
-  destroyRequiredBuildings: 0
-  removeFromPurchasableOnPurchase: 0
-  repeatablePurchase: 1
+  buildingRequirement:
+  - amount: 1
+    buildingData: {fileID: 11400000, guid: d6c91d4bcd5bfcc4088faaf0d445c260, type: 2}
+  destroyRequiredBuildings: 1
+  removeFromPurchasableOnPurchase: 1
+  repeatablePurchase: 0
   addToOwnedBuildings: 1
   buildingAdditionsOnPurchase: []
   priority: 1

@@ -22,9 +22,7 @@ MonoBehaviour:
     - amount: 5
       type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
     isPlayersResourceBundle: 0
-  amount: 0
-  type: {fileID: 0}
-  category: 0
+  category: 1
   buildingRequirement: []
   destroyRequiredBuildings: 0
   removeFromPurchasableOnPurchase: 0
@@ -32,6 +30,7 @@ MonoBehaviour:
   addToOwnedBuildings: 0
   buildingAdditionsOnPurchase: []
   priority: 1
-  onPurchaseTrigger: []
+  onPurchaseTrigger:
+  - {fileID: 11400000, guid: d8fc7b45008ac0a4cad884c2e0d6a07d, type: 2}
   onTurnEndTrigger: []
   onYearEndTrigger: []

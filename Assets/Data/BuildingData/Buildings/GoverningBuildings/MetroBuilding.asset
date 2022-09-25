@@ -26,13 +26,11 @@ MonoBehaviour:
     - amount: 10
       type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
     isPlayersResourceBundle: 0
-  amount: 0
-  type: {fileID: 0}
   category: 0
   buildingRequirement:
   - amount: 1
     buildingData: {fileID: 11400000, guid: 5251babc32c90bb4ea0b78cb9e2f9637, type: 2}
-  destroyRequiredBuildings: 0
+  destroyRequiredBuildings: 1
   removeFromPurchasableOnPurchase: 1
   repeatablePurchase: 0
   addToOwnedBuildings: 1

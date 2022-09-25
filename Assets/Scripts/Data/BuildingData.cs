@@ -29,10 +29,8 @@ namespace Data
             [SerializeField]
             public BuildingData buildingData;
         }
-        public int amount;
-        public ResourceType type;
 
-        
+
         public BuildingCategory category = BuildingCategory.Building;
         public BuildingBundle[] buildingRequirement = Array.Empty<BuildingBundle>();
         public bool destroyRequiredBuildings = false;

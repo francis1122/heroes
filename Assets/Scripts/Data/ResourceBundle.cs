@@ -11,6 +11,23 @@ namespace Data
     {
         [SerializeField] public List<ResourceData> resources = new();
         public Boolean isPlayersResourceBundle = false;
+        public Boolean isPlayersBufferResourceBundle = false;
+
+
+        public ResourceBundle(ResourceBundle oldBundle, int scale)
+        {
+            foreach (var resourceData in oldBundle.resources)
+            {
+                ResourceData newData = new ResourceData(resourceData.amount * scale, resourceData.type);
+                AddResourceData(newData);
+            }
+        }
+
+        public void ClearResources()
+        {
+            resources = new();
+        }
+
         public ResourceData GetOrCreateMatchingResourceType(ResourceType resourceType)
         {
             foreach (ResourceData resource in resources)
@@ -49,6 +66,7 @@ namespace Data
 
         public bool CanSubtractResourceBundle(ResourceBundle subtractResourceBundle)
         {
+            if (isPlayersBufferResourceBundle) return true;
             //test if this resource matches type and has proper amount to subtract 
             /*if (this.amount >= subtractionAmount.amount && this.type == subtractionAmount.type)
                 return true;*/
@@ -74,6 +92,7 @@ namespace Data
         
         public bool CanSubtractResourceData(ResourceData subtractResourceData)
         {
+            if (isPlayersBufferResourceBundle) return true;
             //test if this resource matches type and has proper amount to subtract 
             /*if (this.amount >= subtractionAmount.amount && this.type == subtractionAmount.type)
                 return true;*/
@@ -119,7 +138,7 @@ namespace Data
         public bool SubtractResourceData(ResourceData subtractResourceData)
         {
             ResourceData resourceData = GetOrCreateMatchingResourceType(subtractResourceData.type);
-            if (resourceData.amount >= subtractResourceData.amount || resourceData.type.amountCanBeNegative)
+            if (resourceData.amount >= subtractResourceData.amount || resourceData.type.amountCanBeNegative || isPlayersBufferResourceBundle)
             {
                 if (isPlayersResourceBundle && resourceData.type.checkForPlayerResourceMinLimit)
                 {
@@ -182,18 +201,18 @@ namespace Data
         {
             ResourceData resourceData = GetOrCreateMatchingResourceType(addResourceData.type);
             resourceData.amount += addResourceData.amount;
-            Debug.Log("cull max res 0");
+
             // check and reduce to max limit if resource 
             if (isPlayersResourceBundle)
             {
-                Debug.Log("cull max res 1");
+                
                 if (resourceData.type.checkForPlayerResourceMaxLimit)
                 {
-                    Debug.Log("cull max res 2");
+                    
                     ResourceData playerMaxResource = GameCenter.instance.playerMaxResourceAmounts.GetOrCreateMatchingResourceType(resourceData.type);
                     if (resourceData.amount > playerMaxResource.amount)
                     {
-                        Debug.Log("cull max res 3");
+                        
                         resourceData.amount = playerMaxResource.amount;
                     }
                 }

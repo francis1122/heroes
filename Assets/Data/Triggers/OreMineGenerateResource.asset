@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f49e67e04cd423e8a2dec95e8992657, type: 3}
   m_Name: OreMineGenerateResource
   m_EditorClassIdentifier: 
+  isEndOfTurnTrigger: 1
   resourceBundle:
     resources:
     - amount: 1
       type: {fileID: 11400000, guid: bc91da6924ab7454fb88eb0b49da03c7, type: 2}
+    isPlayersResourceBundle: 0
+    isPlayersBufferResourceBundle: 0
+  scaleWithPlayerAmount: 0
+  scaleWithLinkType: 4

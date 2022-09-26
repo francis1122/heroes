@@ -63,8 +63,10 @@ public class PlayerResourceController : MonoBehaviour
 
             //buildingBox.Q<Label>("resource-thumbnail")
             buildingBox.Q<Label>("resource-owned").text = resource.type.resourceName + ": " + resource.amount.ToString();
+            ResourceData bufferResourceData =
+                GameCenter.instance.playerBufferResources.GetOrCreateMatchingResourceType(resource.type);
             
-            buildingBox.Q<Label>("resource-gain").text = "";
+            buildingBox.Q<Label>("resource-gain").text = bufferResourceData.amount.ToString();
             if (resource.type.UITexture != null)
             {
                 buildingBox.Q<UIToolKitImage>("resource-thumbnail").image = resource.type.UITexture;

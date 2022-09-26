@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f49e67e04cd423e8a2dec95e8992657, type: 3}
   m_Name: CapitolGenerateResources
   m_EditorClassIdentifier: 
+  isEndOfTurnTrigger: 1
   resourceBundle:
     resources:
     - amount: 20
@@ -19,3 +20,6 @@ MonoBehaviour:
     - amount: 20
       type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
     isPlayersResourceBundle: 0
+    isPlayersBufferResourceBundle: 0
+  scaleWithPlayerAmount: 0
+  scaleWithLinkType: 4

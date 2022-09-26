@@ -26,6 +26,8 @@ public class GameCenter : MonoBehaviour {
 
     //private BoardManager boardScript;                       //Store a reference to our BoardManager which will set up the level.
     public ResourceOrganizer resourceOrganizer;
+    
+    public ResourceBundle playerBufferResources;
     public ResourceBundle playerResources;
     public ResourceBundle playerMaxResourceAmounts;
     public ResourceBundle playerMinResourceAmounts;
@@ -128,8 +130,8 @@ public class GameCenter : MonoBehaviour {
         }
         else
         {
-            GameCenter.instance.playerResources.SubtractResourceData(resourceOrganizer.CreateResourceData(totalPopulation, ResourceType.LinkType.Food));
-            GameCenter.instance.playerResources.AddResourceData(resourceOrganizer.CreateResourceData(totalPopulation, ResourceType.LinkType.Gold));
+            GameCenter.instance.playerBufferResources.SubtractResourceData(resourceOrganizer.CreateResourceData(totalPopulation, ResourceType.LinkType.Food));
+            //GameCenter.instance.playerResources.AddResourceData(resourceOrganizer.CreateResourceData(totalPopulation, ResourceType.LinkType.Gold));
         }
 
     }
@@ -142,14 +144,13 @@ public class GameCenter : MonoBehaviour {
         ResourceData playerFood = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Food);
         if (playerFood.amount >= popsTotal && popsTotal < maxPop.amount )
         {
-            GameCenter.instance.playerResources.SubtractResourceData(resourceOrganizer.CreateResourceData(popsTotal, ResourceType.LinkType.Food));
-            GameCenter.instance.playerResources.AddResourceData(resourceOrganizer.CreateResourceData(1, ResourceType.LinkType.Villager));
+            GameCenter.instance.playerBufferResources.SubtractResourceData(resourceOrganizer.CreateResourceData(popsTotal, ResourceType.LinkType.Food));
+            GameCenter.instance.playerBufferResources.AddResourceData(resourceOrganizer.CreateResourceData(1, ResourceType.LinkType.Villager));
         }
     }
-    
-    public void EndTurn()
-    {
 
+    public void EndOfTurnResourceBuffering()
+    {
         //
         // Trigger resource affects first
         //
@@ -182,24 +183,42 @@ public class GameCenter : MonoBehaviour {
                 }
             }
         }
-        //
-        // resource clean up
-        //
         
-        
-        //
-        // UI update
-        //
-
-        EventManager.TriggerEvent(EventManager.EVENT_END_TURN);
+        // might want this to increase buffer stuff
+        //EventManager.TriggerEvent(EventManager.EVENT_END_TURN);
         
         if (currentTurn % seasonsInAYear == 3)
         {
             PopulationGrowth();
+            //EventManager.TriggerEvent(EventManager.EVENT_END_YEAR);
+        }
+    }
+    
+    public void EndTurn()
+    {
+        //reset buffer
+        playerBufferResources.ClearResources();
+
+        
+        EndOfTurnResourceBuffering();
+        
+        // push buffer
+        // resource clean up
+        //
+        playerResources.AddResourceBundle(playerBufferResources);
+        playerBufferResources.ClearResources();
+
+        if (currentTurn % seasonsInAYear == 3)
+        {
+            //PopulationGrowth();
             EventManager.TriggerEvent(EventManager.EVENT_END_YEAR);
         }
-
+        
         currentTurn += 1;
+        // recalculate buffer
+        EventManager.TriggerEvent(EventManager.EVENT_END_TURN);
+
+        EndOfTurnResourceBuffering();
         EventManager.TriggerEvent(EventManager.RESOURCES_CHANGED);
     }
 }

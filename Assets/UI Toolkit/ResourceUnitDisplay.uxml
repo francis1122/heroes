@@ -4,6 +4,6 @@
             <UIToolKitImage name="resource-thumbnail" style="align-items: auto; background-color: rgb(180, 100, 165);" />
             <ui:Label text="5" display-tooltip-when-elided="true" name="resource-owned" />
         </ui:GroupBox>
-        <ui:Label text="+ 10" display-tooltip-when-elided="true" name="resource-gain" style="background-color: rgb(55, 48, 49);" />
+        <ui:Label text="+ 10" display-tooltip-when-elided="true" name="resource-gain" style="background-color: rgb(120, 120, 120);" />
     </ui:GroupBox>
 </ui:UXML>

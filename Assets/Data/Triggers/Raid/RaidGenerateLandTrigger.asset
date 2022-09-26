@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resourceBundle:
     resources:
-    - amount: 5
+    - amount: 6
       type: {fileID: 11400000, guid: d0486e35f66495b47b8bcb629a698965, type: 2}
     isPlayersResourceBundle: 0
+    isPlayersBufferResourceBundle: 0
+  scaleWithPlayerAmount: 0
+  scaleWithLinkType: 4

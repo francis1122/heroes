@@ -9,15 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f49e67e04cd423e8a2dec95e8992657, type: 3}
-  m_Name: LumberYardGenerateResource
+  m_Script: {fileID: 11500000, guid: 76110dd10cfa43b4bf09c82f16ee3b0a, type: 3}
+  m_Name: SoldierUpkeep
   m_EditorClassIdentifier: 
   isEndOfTurnTrigger: 1
   resourceBundle:
     resources:
-    - amount: 1
-      type: {fileID: 11400000, guid: a8d2874b560b46344b232f8891c70426, type: 2}
+    - amount: 2
+      type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
-  scaleWithPlayerAmount: 0
-  scaleWithLinkType: 4
+  scaleWithPlayerAmount: 1
+  scaleWithLinkType: 5

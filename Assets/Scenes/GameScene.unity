@@ -153,6 +153,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4ce9e4a8e4db3f40b1193f79d7efd58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerBufferResources:
+    resources: []
+    isPlayersResourceBundle: 0
+    isPlayersBufferResourceBundle: 1
   playerResources:
     resources:
     - amount: 10
@@ -162,12 +166,15 @@ MonoBehaviour:
     - amount: 20
       type: {fileID: 11400000, guid: b2893bf1cfb204843a747a9615b6f347, type: 2}
     isPlayersResourceBundle: 0
+    isPlayersBufferResourceBundle: 0
   playerMaxResourceAmounts:
     resources: []
     isPlayersResourceBundle: 0
+    isPlayersBufferResourceBundle: 0
   playerMinResourceAmounts:
     resources: []
     isPlayersResourceBundle: 0
+    isPlayersBufferResourceBundle: 0
   purchasableBuildings:
   - buildingData: {fileID: 11400000, guid: db3a778940cf1b8449f1bd64a9df88ae, type: 2}
     timesPurchased: 0

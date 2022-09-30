@@ -54,7 +54,7 @@ namespace Data
         {
             
             BuildingData asset = ScriptableObject.CreateInstance<BuildingData>();
-            asset.costRequirements.AddResourceData(GameCenter.instance.resourceOrganizer.CreateResourceData(10, ResourceType.LinkType.Authority));
+            //asset.costRequirements.AddResourceData(GameCenter.instance.resourceOrganizer.CreateResourceData(10, ResourceType.LinkType.Authority));
             AssetDatabase.CreateAsset(asset, "Assets/Data/BuildingData/NewBuilding.asset");
             AssetDatabase.SaveAssets();
 

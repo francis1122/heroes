@@ -26,6 +26,7 @@ MonoBehaviour:
     - amount: 10
       type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
     isPlayersResourceBundle: 0
+    isPlayersBufferResourceBundle: 0
   category: 0
   buildingRequirement:
   - amount: 1
@@ -42,6 +43,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 312f876666163334ca1c8f74de927e20, type: 2}
   - {fileID: 11400000, guid: 5007c42cda9ee0b448d2e47c3fa03155, type: 2}
   - {fileID: 11400000, guid: 98bc4a8deb6a04f4e829adf019ef0951, type: 2}
+  - {fileID: 11400000, guid: 3a3df117db9cf5f48afcf340de9f6a62, type: 2}
   priority: 1
   onPurchaseTrigger:
   - {fileID: 11400000, guid: 15cc53d6d85c7fb488f55d2113768cd1, type: 2}

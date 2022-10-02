@@ -1,6 +1,7 @@
 ﻿using Data;
 using UnityEditor;
 using UnityEngine;
+using Utils;
 
 namespace Triggers
 {
@@ -11,24 +12,24 @@ namespace Triggers
         public ResourceBundle resourceBundle;
 
         public bool scaleWithPlayerAmount = false;
-        public ResourceType.LinkType scaleWithLinkType = ResourceType.LinkType.Villager;
-
+        public ScaleResources endOfTurnScaleResources = new ScaleResources();
+        
         public override void Trigger()
         {
             ResourceBundle activeBundle = isEndOfTurnTrigger
                 ? GameCenter.instance.playerBufferResources
                 : GameCenter.instance.playerResources;
             if(isEndOfTurnTrigger)
-            if (scaleWithPlayerAmount)
-            {
-                ResourceBundle scaledBundle = new ResourceBundle(resourceBundle, 
-                    GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(scaleWithLinkType).amount);
-                activeBundle.SubtractResourceBundle(scaledBundle);
-            }
-            else
-            {
-                activeBundle.SubtractResourceBundle(resourceBundle);
-            }
+                if (scaleWithPlayerAmount)
+                {
+                    ResourceBundle scaledBundle = new ResourceBundle(resourceBundle, 
+                        (int)endOfTurnScaleResources.GetScaler());
+                    activeBundle.SubtractResourceBundle(scaledBundle);
+                }
+                else
+                {
+                    activeBundle.SubtractResourceBundle(resourceBundle);
+                }
 
             EventManager.TriggerEvent(EventManager.RESOURCES_CHANGED);
         }

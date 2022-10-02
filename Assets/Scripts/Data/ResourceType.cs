@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Triggers;
 using UnityEditor;
 using UnityEngine;
+using Utils;
 
 namespace Data
 {
@@ -12,19 +13,27 @@ namespace Data
         
         public enum LinkType
         {
-            Unset,
-            Authority,
-            Gold,
-            Food,
-            Villager,
-            Soldier,
-            Lumber,
-            Ore,
-            BasicLand,
-            Forest,
-            OreDeposit,
-            Stability,
-            MaxPopulation
+            Unset = 0,
+            Authority = 1,
+            // People
+            Villager = 100,
+            Soldier = 101,
+            Prospector = 102,
+            //Material
+            Gold = 200,
+            Food = 201,
+            Lumber = 202,
+            Ore = 203,
+            Iron = 204,
+            // Lands
+            BasicLand = 300,
+            Forest = 301,
+            OreDeposit = 302,
+            IronDeposit = 303,
+            
+            // Empire
+            Stability = 400,
+            MaxPopulation = 401
         }
         
         public enum ResourceCategory
@@ -52,10 +61,6 @@ namespace Data
         
 
         [SerializeField] public ResourceCategory resourceCategory = ResourceCategory.Material;
-
-        
-
-        
         
         [MenuItem("Tools/ResourceType")]
         public static void CreateMyAsset()
@@ -69,6 +74,5 @@ namespace Data
 
             Selection.activeObject = asset;
         }
-        
     }
 }

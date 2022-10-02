@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07084ce277534e9cb2a1351adf6fa156, type: 3}
   m_Name: LumberResource
   m_EditorClassIdentifier: 
-  type: 6
+  type: 7
   resourceName: Lumber
   resourceShortHand: l
   tempThumbnailResource: 

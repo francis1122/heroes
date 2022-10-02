@@ -10,28 +10,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9710acaf6ae64d249fee5fd4ec0dff99, type: 3}
-  m_Name: Population_Soldier
+  m_Name: ProspectingHut
   m_EditorClassIdentifier: 
-  buildingName: Recruit Soldier
-  buildingDetails: 
+  buildingName: Prospecting Hut
+  buildingDetails: Discover resources under the ground
   buildingThumbnail: 
   costRequirements:
     resources:
-    - amount: 20
+    - amount: 10
+      type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
+    - amount: 30
+      type: {fileID: 11400000, guid: a8d2874b560b46344b232f8891c70426, type: 2}
+    - amount: 10
+      type: {fileID: 11400000, guid: bc91da6924ab7454fb88eb0b49da03c7, type: 2}
+    - amount: 100
       type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
-    - amount: 1
-      type: {fileID: 11400000, guid: f96cf640c8b239a4a9ec32a78d1c5721, type: 2}
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
-  category: 2
+  category: 0
   buildingRequirement: []
   destroyRequiredBuildings: 0
-  removeFromPurchasableOnPurchase: 0
-  repeatablePurchase: 1
-  addToOwnedBuildings: 0
-  buildingAdditionsOnPurchase: []
+  removeFromPurchasableOnPurchase: 1
+  repeatablePurchase: 0
+  addToOwnedBuildings: 1
+  buildingAdditionsOnPurchase:
+  - {fileID: 11400000, guid: 51fccfc073fbdd44ea2ade42bbb469ff, type: 2}
   priority: 1
-  onPurchaseTrigger:
-  - {fileID: 11400000, guid: 79a463159799f334f819a6ab9222d85c, type: 2}
+  onPurchaseTrigger: []
   onTurnEndTrigger: []
   onYearEndTrigger: []

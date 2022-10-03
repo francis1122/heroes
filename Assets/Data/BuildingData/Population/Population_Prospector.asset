@@ -21,6 +21,9 @@ MonoBehaviour:
       type: {fileID: 11400000, guid: b2893bf1cfb204843a747a9615b6f347, type: 2}
     - amount: 25
       type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
+    populations:
+    - amount: 1
+      type: {fileID: 11400000, guid: fc7aba9c3a0c73e4e926a9d3f442cc58, type: 2}
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
   category: 2

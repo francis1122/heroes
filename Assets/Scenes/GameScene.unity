@@ -437,8 +437,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   container: population-container
   landResourceTemplate: {fileID: 9197481963319205126, guid: 5b96b1181bff28f4e9897a67f8545eda, type: 3}
-  usePopulation: 0
-  category: 2
+  usePopulation: 1
+  category: 0
 --- !u!1 &1684018722
 GameObject:
   m_ObjectHideFlags: 0

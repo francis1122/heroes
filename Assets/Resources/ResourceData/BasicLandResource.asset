@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07084ce277534e9cb2a1351adf6fa156, type: 3}
   m_Name: BasicLandResource
   m_EditorClassIdentifier: 
-  type: 10
+  type: 300
   resourceName: Land
   resourceShortHand: land
   tempThumbnailResource: 
@@ -24,4 +24,4 @@ MonoBehaviour:
   checkForPlayerResourceMaxLimit: 0
   checkForPlayerResourceMinLimit: 0
   playerEndOfTurnTriggers: []
-  resourceCategory: 1
+  resourceCategory: 2

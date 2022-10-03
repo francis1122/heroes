@@ -19,9 +19,11 @@ public class LandResourceController : MonoBehaviour
     
     [SerializeField]
     VisualTreeAsset landResourceTemplate;
-    
 
-    public ResourceType.ResourceCategory category = ResourceType.ResourceCategory.Empire;
+
+    public bool usePopulation = false;
+    public ResourceType.ResourceCategory category = ResourceType.ResourceCategory.Unset;
+    
     
     void Start()
     {
@@ -47,22 +49,48 @@ public class LandResourceController : MonoBehaviour
     public void CreateLandResourceUnits()
     {
 
-        foreach (var resource in GameCenter.instance.playerResources.GetMatchingResourceCategory(category))
+        if (usePopulation)
         {
-            TemplateContainer buildingBox = landResourceTemplate.Instantiate();
-
-            //buildingBox.Q<Label>("resource-thumbnail")
-            buildingBox.Q<Label>("land-owned").text = resource.type.resourceName + ": " + resource.amount.ToString();
-            
-            //buildingBox.Q<Label>("land-gain").text = "";
-            if (resource.type.UITexture != null)
+            foreach (var resource in GameCenter.instance.playerResources.populations)
             {
-                buildingBox.Q<UIToolKitImage>("land-thumbnail").image = resource.type.UITexture;
+                TemplateContainer buildingBox = landResourceTemplate.Instantiate();
+
+                //buildingBox.Q<Label>("resource-thumbnail")
+                buildingBox.Q<Label>("land-owned").text =
+                    resource.type.populationName + ": " + resource.amount.ToString();
+
+                //buildingBox.Q<Label>("land-gain").text = "";
+                if (resource.type.UITexture != null)
+                {
+                    buildingBox.Q<UIToolKitImage>("land-thumbnail").image = resource.type.UITexture;
+                }
+
+                resourceContainer.Add(buildingBox.Q<GroupBox>("land-unit"));
+
+
             }
+        }
+        else
+        {
 
-            resourceContainer.Add(buildingBox.Q<GroupBox>("land-unit"));
-            
+            foreach (var resource in GameCenter.instance.playerResources.GetMatchingResourceCategory(category))
+            {
+                TemplateContainer buildingBox = landResourceTemplate.Instantiate();
 
+                //buildingBox.Q<Label>("resource-thumbnail")
+                buildingBox.Q<Label>("land-owned").text =
+                    resource.type.resourceName + ": " + resource.amount.ToString();
+
+                //buildingBox.Q<Label>("land-gain").text = "";
+                if (resource.type.UITexture != null)
+                {
+                    buildingBox.Q<UIToolKitImage>("land-thumbnail").image = resource.type.UITexture;
+                }
+
+                resourceContainer.Add(buildingBox.Q<GroupBox>("land-unit"));
+
+
+            }
         }
     }
 

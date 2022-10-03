@@ -138,8 +138,7 @@ public class PlayerResourceController : MonoBehaviour
         ClearResourceUnits();
         CreateResourceUnits();
         currentTurnLabel.text = "season " + (GameCenter.instance.currentTurn % GameCenter.instance.seasonsInAYear) + " year " + GameCenter.instance.currentTurn / 4;
-        populationLimitLabel.text = "Pops " + GameCenter.instance.playerResources
-                                        .GetMatchingResourceCategory(ResourceType.ResourceCategory.People)
+        populationLimitLabel.text = "Pops " + GameCenter.instance.playerResources.populations
                                         .Sum(e => e.amount) +
                                     "/" + GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(
                                         ResourceType.LinkType.MaxPopulation).amount;

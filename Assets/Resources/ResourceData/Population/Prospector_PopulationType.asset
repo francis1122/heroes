@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07084ce277534e9cb2a1351adf6fa156, type: 3}
-  m_Name: Prospector_Population_Resource
+  m_Script: {fileID: 11500000, guid: a5d99ec258c141c38d5aa93facff0a93, type: 3}
+  m_Name: Prospector_PopulationType
   m_EditorClassIdentifier: 
-  type: 4
-  resourceName: Prospector
-  resourceShortHand: Prosp
+  type: 102
+  populationName: Prospector
+  resourceShortHand: Prospect
   tempThumbnailResource: 
   UIPriority: 0
   UITexture: {fileID: 0}
@@ -25,4 +25,3 @@ MonoBehaviour:
   checkForPlayerResourceMinLimit: 0
   playerEndOfTurnTriggers:
   - {fileID: 11400000, guid: 9bdb6cd1e67e1224db6613fc4bdee9e7, type: 2}
-  resourceCategory: 2

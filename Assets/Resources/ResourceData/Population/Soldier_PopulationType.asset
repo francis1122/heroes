@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07084ce277534e9cb2a1351adf6fa156, type: 3}
-  m_Name: SoldierResource
+  m_Script: {fileID: 11500000, guid: a5d99ec258c141c38d5aa93facff0a93, type: 3}
+  m_Name: Soldier_PopulationType
   m_EditorClassIdentifier: 
-  type: 3
-  resourceName: soldier
+  type: 101
+  populationName: Soldier
   resourceShortHand: 
   tempThumbnailResource: 
-  UIPriority: 201
+  UIPriority: 0
   UITexture: {fileID: 0}
   dropObject: {fileID: 0}
   dropSprite: {fileID: 0}
@@ -25,4 +25,3 @@ MonoBehaviour:
   checkForPlayerResourceMinLimit: 0
   playerEndOfTurnTriggers:
   - {fileID: 11400000, guid: 73e12bdb993be674eae3b8b693e9cf86, type: 2}
-  resourceCategory: 2

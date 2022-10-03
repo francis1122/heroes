@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07084ce277534e9cb2a1351adf6fa156, type: 3}
   m_Name: OreResource
   m_EditorClassIdentifier: 
-  type: 8
+  type: 203
   resourceName: Ore
   resourceShortHand: o
   tempThumbnailResource: 
@@ -24,4 +24,4 @@ MonoBehaviour:
   checkForPlayerResourceMaxLimit: 0
   checkForPlayerResourceMinLimit: 0
   playerEndOfTurnTriggers: []
-  resourceCategory: 0
+  resourceCategory: 1

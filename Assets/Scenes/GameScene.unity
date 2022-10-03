@@ -155,6 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerBufferResources:
     resources: []
+    populations: []
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 1
   playerResources:
@@ -165,14 +166,17 @@ MonoBehaviour:
       type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
     - amount: 20
       type: {fileID: 11400000, guid: b2893bf1cfb204843a747a9615b6f347, type: 2}
+    populations: []
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
   playerMaxResourceAmounts:
     resources: []
+    populations: []
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
   playerMinResourceAmounts:
     resources: []
+    populations: []
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
   purchasableBuildings:
@@ -417,7 +421,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   container: land-container
   landResourceTemplate: {fileID: 9197481963319205126, guid: 5b96b1181bff28f4e9897a67f8545eda, type: 3}
-  category: 1
+  usePopulation: 0
+  category: 2
 --- !u!114 &1535595319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -432,6 +437,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   container: population-container
   landResourceTemplate: {fileID: 9197481963319205126, guid: 5b96b1181bff28f4e9897a67f8545eda, type: 3}
+  usePopulation: 0
   category: 2
 --- !u!1 &1684018722
 GameObject:

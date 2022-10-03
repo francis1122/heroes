@@ -17,11 +17,11 @@ MonoBehaviour:
   buildingThumbnail: 
   costRequirements:
     resources:
-    - amount: 2
-      type: {fileID: 11400000, guid: ca0781a52c5d7944db3c8f1a0086a428, type: 2}
     - amount: 5
       type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
+    populations: []
     isPlayersResourceBundle: 0
+    isPlayersBufferResourceBundle: 0
   category: 1
   buildingRequirement: []
   destroyRequiredBuildings: 0

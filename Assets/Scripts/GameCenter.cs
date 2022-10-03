@@ -28,6 +28,7 @@ public class GameCenter : MonoBehaviour {
     public ResourceOrganizer resourceOrganizer;
     
     public ResourceBundle playerBufferResources;
+    //public ResourceBundle playerFatiguedPopulation;
     public ResourceBundle playerResources;
     public ResourceBundle playerMaxResourceAmounts;
     public ResourceBundle playerMinResourceAmounts;
@@ -68,7 +69,8 @@ public class GameCenter : MonoBehaviour {
     //Initializes the game for each level.
     void InitGame()
     {
-        resourceOrganizer = new ResourceOrganizer(Resources.LoadAll<ResourceType>("ResourceData"));
+        resourceOrganizer = new ResourceOrganizer(Resources.LoadAll<ResourceType>("ResourceData"),
+            Resources.LoadAll<PopulationType>("ResourceData/Population"));
         
         //playerResources = Instantiate(playerResources);
 
@@ -108,12 +110,17 @@ public class GameCenter : MonoBehaviour {
     private void ManagePopulation()
     {
         
-        
+        /*
         ResourceData playerPopulation = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Villager);
         ResourceData soldier = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Soldier);
         ResourceData playerFood = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Food);
+        */
 
-        var totalPopulation = soldier.amount + playerPopulation.amount;
+        int totalPopulation = GameCenter.instance.playerResources.populations
+            .Sum(e => e.amount);
+        ResourceData playerFood = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Food);
+
+       // var totalPopulation = soldier.amount + playerPopulation.amount;
         if (playerFood.amount < totalPopulation)
         {
             /*
@@ -139,13 +146,13 @@ public class GameCenter : MonoBehaviour {
     private void PopulationGrowth()
     {
         ResourceData maxPop = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.MaxPopulation);
-        List<ResourceData> pops = playerResources.GetMatchingResourceCategory(ResourceType.ResourceCategory.People);
-        int popsTotal = pops.Sum(e => e.amount);
+        //List<ResourceData> pops = playerResources.GetMatchingResourceCategory(ResourceType.ResourceCategory.People);
+        int popsTotal = playerResources.populations.Sum(e => e.amount);
         ResourceData playerFood = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Food);
         if (playerFood.amount >= popsTotal && popsTotal < maxPop.amount )
         {
             GameCenter.instance.playerBufferResources.SubtractResourceData(resourceOrganizer.CreateResourceData(popsTotal, ResourceType.LinkType.Food));
-            GameCenter.instance.playerBufferResources.AddResourceData(resourceOrganizer.CreateResourceData(1, ResourceType.LinkType.Villager));
+            GameCenter.instance.playerBufferResources.AddPopulationData(resourceOrganizer.CreatePopulationData(1, PopulationType.LinkPopulationType.Villager));
         }
     }
 
@@ -154,14 +161,8 @@ public class GameCenter : MonoBehaviour {
         //
         // Trigger resource affects first
         //
-        foreach (var resourceData in playerResources.resources)
-        {
-            foreach (var trigger in resourceData.type.playerEndOfTurnTriggers)
-            {
-                trigger.Trigger();
-            }
-        }
-        
+        playerResources.EndOfTurnTriggers();
+
         ManagePopulation();
         
         //

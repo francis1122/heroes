@@ -11,6 +11,7 @@ namespace Data
     public class ResourceBundle
     {
         [SerializeField] public List<ResourceData> resources = new();
+        [SerializeField] public List<PopulationData> populations = new();
         public Boolean isPlayersResourceBundle = false;
         public Boolean isPlayersBufferResourceBundle = false;
 
@@ -22,11 +23,18 @@ namespace Data
                 ResourceData newData = new ResourceData(resourceData.amount * scale, resourceData.type);
                 AddResourceData(newData);
             }
+            
+            foreach (var populationData in oldBundle.populations)
+            {
+                PopulationData newData = new PopulationData(populationData.amount * scale, populationData.type);
+                AddPopulationData(newData);
+            }
         }
 
         public void ClearResources()
         {
             resources = new();
+            populations = new();
         }
 
         public ResourceData GetOrCreateMatchingResourceType(ResourceType resourceType)
@@ -44,9 +52,31 @@ namespace Data
             return newResourceData;
         }
         
+        public PopulationData GetOrCreateMatchingPopulationType(PopulationType populationType)
+        {
+            foreach (PopulationData population in populations)
+            {
+                if (population.type == populationType)
+                {
+                    return population;
+                }
+            }
+
+            PopulationData newResourceData = new PopulationData(0, populationType);
+            populations.Add(newResourceData);
+            return newResourceData;
+        }
+        
+        
+        
         public ResourceData GetOrCreateMatchingResourceLinkType(ResourceType.LinkType linkType)
         {
             return GetOrCreateMatchingResourceType(GameCenter.instance.resourceOrganizer.GetResourceType(linkType));
+        }
+        
+        public PopulationData GetOrCreateMatchingPopulationLinkType(PopulationType.LinkPopulationType linkType)
+        {
+            return GetOrCreateMatchingPopulationType(GameCenter.instance.resourceOrganizer.GetPopulationType(linkType));
         }
 
         public List<ResourceData> GetMatchingResourceCategory(ResourceType.ResourceCategory category)
@@ -121,6 +151,9 @@ namespace Data
             return false;
         }
 
+        
+        
+        
         public bool SubtractResourceBundle(ResourceBundle subtractResourceBundle)
         {
 
@@ -129,7 +162,16 @@ namespace Data
                 if (!SubtractResourceData(subtractResourceData))
                 {
                     Debug.Log("Should call CanSubtractBundle to check purchase before");
-                    return false;
+           //         return false;
+                }
+            }
+
+            foreach (var population in subtractResourceBundle.populations)
+            {
+                if (!SubtractPopulationData(population))
+                {
+                    Debug.Log("Should call CanSubtractBundle to check purchase before");
+             //       return false;
                 }
             }
 
@@ -158,6 +200,29 @@ namespace Data
             Debug.Log("Should call CanSubtractResources to check purchase before " + subtractResourceData.type.resourceName);
             return false;
         }
+        
+        public bool SubtractPopulationData(PopulationData subtractPopulationData)
+        {
+            PopulationData resourceData = GetOrCreateMatchingPopulationType(subtractPopulationData.type);
+            if (resourceData.amount >= subtractPopulationData.amount || isPlayersBufferResourceBundle)
+            {
+                if (isPlayersResourceBundle && resourceData.type.checkForPlayerResourceMinLimit)
+                {
+                    PopulationData playerMinResource = GameCenter.instance.playerMinResourceAmounts.GetOrCreateMatchingPopulationType(resourceData.type);
+                    if (resourceData.amount - subtractPopulationData.amount >= playerMinResource.amount)
+                    {
+                        resourceData.amount -= subtractPopulationData.amount;
+                        return true;
+                    }
+                    Debug.Log("Should call CanSubtractResources to check purchase before player " + subtractPopulationData.type.populationName);
+                    return false;
+                }
+                resourceData.amount -= subtractPopulationData.amount;
+                return true;
+            }
+            Debug.Log("Should call CanSubtractResources to check purchase before " + subtractPopulationData.type.populationName);
+            return false;
+        }
 
         /*
         public bool CanAddResource(ResourceData addResourceData, bool canPartiallyAdd)
@@ -178,8 +243,7 @@ namespace Data
  
         }
         */
-
-        // returns the amount that was added
+        
         public void AddResourceBundle(ResourceBundle addResourceBundle)
         {
             foreach (var addResourceData in addResourceBundle.resources)
@@ -188,14 +252,10 @@ namespace Data
 
             }
 
-            /*this.amount += addResourceData.amount;
-            return addResourceData;*/
-            /*int spaceAvailable = this.maxAmount - this.amount;
-            int amountToAdd = Math.Min(spaceAvailable, addResourceData.amount);
-            this.amount += amountToAdd;
-            ResourceData subtracted = new ResourceData(addResourceData);
-            subtracted.amount = amountToAdd; 
-            return subtracted;*/
+            foreach (var addPopulationData in addResourceBundle.populations)
+            {
+                AddPopulationData(addPopulationData);
+            }
         }
 
         public void AddResourceData(ResourceData addResourceData)
@@ -219,21 +279,48 @@ namespace Data
                 }
             }
         }
-
-
-
-        /*[MenuItem("Tools/ResourceBundle")]
-        public static void CreateMyAsset()
+        public void AddPopulationData(PopulationData addPopulationData)
         {
-            ResourceBundle asset = ScriptableObject.CreateInstance<ResourceBundle>();
-    
-            AssetDatabase.CreateAsset(asset, "Assets/Data/ResourceBundle/NewResourceBundle.asset");
-            AssetDatabase.SaveAssets();
-    
-            EditorUtility.FocusProjectWindow();
-    
-            Selection.activeObject = asset;
-        }*/
+            PopulationData resourceData = GetOrCreateMatchingPopulationType(addPopulationData.type);
+            resourceData.amount += addPopulationData.amount;
 
+            // check and reduce to max limit if resource 
+            if (isPlayersResourceBundle)
+            {
+                
+                if (resourceData.type.checkForPlayerResourceMaxLimit)
+                {
+                    PopulationData playerMaxResource = GameCenter.instance.playerMaxResourceAmounts.GetOrCreateMatchingPopulationType(resourceData.type);
+                    if (resourceData.amount > playerMaxResource.amount)
+                    {
+                        resourceData.amount = playerMaxResource.amount;
+                    }
+                }
+            }
+        }
+        
+        
+        //
+        //
+        //
+
+        public void EndOfTurnTriggers()
+        {
+            foreach (var resourceData in GameCenter.instance.playerResources.resources)
+            {
+                foreach (var trigger in resourceData.type.playerEndOfTurnTriggers)
+                {
+                    trigger.Trigger();
+                }
+            }
+            
+            foreach (var resourceData in GameCenter.instance.playerResources.populations)
+            {
+                foreach (var trigger in resourceData.type.playerEndOfTurnTriggers)
+                {
+                    trigger.Trigger();
+                }
+            }
+        }
     }
 }

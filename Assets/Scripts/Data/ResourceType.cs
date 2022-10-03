@@ -15,10 +15,6 @@ namespace Data
         {
             Unset = 0,
             Authority = 1,
-            // People
-            Villager = 100,
-            Soldier = 101,
-            Prospector = 102,
             //Material
             Gold = 200,
             Food = 201,
@@ -38,11 +34,12 @@ namespace Data
         
         public enum ResourceCategory
         {
-            Material,
-            Land,
-            People,
-            Empire,
-            Unique
+            Unset = 0,
+            Material = 1,
+            Land = 2,
+            Empire = 3,
+            Unique = 4,
+            
         }
 
         public LinkType type = LinkType.Unset;

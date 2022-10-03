@@ -95,20 +95,5 @@ namespace Data
            this.amount += objectToTransfer.amount;
            objectToTransfer.amount -= objectToTransfer.amount;
        }
-       
-       
-       /*
-       [MenuItem("Tools/ResourceData")]
-       public static void CreateMyAsset()
-       {
-           ResourceData asset = ScriptableObject.CreateInstance<ResourceData>();
-
-           AssetDatabase.CreateAsset(asset, "Assets/Data/NewResourceData.asset");
-           AssetDatabase.SaveAssets();
-
-           EditorUtility.FocusProjectWindow();
-
-           Selection.activeObject = asset;
-       }*/
    }
 }

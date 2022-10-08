@@ -4,6 +4,7 @@
     public class PopulationData
     { 
         public int amount;
+        public int activeAmount;
         public PopulationType type;
        
         public PopulationData(int amount, PopulationType resourceType)
@@ -22,11 +23,20 @@
         {
             return type.name + " " + amount + "\n";
         }
-       
+        
+
+        public void ResetActivePopulation()
+        {
+            activeAmount = amount;
+        }
+        
         public bool CanSubtractResource(PopulationData subtractionAmount)
         {
+            
             // test if this resource matches type and has proper amount to subtract 
-            if ((this.amount >= subtractionAmount.amount  ) && this.type == subtractionAmount.type)
+            if ((this.amount >= subtractionAmount.amount  ) 
+                && this.type == subtractionAmount.type 
+                && activeAmount >= subtractionAmount.activeAmount)
                 return true;
             return false;
         }
@@ -34,6 +44,7 @@
         public void SubtractResource(PopulationData subtractAmount)
         {
             this.amount -= subtractAmount.amount;
+            this.activeAmount -= subtractAmount.activeAmount;
         }
 
         /*
@@ -60,6 +71,8 @@
         public PopulationData AddResource(PopulationData addResourceData)
         {
             this.amount += addResourceData.amount;
+            this.activeAmount += addResourceData.activeAmount;
+            if (this.activeAmount > amount) activeAmount = amount;
             return addResourceData;
             /*int spaceAvailable = this.maxAmount - this.amount;
             int amountToAdd = Math.Min(spaceAvailable, addResourceData.amount);

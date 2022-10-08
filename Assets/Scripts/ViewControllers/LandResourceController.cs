@@ -57,7 +57,7 @@ public class LandResourceController : MonoBehaviour
 
                 //buildingBox.Q<Label>("resource-thumbnail")
                 buildingBox.Q<Label>("land-owned").text =
-                    resource.type.populationName + ": " + resource.amount.ToString();
+                    resource.type.populationName + ": " + resource.activeAmount.ToString() + "(" + resource.amount + ")";
 
                 //buildingBox.Q<Label>("land-gain").text = "";
                 if (resource.type.UITexture != null)

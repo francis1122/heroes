@@ -188,9 +188,14 @@ public class GameCenter : MonoBehaviour {
         // might want this to increase buffer stuff
         //EventManager.TriggerEvent(EventManager.EVENT_END_TURN);
         
-        if (currentTurn % seasonsInAYear == 3)
+        if (currentTurn % seasonsInAYear == 0)
         {
             PopulationGrowth();
+
+            foreach (var playerResourcesPopulation in playerResources.populations)
+            {
+                playerResourcesPopulation.ResetActivePopulation();
+            }
             //EventManager.TriggerEvent(EventManager.EVENT_END_YEAR);
         }
     }
@@ -209,7 +214,7 @@ public class GameCenter : MonoBehaviour {
         playerResources.AddResourceBundle(playerBufferResources);
         playerBufferResources.ClearResources();
 
-        if (currentTurn % seasonsInAYear == 3)
+        if (currentTurn % seasonsInAYear == 0)
         {
             //PopulationGrowth();
             EventManager.TriggerEvent(EventManager.EVENT_END_YEAR);

@@ -107,7 +107,7 @@ namespace Data
 
                 if (!CanSubtractResourceData(subtractResourceData))
                 {
-                    Debug.Log("can't build");
+                    Debug.Log("can't build: not enough resources");
                     return false;
                 }
                 
@@ -117,6 +117,16 @@ namespace Data
                     return false;
                 }*/
             }
+
+            foreach (var populationData in subtractResourceBundle.populations)
+            {
+                if (!CanSubtractPopulationData(populationData))
+                {
+                    Debug.Log("can't build: not enough population");
+                    return false;
+                }
+            }
+
             Debug.Log("can build");
             return true;
         }
@@ -151,7 +161,36 @@ namespace Data
             return false;
         }
 
-        
+        public bool CanSubtractPopulationData(PopulationData subtractPopulationData)
+        {
+            if (isPlayersBufferResourceBundle) return true;
+            //test if this resource matches type and has proper amount to subtract 
+            /*if (this.amount >= subtractionAmount.amount && this.type == subtractionAmount.type)
+                return true;*/
+            PopulationData populationData = GetOrCreateMatchingPopulationType(subtractPopulationData.type);
+            // test if this resource matches type and has proper amount to subtract 
+
+            if (populationData.type != subtractPopulationData.type)
+            {
+                return false;
+            }
+
+            if ((populationData.amount >= subtractPopulationData.amount && populationData.activeAmount >= subtractPopulationData.activeAmount)  
+                || populationData.type.amountCanBeNegative)
+            {
+                if (isPlayersResourceBundle && populationData.type.checkForPlayerResourceMinLimit) 
+                {
+                    PopulationData playerMinResource = GameCenter.instance.playerMinResourceAmounts.GetOrCreateMatchingPopulationType(populationData.type);
+                    if (populationData.amount - subtractPopulationData.amount < playerMinResource.amount)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+                return true;
+            }
+            return false;
+        }
         
         
         public bool SubtractResourceBundle(ResourceBundle subtractResourceBundle)
@@ -203,21 +242,23 @@ namespace Data
         
         public bool SubtractPopulationData(PopulationData subtractPopulationData)
         {
-            PopulationData resourceData = GetOrCreateMatchingPopulationType(subtractPopulationData.type);
-            if (resourceData.amount >= subtractPopulationData.amount || isPlayersBufferResourceBundle)
+            PopulationData populationData = GetOrCreateMatchingPopulationType(subtractPopulationData.type);
+            if ((populationData.amount >= subtractPopulationData.amount && populationData.activeAmount >= subtractPopulationData.activeAmount) || isPlayersBufferResourceBundle)
             {
-                if (isPlayersResourceBundle && resourceData.type.checkForPlayerResourceMinLimit)
+                if (isPlayersResourceBundle && populationData.type.checkForPlayerResourceMinLimit)
                 {
-                    PopulationData playerMinResource = GameCenter.instance.playerMinResourceAmounts.GetOrCreateMatchingPopulationType(resourceData.type);
-                    if (resourceData.amount - subtractPopulationData.amount >= playerMinResource.amount)
+                    PopulationData playerMinResource = GameCenter.instance.playerMinResourceAmounts.GetOrCreateMatchingPopulationType(populationData.type);
+                    if (populationData.amount - subtractPopulationData.amount >= playerMinResource.amount)
                     {
-                        resourceData.amount -= subtractPopulationData.amount;
+                        populationData.amount -= subtractPopulationData.amount;
+                        populationData.activeAmount -= subtractPopulationData.activeAmount;
                         return true;
                     }
                     Debug.Log("Should call CanSubtractResources to check purchase before player " + subtractPopulationData.type.populationName);
                     return false;
                 }
-                resourceData.amount -= subtractPopulationData.amount;
+                populationData.amount -= subtractPopulationData.amount;
+                populationData.activeAmount -= subtractPopulationData.activeAmount;
                 return true;
             }
             Debug.Log("Should call CanSubtractResources to check purchase before " + subtractPopulationData.type.populationName);
@@ -282,7 +323,7 @@ namespace Data
         public void AddPopulationData(PopulationData addPopulationData)
         {
             PopulationData resourceData = GetOrCreateMatchingPopulationType(addPopulationData.type);
-            resourceData.amount += addPopulationData.amount;
+            resourceData.AddResource(addPopulationData);
 
             // check and reduce to max limit if resource 
             if (isPlayersResourceBundle)

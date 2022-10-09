@@ -160,13 +160,22 @@ MonoBehaviour:
     isPlayersBufferResourceBundle: 1
   playerResources:
     resources:
-    - amount: 10
+    - amount: 2000
       type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
-    - amount: 10
+    - amount: 5000
       type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
-    - amount: 20
+    - amount: 2000
       type: {fileID: 11400000, guid: b2893bf1cfb204843a747a9615b6f347, type: 2}
-    populations: []
+    - amount: 2000
+      type: {fileID: 11400000, guid: d825b5e4447b45443b2d0c2e337904de, type: 2}
+    - amount: 2000
+      type: {fileID: 11400000, guid: bc91da6924ab7454fb88eb0b49da03c7, type: 2}
+    - amount: 2000
+      type: {fileID: 11400000, guid: a8d2874b560b46344b232f8891c70426, type: 2}
+    populations:
+    - amount: 10
+      activeAmount: 0
+      type: {fileID: 11400000, guid: 5f7e66f7ad304e8459384ed9d8af010d, type: 2}
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
   playerMaxResourceAmounts:

@@ -16,13 +16,16 @@ MonoBehaviour:
   buildingDetails: find resources underground
   buildingThumbnail: 
   costRequirements:
-    resources: []
+    resources:
+    - amount: 5
+      type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
     populations:
-    - amount: 1
+    - amount: 0
+      activeAmount: 1
       type: {fileID: 11400000, guid: 54c3a12b1b0c67c40bd4155ebaae3c7a, type: 2}
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
-  category: 0
+  category: 1
   buildingRequirement: []
   destroyRequiredBuildings: 0
   removeFromPurchasableOnPurchase: 0
@@ -30,6 +33,7 @@ MonoBehaviour:
   addToOwnedBuildings: 0
   buildingAdditionsOnPurchase: []
   priority: 1
-  onPurchaseTrigger: []
+  onPurchaseTrigger:
+  - {fileID: 11400000, guid: aad3afbb8d9cecb4f974cb91dbb853f6, type: 2}
   onTurnEndTrigger: []
   onYearEndTrigger: []

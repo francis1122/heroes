@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9710acaf6ae64d249fee5fd4ec0dff99, type: 3}
-  m_Name: CityBuilding
+  m_Name: 1_CityBuilding
   m_EditorClassIdentifier: 
   buildingName: City
   buildingDetails: gives 10 gold a turn

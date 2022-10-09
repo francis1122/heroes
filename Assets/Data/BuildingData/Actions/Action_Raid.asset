@@ -19,7 +19,12 @@ MonoBehaviour:
     resources:
     - amount: 5
       type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
-    populations: []
+    - amount: 20
+      type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
+    populations:
+    - amount: 0
+      activeAmount: 2
+      type: {fileID: 11400000, guid: 5f7e66f7ad304e8459384ed9d8af010d, type: 2}
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
   category: 1

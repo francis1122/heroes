@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9710acaf6ae64d249fee5fd4ec0dff99, type: 3}
-  m_Name: MetroBuilding
+  m_Name: 2_MetroBuilding
   m_EditorClassIdentifier: 
   buildingName: Metro Building
   buildingDetails: give 20 gold a turn
@@ -25,6 +25,7 @@ MonoBehaviour:
       type: {fileID: 11400000, guid: bc91da6924ab7454fb88eb0b49da03c7, type: 2}
     - amount: 10
       type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
+    populations: []
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
   category: 0
@@ -38,6 +39,7 @@ MonoBehaviour:
   buildingAdditionsOnPurchase:
   - {fileID: 11400000, guid: 4d0ee45c0291e73449d5517e2f96068e, type: 2}
   - {fileID: 11400000, guid: f7de2bba4cabeb44cb588befba6b7931, type: 2}
+  - {fileID: 11400000, guid: ec9c567d58846b54d9a446d2621f3f0a, type: 2}
   priority: 1
   onPurchaseTrigger: []
   onTurnEndTrigger:

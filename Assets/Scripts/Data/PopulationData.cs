@@ -5,6 +5,8 @@
     { 
         public int amount;
         public int activeAmount;
+        public int annualRecruitLimit;
+        public int annualRecruitsAvailable;
         public PopulationType type;
        
         public PopulationData(int amount, PopulationType resourceType)
@@ -72,6 +74,8 @@
         {
             this.amount += addResourceData.amount;
             this.activeAmount += addResourceData.activeAmount;
+            this.annualRecruitsAvailable += addResourceData.annualRecruitsAvailable;
+            this.annualRecruitLimit += addResourceData.annualRecruitLimit;
             if (this.activeAmount > amount) activeAmount = amount;
             return addResourceData;
             /*int spaceAvailable = this.maxAmount - this.amount;

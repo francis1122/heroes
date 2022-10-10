@@ -84,13 +84,50 @@ namespace Data
             return resources.FindAll(e => e.type.resourceCategory == category);
         }
 
-        public String GetStringDisplay()
+        public String GetPopulationStringDisplay()
+        {
+            String resourceString = "";
+            foreach (PopulationData populationData in populations)
+            {
+                resourceString += populationData.type.populationName + " " + populationData.activeAmount + " (" + populationData.amount + ")";
+            }
+            
+            return resourceString;
+        }
+        
+        public String GetPopulationRecruitAvailableStringDisplay()
+        {
+            ResourceBundle playerResourceBundle = GameCenter.instance.playerResources;
+            
+            String resourceString = "";
+            foreach (PopulationData populationData in populations)
+            {
+                var playerPop = playerResourceBundle.GetOrCreateMatchingPopulationType(populationData.type);
+                if(populationData.annualRecruitsAvailable > 0)
+                resourceString += populationData.type.populationName + " " + playerPop.annualRecruitsAvailable + " (" + playerPop.annualRecruitLimit + ")";
+            }
+            
+            return resourceString;
+        }
+
+        public String GetResourceStringDisplay()
         {
             String resourceString = "";
             foreach (ResourceData resource in resources.FindAll(e=> e.type.type != ResourceType.LinkType.Authority))
             {
-                resourceString += resource.type.resourceName + " " + resource.amount + "   ";
+                resourceString += resource.type.resourceName + " " + resource.amount + "  ";
             }
+
+            return resourceString;
+        }
+        
+        public String GetStringDisplay()
+        {
+
+            String resourceString = GetResourceStringDisplay();
+
+            resourceString += "\n";
+            resourceString += GetPopulationStringDisplay();
 
             return resourceString;
         }
@@ -175,20 +212,29 @@ namespace Data
                 return false;
             }
 
-            if ((populationData.amount >= subtractPopulationData.amount && populationData.activeAmount >= subtractPopulationData.activeAmount)  
-                || populationData.type.amountCanBeNegative)
+            if (populationData.annualRecruitsAvailable >= subtractPopulationData.annualRecruitsAvailable)
             {
-                if (isPlayersResourceBundle && populationData.type.checkForPlayerResourceMinLimit) 
+                if ((populationData.amount >= subtractPopulationData.amount &&
+                     populationData.activeAmount >= subtractPopulationData.activeAmount)
+                    || populationData.type.amountCanBeNegative)
                 {
-                    PopulationData playerMinResource = GameCenter.instance.playerMinResourceAmounts.GetOrCreateMatchingPopulationType(populationData.type);
-                    if (populationData.amount - subtractPopulationData.amount < playerMinResource.amount)
+                    if (isPlayersResourceBundle && populationData.type.checkForPlayerResourceMinLimit)
                     {
-                        return true;
+                        PopulationData playerMinResource =
+                            GameCenter.instance.playerMinResourceAmounts.GetOrCreateMatchingPopulationType(
+                                populationData.type);
+                        if (populationData.amount - subtractPopulationData.amount < playerMinResource.amount)
+                        {
+                            return true;
+                        }
+
+                        return false;
                     }
-                    return false;
+
+                    return true;
                 }
-                return true;
             }
+
             return false;
         }
         
@@ -243,7 +289,12 @@ namespace Data
         public bool SubtractPopulationData(PopulationData subtractPopulationData)
         {
             PopulationData populationData = GetOrCreateMatchingPopulationType(subtractPopulationData.type);
-            if ((populationData.amount >= subtractPopulationData.amount && populationData.activeAmount >= subtractPopulationData.activeAmount) || isPlayersBufferResourceBundle)
+            
+            if ((populationData.amount >= subtractPopulationData.amount 
+                 && populationData.activeAmount >= subtractPopulationData.activeAmount 
+                 && populationData.annualRecruitsAvailable >= subtractPopulationData.annualRecruitsAvailable
+                 && populationData.annualRecruitLimit >= subtractPopulationData.annualRecruitLimit) 
+                || isPlayersBufferResourceBundle)
             {
                 if (isPlayersResourceBundle && populationData.type.checkForPlayerResourceMinLimit)
                 {
@@ -252,6 +303,7 @@ namespace Data
                     {
                         populationData.amount -= subtractPopulationData.amount;
                         populationData.activeAmount -= subtractPopulationData.activeAmount;
+                        populationData.annualRecruitsAvailable -= subtractPopulationData.annualRecruitsAvailable;
                         return true;
                     }
                     Debug.Log("Should call CanSubtractResources to check purchase before player " + subtractPopulationData.type.populationName);
@@ -259,6 +311,8 @@ namespace Data
                 }
                 populationData.amount -= subtractPopulationData.amount;
                 populationData.activeAmount -= subtractPopulationData.activeAmount;
+                populationData.annualRecruitsAvailable -= subtractPopulationData.annualRecruitsAvailable;
+                populationData.annualRecruitLimit -= subtractPopulationData.annualRecruitLimit;
                 return true;
             }
             Debug.Log("Should call CanSubtractResources to check purchase before " + subtractPopulationData.type.populationName);
@@ -322,19 +376,19 @@ namespace Data
         }
         public void AddPopulationData(PopulationData addPopulationData)
         {
-            PopulationData resourceData = GetOrCreateMatchingPopulationType(addPopulationData.type);
-            resourceData.AddResource(addPopulationData);
+            PopulationData populationData = GetOrCreateMatchingPopulationType(addPopulationData.type);
+            populationData.AddResource(addPopulationData);
 
             // check and reduce to max limit if resource 
             if (isPlayersResourceBundle)
             {
                 
-                if (resourceData.type.checkForPlayerResourceMaxLimit)
+                if (populationData.type.checkForPlayerResourceMaxLimit)
                 {
-                    PopulationData playerMaxResource = GameCenter.instance.playerMaxResourceAmounts.GetOrCreateMatchingPopulationType(resourceData.type);
-                    if (resourceData.amount > playerMaxResource.amount)
+                    PopulationData playerMaxResource = GameCenter.instance.playerMaxResourceAmounts.GetOrCreateMatchingPopulationType(populationData.type);
+                    if (populationData.amount > playerMaxResource.amount)
                     {
-                        resourceData.amount = playerMaxResource.amount;
+                        populationData.amount = playerMaxResource.amount;
                     }
                 }
             }

@@ -72,8 +72,13 @@ public class PopulationPanelController : MonoBehaviour
             
             buildingBox.Q<Label>("population_name_label").text = buildingObject.buildingData.buildingName;
             buildingBox.Q<Label>("population_details_label").text = buildingObject.buildingData.buildingDetails;
-            buildingBox.Q<Label>("population_cost_label").text = buildingObject.buildingData.costRequirements
+            String resourceCost = buildingObject.buildingData.costRequirements
                 .GetStringDisplay();
+            resourceCost += "\n";
+            resourceCost += "available: " +
+                            buildingObject.buildingData.costRequirements.GetPopulationRecruitAvailableStringDisplay();
+            buildingBox.Q<Label>("population_cost_label").text = resourceCost;
+            
             
             // should show purchase button or not
             if(!buildingObject.buildingData.repeatablePurchase && buildingObject.timesPurchased > 0)

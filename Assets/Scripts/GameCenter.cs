@@ -120,6 +120,9 @@ public class GameCenter : MonoBehaviour {
             .Sum(e => e.amount);
         ResourceData playerFood = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Food);
 
+        
+
+        
        // var totalPopulation = soldier.amount + playerPopulation.amount;
         if (playerFood.amount < totalPopulation)
         {
@@ -195,7 +198,9 @@ public class GameCenter : MonoBehaviour {
             foreach (var playerResourcesPopulation in playerResources.populations)
             {
                 playerResourcesPopulation.ResetActivePopulation();
+                playerResourcesPopulation.annualRecruitsAvailable = playerResourcesPopulation.annualRecruitLimit;
             }
+            
             //EventManager.TriggerEvent(EventManager.EVENT_END_YEAR);
         }
     }

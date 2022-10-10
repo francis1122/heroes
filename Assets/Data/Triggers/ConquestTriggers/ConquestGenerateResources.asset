@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f49e67e04cd423e8a2dec95e8992657, type: 3}
+  m_Name: ConquestGenerateResources
+  m_EditorClassIdentifier: 
+  isEndOfTurnTrigger: 0
+  resourceBundle:
+    resources:
+    - amount: 20
+      type: {fileID: 11400000, guid: d0486e35f66495b47b8bcb629a698965, type: 2}
+    - amount: 4
+      type: {fileID: 11400000, guid: 9f5801a6ba0a9b3498c008b65fb1c18d, type: 2}
+    - amount: 4
+      type: {fileID: 11400000, guid: 7d2daed89146e48449cca00eedf78ce2, type: 2}
+    populations: []
+    isPlayersResourceBundle: 0
+    isPlayersBufferResourceBundle: 0
+  scaleWithPlayerAmount: 0
+  endOfTurnScaleResources:
+    scaleWithLinkType: 0
+    scaleWithPopulationLinkType: 0
+    scaleWithBuildingOwned: {fileID: 0}
+    scaleByOwnRecentUsage: 0

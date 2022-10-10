@@ -76,7 +76,7 @@ public class BuildingPanelController : MonoBehaviour
             buildingBox.Q<Label>("building_auth_label").text = buildingObject.buildingData.costRequirements
                 .GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Authority).amount.ToString();
             
-            buildingBox.Q<Label>("building_cost_label").text = buildingObject.buildingData.costRequirements.GetStringDisplay();
+            buildingBox.Q<Label>("building_cost_label").text = buildingObject.buildingData.costRequirements.GetResourceStringDisplay();
             
             // should show purchase button or not
             if(!buildingObject.buildingData.repeatablePurchase && buildingObject.timesPurchased > 0)

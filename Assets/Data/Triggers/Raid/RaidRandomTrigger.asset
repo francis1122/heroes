@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a691e3dc3508458ebdf3fd0ad5ba88f4, type: 3}
   m_Name: RaidRandomTrigger
   m_EditorClassIdentifier: 
+  isEndOfTurnTrigger: 0
   Triggers:
-  - weight: 2
+  - weight: 0
     triggers: {fileID: 11400000, guid: ec86b445556bdee40a82bfb89f9984c1, type: 2}
-  - weight: 1
+  - weight: 4
     triggers: {fileID: 11400000, guid: afb24da983460e649bc0d39daf431ecb, type: 2}

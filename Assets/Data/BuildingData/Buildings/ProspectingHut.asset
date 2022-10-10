@@ -39,6 +39,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f46b7aa3c2ffaf44a8420fc0abb64291, type: 2}
   - {fileID: 11400000, guid: b7676dd979e187a45a8d239a54ca5312, type: 2}
   priority: 1
-  onPurchaseTrigger: []
+  onPurchaseTrigger:
+  - {fileID: 11400000, guid: 1d4bd1851f7113c4db6705d60c5e3378, type: 2}
   onTurnEndTrigger: []
   onYearEndTrigger: []

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using Utils;
@@ -143,8 +144,12 @@ namespace Data
 
             String resourceString = GetResourceStringDisplay();
 
-            resourceString += "\n";
-            resourceString += GetPopulationStringDisplay();
+            String popCost = GetPopulationStringDisplay();
+            if (popCost.NullIfEmpty() != null)
+            {
+                resourceString += "\n";
+                resourceString += popCost;
+            }
 
             return resourceString;
         }

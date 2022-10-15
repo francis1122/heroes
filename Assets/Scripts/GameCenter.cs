@@ -216,7 +216,7 @@ public class GameCenter : MonoBehaviour {
         {
             foreach (var trigger in buildingObject.buildingData.onTurnEndTrigger)
             {
-                trigger.Trigger(new StatusIdentifier( new List<String> { buildingObject.buildingData.buildingName }));
+                trigger.Trigger(new StatusIdentifier( new List<String> { buildingObject.buildingData.uniqueName }));
             }
 
             if (currentTurn % seasonsInAYear == 0)
@@ -224,7 +224,7 @@ public class GameCenter : MonoBehaviour {
                 foreach (var trigger in buildingObject.buildingData.onYearEndTrigger)
                 {
                     Debug.Log("END OF YEAR");
-                    trigger.Trigger(new StatusIdentifier( new List<String> { buildingObject.buildingData.buildingName }));
+                    trigger.Trigger(new StatusIdentifier( new List<String> { buildingObject.buildingData.uniqueName }));
                 }
             }
         }

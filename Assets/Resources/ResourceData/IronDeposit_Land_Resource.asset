@@ -16,7 +16,7 @@ MonoBehaviour:
   resourceName: Iron Deposit
   resourceShortHand: FE land
   tempThumbnailResource: 
-  UIPriority: 0
+  UIPriority: 103
   UITexture: {fileID: 0}
   dropObject: {fileID: 0}
   dropSprite: {fileID: 0}

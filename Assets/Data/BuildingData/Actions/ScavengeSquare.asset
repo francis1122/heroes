@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ScavengeSquare
   m_EditorClassIdentifier: 
   buildingName: Scavenge
+  uniqueName: action_scavenge
   buildingDetails: Scavenge for resources
   buildingThumbnail: 
   costRequirements:
@@ -21,6 +22,7 @@ MonoBehaviour:
       type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
     - amount: 5
       type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
+    populations: []
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
   category: 1

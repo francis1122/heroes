@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Action_Conquest
   m_EditorClassIdentifier: 
   buildingName: Conquest
+  uniqueName: action_conquest
   buildingDetails: attack and take land
   buildingThumbnail: 
   costRequirements:
@@ -25,7 +26,7 @@ MonoBehaviour:
     - amount: 4
       activeAmount: 4
       annualRecruitLimit: 0
-      currentAnnualRecruits: 0
+      annualRecruitsAvailable: 0
       type: {fileID: 11400000, guid: 5f7e66f7ad304e8459384ed9d8af010d, type: 2}
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0

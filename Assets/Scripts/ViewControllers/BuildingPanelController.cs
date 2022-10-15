@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Data;
 using GameObjects;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 public class BuildingPanelController : MonoBehaviour
@@ -75,8 +76,10 @@ public class BuildingPanelController : MonoBehaviour
             buildingBox.Q<Label>("building_details_label").text = buildingObject.buildingData.buildingDetails;
             buildingBox.Q<Label>("building_auth_label").text = buildingObject.buildingData.costRequirements
                 .GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Authority).amount.ToString();
-            
-            buildingBox.Q<Label>("building_cost_label").text = buildingObject.buildingData.costRequirements.GetResourceStringDisplay();
+            String resourceCost = buildingObject.buildingData.costRequirements
+                .GetStringDisplay();
+
+            buildingBox.Q<Label>("building_cost_label").text = resourceCost;
             
             // should show purchase button or not
             if(!buildingObject.buildingData.repeatablePurchase && buildingObject.timesPurchased > 0)

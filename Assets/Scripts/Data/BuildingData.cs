@@ -16,6 +16,8 @@ namespace Data
         }
         
         public string buildingName = "";
+        [Header("do not edit")]
+        public string uniqueName = "";
         public string buildingDetails = "";
         public string buildingThumbnail;
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using Utils;
 using Random = UnityEngine.Random;
 
 namespace Triggers
@@ -25,7 +26,7 @@ namespace Triggers
         
         public List<WeighTriggers> Triggers;
         
-        public override void Trigger()
+        public override void Trigger(StatusIdentifier statusIdentifier = null)
         {
             int total = 0;
             foreach (var weightTrigger in Triggers)

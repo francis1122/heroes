@@ -1,4 +1,5 @@
-﻿using Data;
+﻿using System.Runtime.InteropServices;
+using Data;
 using UnityEditor;
 using UnityEngine;
 using Utils;
@@ -14,20 +15,25 @@ namespace Triggers
         public bool scaleWithPlayerAmount = false;
         public ScaleResources endOfTurnScaleResources = new ScaleResources();
         
-        public override void Trigger()
+        public override void Trigger(StatusIdentifier statusIdentifier = null)
         {
             
-            ResourceBundle activeBundle = isEndOfTurnTrigger
-                ? GameCenter.instance.playerBufferResources
-                : GameCenter.instance.playerResources;
+            
+            // get building owner
+
+            var bundleToUse = resourceBundle;
             if (scaleWithPlayerAmount)
             {
-                ResourceBundle scaledBundle = new ResourceBundle(resourceBundle, (int)endOfTurnScaleResources.GetScaler());
-                activeBundle.AddResourceBundle(scaledBundle);
+                bundleToUse = new ResourceBundle(resourceBundle, (int)endOfTurnScaleResources.GetScaler());
+            }
+
+            if (isEndOfTurnTrigger)
+            {
+                GameCenter.instance.ChangePlayerResourcesEndOfTurn(bundleToUse, statusIdentifier);
             }
             else
             {
-                activeBundle.AddResourceBundle(resourceBundle);
+                GameCenter.instance.ChangePlayerResources(bundleToUse, statusIdentifier);
             }
 
             EventManager.TriggerEvent(EventManager.RESOURCES_CHANGED);

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +7,7 @@ using GameObjects;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using Utils;
 
 public class GameCenter : MonoBehaviour {
 
@@ -35,6 +37,13 @@ public class GameCenter : MonoBehaviour {
 
     public List<BuildingObject> purchasableBuildings = new();
     public List<BuildingObject> buildingsOwned = new();
+    
+    
+    //
+    // Buffs/Debuffs
+    //
+    [SerializeField]
+    public List<ResourceStatusEffects> endOfTurnStatusEffectsList = new();
     
     [SerializeField]
     public int currentTurn = 1;
@@ -71,7 +80,7 @@ public class GameCenter : MonoBehaviour {
     {
         resourceOrganizer = new ResourceOrganizer(Resources.LoadAll<ResourceType>("ResourceData"),
             Resources.LoadAll<PopulationType>("ResourceData/Population"));
-        
+        EventManager.StartListening(EventManager.BUILDING_CHANGED, RefreshEndOfTurnBuffer );
         //playerResources = Instantiate(playerResources);
 
         
@@ -107,6 +116,17 @@ public class GameCenter : MonoBehaviour {
         
     }
 
+
+    private void RefreshEndOfTurnBuffer()
+    {
+        //reset buffer
+        playerBufferResources.ClearResources();
+        
+        EndOfTurnResourceBuffering();
+        
+        EventManager.TriggerEvent(EventManager.RESOURCES_CHANGED);
+    }
+    
     private void ManagePopulation()
     {
         
@@ -159,6 +179,27 @@ public class GameCenter : MonoBehaviour {
         }
     }
 
+    public void ChangePlayerResourcesEndOfTurn(ResourceBundle changeBundle, StatusIdentifier statusIdentifier)
+    {
+        var useBundle = changeBundle;
+        // check if there are buffs to do
+        foreach (var resourceStatusEffects in endOfTurnStatusEffectsList)
+        {
+            if (statusIdentifier.nameList.Intersect(resourceStatusEffects.statusIdentifier.nameList).Any())
+            {
+                useBundle = new ResourceBundle(useBundle, resourceStatusEffects);
+            }    
+        }
+
+        playerBufferResources.AddResourceBundle(useBundle);
+    }
+
+    public void ChangePlayerResources(ResourceBundle changeBundle, StatusIdentifier statusIdentifier)
+    {
+        playerResources.AddResourceBundle(changeBundle);
+    }
+    
+
     public void EndOfTurnResourceBuffering()
     {
         //
@@ -175,7 +216,7 @@ public class GameCenter : MonoBehaviour {
         {
             foreach (var trigger in buildingObject.buildingData.onTurnEndTrigger)
             {
-                trigger.Trigger();
+                trigger.Trigger(new StatusIdentifier( new List<String> { buildingObject.buildingData.buildingName }));
             }
 
             if (currentTurn % seasonsInAYear == 0)
@@ -183,7 +224,7 @@ public class GameCenter : MonoBehaviour {
                 foreach (var trigger in buildingObject.buildingData.onYearEndTrigger)
                 {
                     Debug.Log("END OF YEAR");
-                    trigger.Trigger();
+                    trigger.Trigger(new StatusIdentifier( new List<String> { buildingObject.buildingData.buildingName }));
                 }
             }
         }

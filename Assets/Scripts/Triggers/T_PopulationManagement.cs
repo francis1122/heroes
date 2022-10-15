@@ -2,6 +2,7 @@
 using Data;
 using UnityEditor;
 using UnityEngine;
+using Utils;
 
 namespace Triggers
 {
@@ -15,7 +16,7 @@ namespace Triggers
 
 
                 
-        public override void Trigger()
+        public override void Trigger(StatusIdentifier statusIdentifier = null)
         {
             ResourceData playerPopulation = GameCenter.instance.playerResources.GetOrCreateMatchingResourceType(populationType);
             ResourceData playerFood = GameCenter.instance.playerResources.GetOrCreateMatchingResourceType(foodType);

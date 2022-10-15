@@ -177,6 +177,8 @@ MonoBehaviour:
     populations:
     - amount: 10
       activeAmount: 0
+      annualRecruitLimit: 0
+      annualRecruitsAvailable: 0
       type: {fileID: 11400000, guid: 5f7e66f7ad304e8459384ed9d8af010d, type: 2}
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
@@ -194,6 +196,14 @@ MonoBehaviour:
   - buildingData: {fileID: 11400000, guid: db3a778940cf1b8449f1bd64a9df88ae, type: 2}
     timesPurchased: 0
   buildingsOwned: []
+  endOfTurnStatusEffectsList:
+  - resourceStatusList:
+    - resourceType: 201
+      valueDelta: 10
+    populationStatusList: []
+    statusIdentifier:
+      nameList:
+      - Farm
   currentTurn: 1
   seasonsInAYear: 4
 --- !u!4 &970420824

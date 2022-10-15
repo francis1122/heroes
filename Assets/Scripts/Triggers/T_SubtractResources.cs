@@ -14,7 +14,7 @@ namespace Triggers
         public bool scaleWithPlayerAmount = false;
         public ScaleResources endOfTurnScaleResources = new ScaleResources();
         
-        public override void Trigger()
+        public override void Trigger(StatusIdentifier statusIdentifier = null)
         {
             ResourceBundle activeBundle = isEndOfTurnTrigger
                 ? GameCenter.instance.playerBufferResources

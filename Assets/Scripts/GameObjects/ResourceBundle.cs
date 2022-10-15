@@ -30,6 +30,23 @@ namespace Data
                 AddPopulationData(newData);
             }
         }
+        
+        public ResourceBundle(ResourceBundle oldBundle, ResourceStatusEffects resourceStatusEffects)
+        {
+            foreach (var resourceData in oldBundle.resources)
+            {
+                int change = resourceStatusEffects.GetResourceStatus(resourceData.type.type);
+                ResourceData newData = new ResourceData(resourceData.amount + change, resourceData.type);
+                AddResourceData(newData);
+            }
+            
+            foreach (var populationData in oldBundle.populations)
+            {
+                int change = resourceStatusEffects.GetPopulationStatus(populationData.type.type);
+                PopulationData newData = new PopulationData(populationData.amount + change, populationData.type);
+                AddPopulationData(newData);
+            }
+        }
 
         public void ClearResources()
         {
@@ -405,7 +422,7 @@ namespace Data
             {
                 foreach (var trigger in resourceData.type.playerEndOfTurnTriggers)
                 {
-                    trigger.Trigger();
+                    trigger.Trigger(new StatusIdentifier());
                 }
             }
             
@@ -413,7 +430,7 @@ namespace Data
             {
                 foreach (var trigger in resourceData.type.playerEndOfTurnTriggers)
                 {
-                    trigger.Trigger();
+                    trigger.Trigger((new StatusIdentifier()));
                 }
             }
         }

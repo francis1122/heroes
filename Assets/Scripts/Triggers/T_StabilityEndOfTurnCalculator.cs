@@ -3,6 +3,7 @@ using System;
 using Data;
 using UnityEditor;
 using UnityEngine;
+using Utils;
 
 namespace Triggers
 {
@@ -10,7 +11,7 @@ namespace Triggers
     public class T_StabilityEndOfTurnCalculator : GameTriggers
     {
         
-        public override void Trigger()
+        public override void Trigger(StatusIdentifier statusIdentifier = null)
         {
             
             ResourceData playerAuthority = GameCenter.instance.playerResources.GetOrCreateMatchingResourceType(GameCenter.instance.resourceOrganizer.GetResourceType(ResourceType.LinkType.Authority));

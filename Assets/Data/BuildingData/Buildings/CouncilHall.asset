@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: CouncilHall
   m_EditorClassIdentifier: 
   buildingName: Council Hall
+  uniqueName: building_councilhall
   buildingDetails: increases Authority +5
   buildingThumbnail: 
   costRequirements:
@@ -23,6 +24,7 @@ MonoBehaviour:
       type: {fileID: 11400000, guid: a8d2874b560b46344b232f8891c70426, type: 2}
     - amount: 10
       type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
+    populations: []
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
   category: 0
@@ -32,7 +34,7 @@ MonoBehaviour:
   repeatablePurchase: 0
   addToOwnedBuildings: 1
   buildingAdditionsOnPurchase: []
-  priority: 1
+  priority: 2
   onPurchaseTrigger: []
   onTurnEndTrigger:
   - {fileID: 11400000, guid: 9de0ac509db5a8f4a9ecf8b4cad1198b, type: 2}

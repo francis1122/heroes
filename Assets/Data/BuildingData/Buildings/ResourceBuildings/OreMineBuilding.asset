@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: OreMineBuilding
   m_EditorClassIdentifier: 
   buildingName: Ore Mine
+  uniqueName: 
   buildingDetails: mine 1 ore a turn
   buildingThumbnail: 
   costRequirements:
@@ -23,9 +24,9 @@ MonoBehaviour:
       type: {fileID: 11400000, guid: 9f5801a6ba0a9b3498c008b65fb1c18d, type: 2}
     - amount: 10
       type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
+    populations: []
     isPlayersResourceBundle: 0
-  amount: 0
-  type: {fileID: 0}
+    isPlayersBufferResourceBundle: 0
   category: 0
   buildingRequirement:
   - amount: 0
@@ -35,7 +36,7 @@ MonoBehaviour:
   repeatablePurchase: 1
   addToOwnedBuildings: 1
   buildingAdditionsOnPurchase: []
-  priority: 4
+  priority: 40
   onPurchaseTrigger: []
   onTurnEndTrigger:
   - {fileID: 11400000, guid: fa0829ea2ee976344bfd49fdc3a052e8, type: 2}

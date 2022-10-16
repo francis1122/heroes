@@ -10,28 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9710acaf6ae64d249fee5fd4ec0dff99, type: 3}
-  m_Name: FarmLand
+  m_Name: Building_AdvancedFarm
   m_EditorClassIdentifier: 
   buildingName: Farm
   uniqueName: 
-  buildingDetails: generates 1 food a turn
+  buildingDetails: generates 2 food a turn
   buildingThumbnail: 
   costRequirements:
     resources:
-    - amount: 1
-      type: {fileID: 11400000, guid: d0486e35f66495b47b8bcb629a698965, type: 2}
-    - amount: 20
+    - amount: 50
       type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
     - amount: 10
       type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
+    - amount: 2
+      type: {fileID: 11400000, guid: d825b5e4447b45443b2d0c2e337904de, type: 2}
     populations: []
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
   category: 0
   buildingRequirement:
-  - amount: 0
-    buildingData: {fileID: 0}
-  destroyRequiredBuildings: 0
+  - amount: 1
+    buildingData: {fileID: 11400000, guid: 98bc4a8deb6a04f4e829adf019ef0951, type: 2}
+  destroyRequiredBuildings: 1
   removeFromPurchasableOnPurchase: 0
   repeatablePurchase: 1
   addToOwnedBuildings: 1
@@ -39,5 +39,6 @@ MonoBehaviour:
   priority: 20
   onPurchaseTrigger: []
   onTurnEndTrigger:
+  - {fileID: 11400000, guid: 3c922fbec059d36449fc2bbf9c1633c9, type: 2}
   - {fileID: 11400000, guid: 3c922fbec059d36449fc2bbf9c1633c9, type: 2}
   onYearEndTrigger: []

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: MilitiaTrainingGrounds
   m_EditorClassIdentifier: 
   buildingName: Militia Training Grounds
+  uniqueName: building_traininggrounds
   buildingDetails: generate 3 soldiers a year
   buildingThumbnail: 
   costRequirements:

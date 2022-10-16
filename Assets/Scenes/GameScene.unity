@@ -192,10 +192,10 @@ MonoBehaviour:
     populations: []
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
-  purchasableBuildings:
+  playerBuildings:
   - buildingData: {fileID: 11400000, guid: db3a778940cf1b8449f1bd64a9df88ae, type: 2}
+    buildingsOwned: 0
     timesPurchased: 0
-  buildingsOwned: []
   endOfTurnStatusEffectsList:
   - resourceStatusList:
     - resourceType: 201

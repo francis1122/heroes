@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Population_Soldier
   m_EditorClassIdentifier: 
   buildingName: Recruit Soldier
+  uniqueName: population_soldier
   buildingDetails: 
   buildingThumbnail: 
   costRequirements:

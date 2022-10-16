@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Population_Prospector
   m_EditorClassIdentifier: 
   buildingName: Train Prospector
+  uniqueName: population_prospector
   buildingDetails: 
   buildingThumbnail: 
   costRequirements:

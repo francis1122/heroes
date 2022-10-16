@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 1_CityBuilding
   m_EditorClassIdentifier: 
   buildingName: City
+  uniqueName: building_city
   buildingDetails: gives 10 gold a turn
   buildingThumbnail: 
   costRequirements:
@@ -25,12 +26,14 @@ MonoBehaviour:
       type: {fileID: 11400000, guid: bc91da6924ab7454fb88eb0b49da03c7, type: 2}
     - amount: 10
       type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
+    populations: []
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
   category: 0
   buildingRequirement:
   - amount: 1
     buildingData: {fileID: 11400000, guid: db3a778940cf1b8449f1bd64a9df88ae, type: 2}
+  sellRequiredBuildings: 0
   destroyRequiredBuildings: 1
   removeFromPurchasableOnPurchase: 1
   repeatablePurchase: 0

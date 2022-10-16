@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingName: Scavenge
   uniqueName: action_scavenge
-  buildingDetails: Scavenge for resources
+  buildingDetails: Scavenge for ore
   buildingThumbnail: 
   costRequirements:
     resources:
@@ -32,8 +32,8 @@ MonoBehaviour:
   repeatablePurchase: 1
   addToOwnedBuildings: 0
   buildingAdditionsOnPurchase: []
-  priority: 100
+  priority: 101
   onPurchaseTrigger:
-  - {fileID: 11400000, guid: 5a34177253266b24bb6e00cc781977a5, type: 2}
+  - {fileID: 11400000, guid: 1541b724c6fcfd149a9b9526b9dc3b8a, type: 2}
   onTurnEndTrigger: []
   onYearEndTrigger: []

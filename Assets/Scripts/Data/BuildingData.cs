@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Triggers;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -35,8 +36,11 @@ namespace Data
 
         public BuildingCategory category = BuildingCategory.Building;
         public BuildingBundle[] buildingRequirement = Array.Empty<BuildingBundle>();
+        [Header("reduce owned amount")]
+        public bool sellRequiredBuildings = false;
+        [Header("removes them from the game")]
         public bool destroyRequiredBuildings = false;
-
+        [Header("allow only one of the building")]
         public bool removeFromPurchasableOnPurchase = true;
         public bool repeatablePurchase = false;
         public bool addToOwnedBuildings = true;
@@ -50,6 +54,36 @@ namespace Data
         public List<GameTriggers> onTurnEndTrigger;
         [SerializeField]
         public List<GameTriggers> onYearEndTrigger;
+
+
+        public String GetBuildingCostAndRequirementString()
+        {
+            String costRequirements = this.costRequirements.GetStringDisplay();
+            String buildingRequirementString = GetBuildingRequirementString();
+            if (buildingRequirementString.NullIfEmpty() != null)
+            {
+                costRequirements += "\n";
+                costRequirements += buildingRequirementString;
+            }
+            return costRequirements;
+        }
+        
+        public String GetBuildingRequirementString()
+        {
+            String buildingRequirementString = "";
+            foreach (var building in buildingRequirement)
+            {
+                if (building.buildingData != null)
+                {
+                    buildingRequirementString += building.buildingData.buildingName + " ";
+                }
+            }
+
+            return buildingRequirementString;
+        }
+        
+        
+        
         
         [MenuItem("Tools/BuildingData")]
         public static void CreateMyAsset()

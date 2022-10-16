@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 2_MetroBuilding
   m_EditorClassIdentifier: 
   buildingName: Metro Building
+  uniqueName: building_metro
   buildingDetails: give 20 gold a turn
   buildingThumbnail: 
   costRequirements:
@@ -32,6 +33,7 @@ MonoBehaviour:
   buildingRequirement:
   - amount: 1
     buildingData: {fileID: 11400000, guid: 5251babc32c90bb4ea0b78cb9e2f9637, type: 2}
+  sellRequiredBuildings: 0
   destroyRequiredBuildings: 1
   removeFromPurchasableOnPurchase: 1
   repeatablePurchase: 0
@@ -41,6 +43,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f7de2bba4cabeb44cb588befba6b7931, type: 2}
   - {fileID: 11400000, guid: ec9c567d58846b54d9a446d2621f3f0a, type: 2}
   - {fileID: 11400000, guid: 8dce4e3fae91fe34e9dcdb330da52b3e, type: 2}
+  - {fileID: 11400000, guid: 2024fcb5f5109d2478687494bc20e5e7, type: 2}
   priority: 1
   onPurchaseTrigger: []
   onTurnEndTrigger:

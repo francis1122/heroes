@@ -10,34 +10,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9710acaf6ae64d249fee5fd4ec0dff99, type: 3}
-  m_Name: FarmLand
+  m_Name: Action_ChopWood
   m_EditorClassIdentifier: 
-  buildingName: Farm
-  uniqueName: 
-  buildingDetails: generates 1 food a turn
+  buildingName: Forage for lumber
+  uniqueName: action_chopwood
+  buildingDetails: Forage for lumber
   buildingThumbnail: 
   costRequirements:
     resources:
-    - amount: 1
-      type: {fileID: 11400000, guid: d0486e35f66495b47b8bcb629a698965, type: 2}
-    - amount: 20
+    - amount: 5
       type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
-    - amount: 10
+    - amount: 5
       type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
     populations: []
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
-  category: 0
-  buildingRequirement:
-  - amount: 0
-    buildingData: {fileID: 0}
+  category: 1
+  buildingRequirement: []
+  sellRequiredBuildings: 0
   destroyRequiredBuildings: 0
   removeFromPurchasableOnPurchase: 0
   repeatablePurchase: 1
-  addToOwnedBuildings: 1
+  addToOwnedBuildings: 0
   buildingAdditionsOnPurchase: []
-  priority: 20
-  onPurchaseTrigger: []
-  onTurnEndTrigger:
-  - {fileID: 11400000, guid: 3c922fbec059d36449fc2bbf9c1633c9, type: 2}
+  priority: 100
+  onPurchaseTrigger:
+  - {fileID: 11400000, guid: 57fc557480e9ae14895dffb1e7abfa45, type: 2}
+  onTurnEndTrigger: []
   onYearEndTrigger: []

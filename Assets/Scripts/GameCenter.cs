@@ -35,8 +35,8 @@ public class GameCenter : MonoBehaviour {
     public ResourceBundle playerMaxResourceAmounts;
     public ResourceBundle playerMinResourceAmounts;
 
-    public List<BuildingObject> purchasableBuildings = new();
-    public List<BuildingObject> buildingsOwned = new();
+    public List<BuildingObject> playerBuildings = new();
+    //public List<BuildingObject> buildingsOwned = new();
     
     
     //
@@ -212,19 +212,24 @@ public class GameCenter : MonoBehaviour {
         //
         // Building end of turn and year triggers
         //
-        foreach (var buildingObject in buildingsOwned)
+        foreach (var buildingObject in playerBuildings)
         {
-            foreach (var trigger in buildingObject.buildingData.onTurnEndTrigger)
+            for (int i = 0; i < buildingObject.buildingsOwned; i++)
             {
-                trigger.Trigger(new StatusIdentifier( new List<String> { buildingObject.buildingData.uniqueName }));
-            }
-
-            if (currentTurn % seasonsInAYear == 0)
-            {
-                foreach (var trigger in buildingObject.buildingData.onYearEndTrigger)
+                foreach (var trigger in buildingObject.buildingData.onTurnEndTrigger)
                 {
-                    Debug.Log("END OF YEAR");
-                    trigger.Trigger(new StatusIdentifier( new List<String> { buildingObject.buildingData.uniqueName }));
+                    //trigger.Trigger();
+                    trigger.Trigger(new StatusIdentifier(new List<String> { buildingObject.buildingData.uniqueName }));
+                }
+
+                if (currentTurn % seasonsInAYear == 0)
+                {
+                    foreach (var trigger in buildingObject.buildingData.onYearEndTrigger)
+                    {
+                        Debug.Log("END OF YEAR");
+                        trigger.Trigger(
+                            new StatusIdentifier(new List<String> { buildingObject.buildingData.uniqueName }));
+                    }
                 }
             }
         }

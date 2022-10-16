@@ -44,15 +44,15 @@ public class PopulationPanelController : MonoBehaviour
 
     public void SortBuildingsPriority()
     {
-        List<BuildingObject> buildings = GameCenter.instance.purchasableBuildings;
-        buildings.Sort((a,b) => a.buildingData.priority.CompareTo(b.buildingData.priority) );
+        List<BuildingObject> buildings = GameCenter.instance.playerBuildings;
+        //buildings.Sort((a,b) => a.buildingData.priority.CompareTo(b.buildingData.priority) );
         //tests
     }
     
     public void CreateBuildingBoxes()
     {
         SortBuildingsPriority();
-        List<BuildingObject> buildings = GameCenter.instance.purchasableBuildings;
+        List<BuildingObject> buildings = GameCenter.instance.playerBuildings;
         List<BuildingObject> onlyCategory = buildings.FindAll(e => e.buildingData.category == category);
         GroupBox currentGroup = null;
         int count = 0;

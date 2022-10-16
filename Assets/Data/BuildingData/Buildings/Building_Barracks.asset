@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Building_Barracks
   m_EditorClassIdentifier: 
   buildingName: Barracks
+  uniqueName: building_barracks
   buildingDetails: More Soldiers, Conquests!
   buildingThumbnail: 
   costRequirements:
@@ -36,7 +37,7 @@ MonoBehaviour:
   addToOwnedBuildings: 1
   buildingAdditionsOnPurchase:
   - {fileID: 11400000, guid: 71047945b177b4f45a272d300c70637e, type: 2}
-  priority: 1
+  priority: 103
   onPurchaseTrigger:
   - {fileID: 11400000, guid: 7f1fc6ea9c64ad64382e37d5ff13235c, type: 2}
   onTurnEndTrigger: []

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: LumberYardBuilding
   m_EditorClassIdentifier: 
   buildingName: Lumber Yard
+  uniqueName: 
   buildingDetails: chop 1 lumber a turn
   buildingThumbnail: 
   costRequirements:
@@ -23,9 +24,9 @@ MonoBehaviour:
       type: {fileID: 11400000, guid: 7d2daed89146e48449cca00eedf78ce2, type: 2}
     - amount: 10
       type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
+    populations: []
     isPlayersResourceBundle: 0
-  amount: 0
-  type: {fileID: 0}
+    isPlayersBufferResourceBundle: 0
   category: 0
   buildingRequirement:
   - amount: 0
@@ -35,7 +36,7 @@ MonoBehaviour:
   repeatablePurchase: 1
   addToOwnedBuildings: 1
   buildingAdditionsOnPurchase: []
-  priority: 4
+  priority: 30
   onPurchaseTrigger: []
   onTurnEndTrigger:
   - {fileID: 11400000, guid: 3bceb3781cc4ff046a62b8e50d4341f0, type: 2}

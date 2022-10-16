@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 0_TownBuilding
   m_EditorClassIdentifier: 
   buildingName: Town
+  uniqueName: building_town
   buildingDetails: starter building
   buildingThumbnail: 
   costRequirements:
@@ -21,11 +22,12 @@ MonoBehaviour:
       type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
     - amount: 10
       type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
+    populations: []
     isPlayersResourceBundle: 0
-  amount: 0
-  type: {fileID: 0}
+    isPlayersBufferResourceBundle: 0
   category: 0
   buildingRequirement: []
+  sellRequiredBuildings: 0
   destroyRequiredBuildings: 0
   removeFromPurchasableOnPurchase: 1
   repeatablePurchase: 0
@@ -34,6 +36,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5251babc32c90bb4ea0b78cb9e2f9637, type: 2}
   - {fileID: 11400000, guid: 8327300b2a29e3543ba0993f3a1c6d00, type: 2}
   - {fileID: 11400000, guid: 46cdf8b160ba31f43841182059b6f148, type: 2}
+  - {fileID: 11400000, guid: 556bf7558bb5b7d47835f6dce6aa8c73, type: 2}
   priority: 1
   onPurchaseTrigger:
   - {fileID: 11400000, guid: 15cc53d6d85c7fb488f55d2113768cd1, type: 2}

@@ -46,15 +46,15 @@ public class BuildingPanelController : MonoBehaviour
 
     public void SortBuildingsPriority()
     {
-        List<BuildingObject> buildings = GameCenter.instance.purchasableBuildings;
-        buildings.Sort((a,b) => a.buildingData.priority.CompareTo(b.buildingData.priority) );
+        List<BuildingObject> buildings = GameCenter.instance.playerBuildings;
+        //buildings.Sort((a,b) => a.buildingData.priority.CompareTo(b.buildingData.priority) );
         //tests
     }
     
     public void CreateBuildingBoxes()
     {
         SortBuildingsPriority();
-        List<BuildingObject> buildings = GameCenter.instance.purchasableBuildings;
+        List<BuildingObject> buildings = GameCenter.instance.playerBuildings;
         List<BuildingObject> onlyCategory = buildings.FindAll(e => e.buildingData.category == category);
         GroupBox currentGroup = null;
         int count = 0;
@@ -76,8 +76,7 @@ public class BuildingPanelController : MonoBehaviour
             buildingBox.Q<Label>("building_details_label").text = buildingObject.buildingData.buildingDetails;
             buildingBox.Q<Label>("building_auth_label").text = buildingObject.buildingData.costRequirements
                 .GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Authority).amount.ToString();
-            String resourceCost = buildingObject.buildingData.costRequirements
-                .GetStringDisplay();
+            String resourceCost = buildingObject.buildingData.GetBuildingCostAndRequirementString();
 
             buildingBox.Q<Label>("building_cost_label").text = resourceCost;
             

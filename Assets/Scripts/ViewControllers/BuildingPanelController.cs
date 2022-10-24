@@ -2,10 +2,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using Data;
 using GameObjects;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 public class BuildingPanelController : MonoBehaviour
@@ -25,17 +23,37 @@ public class BuildingPanelController : MonoBehaviour
 
     public BuildingData.BuildingCategory category = BuildingData.BuildingCategory.Building;
     
-    private GroupBox buildingPanel;
+    // holder of all stuff\
+        
+    [SerializeField]
+    public GroupBox buildingPanel;
     
-    private List<GroupBox> buildingGroups = new List<GroupBox>();
+    
+    // holds a row of boxes
+        
+    [SerializeField]
+    public List<GroupBox> buildingGroups = new List<GroupBox>();
 
-    private List<GroupBox> buildingBoxes = new List<GroupBox>();
+    // actual building cell
+        
+    [SerializeField]
+    public Stack<GroupBox> activeBuildingBoxes = new Stack<GroupBox>();
+        
+    [SerializeField]
+    public Stack<GroupBox> poolBuildingBoxes = new Stack<GroupBox>();
 
     void Start()
     {
         UIDocument menu = GetComponent<UIDocument>();
         root = menu.rootVisualElement;
         buildingPanel = root.Q<GroupBox>(rootPanel);
+
+        for (int i = 0; i < 30; i++)
+        {
+            TemplateContainer buildingBox = buildingTemplate.Instantiate();
+            poolBuildingBoxes.Push(buildingBox.Q<GroupBox>("building_box_group"));
+        }
+
         CreateBuildingBoxes();
         
         EventManager.StartListening(EventManager.EVENT_END_TURN, UpdateUI );
@@ -54,7 +72,7 @@ public class BuildingPanelController : MonoBehaviour
     public void CreateBuildingBoxes()
     {
         SortBuildingsPriority();
-        List<BuildingObject> buildings = GameCenter.instance.playerBuildings;
+        List<BuildingObject> buildings = GameCenter.instance.playerBuildings;   
         List<BuildingObject> onlyCategory = buildings.FindAll(e => e.buildingData.category == category);
         GroupBox currentGroup = null;
         int count = 0;
@@ -70,7 +88,16 @@ public class BuildingPanelController : MonoBehaviour
             }
 
 
-            TemplateContainer buildingBox = buildingTemplate.Instantiate();
+            GroupBox buildingBox = poolBuildingBoxes.Pop();
+            
+            activeBuildingBoxes.Push(buildingBox);
+                //buildingTemplate.Instantiate();
+                
+            // clear values
+            
+            
+            
+            // set values
             
             buildingBox.Q<Label>("building_name_label").text = buildingObject.buildingData.buildingName;
             buildingBox.Q<Label>("building_details_label").text = buildingObject.buildingData.buildingDetails;
@@ -90,13 +117,15 @@ public class BuildingPanelController : MonoBehaviour
                 buildingBox.Q<Button>("building_purchase_button").visible = true;
             }
             
-            buildingBox.Q<Button>("building_purchase_button").RegisterCallback<ClickEvent>((evt =>
-            {
-                buildingObject.PurchaseBuilding();
-            }));
-            currentGroup?.Add(buildingBox.Q<GroupBox>("building_box_group"));
-            buildingBoxes.Add(buildingBox.Q<GroupBox>("building_box_group"));
+            buildingBox.Q<Button>("building_purchase_button").clickable = null;
+            buildingBox.Q<Button>("building_purchase_button").clickable =
+                new Clickable(buildingObject.PurchaseBuilding); 
+                //buildingObject.PurchaseBuilding;
+            
+            //currentGroup?.Add(buildingBox.Q<GroupBox>("building_box_group"));
+            currentGroup?.Add(buildingBox);
             count++;
+            //poolBuildingBoxes.RemoveAt(poolBuildingBoxes.Count - 1);
         }
 
         /*
@@ -115,9 +144,23 @@ public class BuildingPanelController : MonoBehaviour
 
     public void ClearBoxes()
     {
-        buildingBoxes.Clear();
+
+      //  foreach (var activeBuildingBox in activeBuildingBoxes)
+
+
+      while (activeBuildingBoxes.Count > 0)
+      {
+          var test = activeBuildingBoxes.Pop();
+
+          poolBuildingBoxes.Push(test);
+          //test?.Q<GroupBox>("building_box_group").Remove();
+      }
+
+      //  }
+        //activeBuildingBoxes.Clear();
         buildingGroups.Clear();
         
+        // this removes all elemenents from view
         buildingPanel.Clear();
     }
     public void UpdateUI()

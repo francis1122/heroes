@@ -9,15 +9,17 @@
         public int annualRecruitsAvailable;
         public PopulationType type;
        
-        public PopulationData(int amount, PopulationType resourceType)
+        public PopulationData(int amount, int activeAmount, PopulationType resourceType)
         {
             this.amount = amount;
+            this.activeAmount = activeAmount;
             this.type = resourceType;
 
         }
         public PopulationData(PopulationData other)
         {
             this.amount = other.amount;
+            this.activeAmount = other.activeAmount;
             this.type = other.type;
         }
 
@@ -27,6 +29,7 @@
         }
         
 
+        // getting called by gamecenter/ player stuff
         public void ResetActivePopulation()
         {
             activeAmount = amount;
@@ -76,7 +79,7 @@
             this.activeAmount += addResourceData.activeAmount;
             this.annualRecruitsAvailable += addResourceData.annualRecruitsAvailable;
             this.annualRecruitLimit += addResourceData.annualRecruitLimit;
-            if (this.activeAmount > amount) activeAmount = amount;
+            //if (this.activeAmount > amount) activeAmount = amount;
             return addResourceData;
             /*int spaceAvailable = this.maxAmount - this.amount;
             int amountToAdd = Math.Min(spaceAvailable, addResourceData.amount);

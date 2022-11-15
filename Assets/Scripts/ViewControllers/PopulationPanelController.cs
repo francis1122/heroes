@@ -72,11 +72,11 @@ public class PopulationPanelController : MonoBehaviour
             
             buildingBox.Q<Label>("population_name_label").text = buildingObject.buildingData.buildingName;
             buildingBox.Q<Label>("population_details_label").text = buildingObject.buildingData.buildingDetails;
-            String resourceCost = buildingObject.buildingData.costRequirements
+            String resourceCost = buildingObject.buildingData.ScaledResourceBundle()
                 .GetStringDisplay();
             resourceCost += "\n";
             resourceCost += "available: " +
-                            buildingObject.buildingData.costRequirements.GetPopulationRecruitAvailableStringDisplay();
+                            buildingObject.buildingData.ScaledResourceBundle().GetPopulationRecruitAvailableStringDisplay();
             buildingBox.Q<Label>("population_cost_label").text = resourceCost;
             
             

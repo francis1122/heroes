@@ -27,7 +27,7 @@ namespace Data
             
             foreach (var populationData in oldBundle.populations)
             {
-                PopulationData newData = new PopulationData(populationData.amount * scale, populationData.type);
+                PopulationData newData = new PopulationData(populationData.amount * scale, populationData.activeAmount * scale, populationData.type);
                 AddPopulationData(newData);
             }
         }
@@ -44,7 +44,7 @@ namespace Data
             foreach (var populationData in oldBundle.populations)
             {
                 int change = resourceStatusEffects.GetPopulationStatus(populationData.type.type);
-                PopulationData newData = new PopulationData(populationData.amount + change, populationData.type);
+                PopulationData newData = new PopulationData(populationData.amount + change, populationData.activeAmount + change, populationData.type);
                 AddPopulationData(newData);
             }
         }
@@ -80,7 +80,7 @@ namespace Data
                 }
             }
 
-            PopulationData newResourceData = new PopulationData(0, populationType);
+            PopulationData newResourceData = new PopulationData(0,0,  populationType);
             populations.Add(newResourceData);
             return newResourceData;
         }

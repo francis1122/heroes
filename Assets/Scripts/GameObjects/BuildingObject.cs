@@ -36,7 +36,7 @@ namespace GameObjects
             if (CheckBuildingRequirement())
             {
                 if (buildingsOwned == 0 || buildingData.repeatablePurchase)
-                    if (GameCenter.instance.playerResources.CanSubtractResourceBundle(buildingData.costRequirements))
+                    if (GameCenter.instance.playerResources.CanSubtractResourceBundle(buildingData.ScaledResourceBundle()))
                     {
                         return true;
                     }
@@ -97,7 +97,7 @@ namespace GameObjects
         {
             if (CanPurchaseBuilding())
             {
-                if (GameCenter.instance.playerResources.SubtractResourceBundle(buildingData.costRequirements))
+                if (GameCenter.instance.playerResources.SubtractResourceBundle(buildingData.ScaledResourceBundle()))
                 {
                     this.timesPurchased++;
                     if (buildingData.addToOwnedBuildings)

@@ -239,7 +239,7 @@ public class GameCenter : MonoBehaviour {
         
         if (currentTurn % seasonsInAYear == 0)
         {
-            PopulationGrowth();
+            //PopulationGrowth();
 
             foreach (var playerResourcesPopulation in playerResources.populations)
             {

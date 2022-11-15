@@ -4,6 +4,7 @@ using Triggers;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using Utils;
 
 namespace Data
 {
@@ -23,7 +24,7 @@ namespace Data
         public string buildingThumbnail;
 
         public ResourceBundle costRequirements;
-
+        public ScaleResources costScaleResources = null;
         [System.Serializable]
         public struct BuildingBundle
         {
@@ -58,7 +59,7 @@ namespace Data
 
         public String GetBuildingCostAndRequirementString()
         {
-            String costRequirements = this.costRequirements.GetStringDisplay();
+            String costRequirements = this.ScaledResourceBundle().GetStringDisplay();
             String buildingRequirementString = GetBuildingRequirementString();
             if (buildingRequirementString.NullIfEmpty() != null)
             {
@@ -81,8 +82,25 @@ namespace Data
 
             return buildingRequirementString;
         }
-        
-        
+
+        public ResourceBundle ScaledResourceBundle()
+        {
+            if (costScaleResources == null)
+            {
+                return costRequirements;
+            }
+            else
+            {
+                ResourceBundle scaledResourceBundle =
+                    new ResourceBundle(costRequirements, (int)costScaleResources.GetScaler());
+                if (costScaleResources.ignoreAuthority)
+                {
+                    scaledResourceBundle.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Authority).amount
+                        = costRequirements.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Authority).amount;
+                }
+                return scaledResourceBundle;
+            }
+        }
         
         
         [MenuItem("Tools/BuildingData")]

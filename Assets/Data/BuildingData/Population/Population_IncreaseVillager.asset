@@ -10,33 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9710acaf6ae64d249fee5fd4ec0dff99, type: 3}
-  m_Name: Population_Soldier
+  m_Name: Population_IncreaseVillager
   m_EditorClassIdentifier: 
-  buildingName: Recruit Soldier
-  uniqueName: population_soldier
-  buildingDetails: 
+  buildingName: Birth Villager
+  uniqueName: population_villager
+  buildingDetails: Create New Villager
   buildingThumbnail: 
   costRequirements:
     resources:
-    - amount: 20
-      type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
-    populations:
-    - amount: 1
-      activeAmount: 0
-      annualRecruitLimit: 0
-      annualRecruitsAvailable: 0
-      type: {fileID: 11400000, guid: fc7aba9c3a0c73e4e926a9d3f442cc58, type: 2}
-    - amount: 0
-      activeAmount: 0
-      annualRecruitLimit: 0
-      annualRecruitsAvailable: 1
-      type: {fileID: 11400000, guid: 5f7e66f7ad304e8459384ed9d8af010d, type: 2}
+    - amount: 5
+      type: {fileID: 11400000, guid: b2893bf1cfb204843a747a9615b6f347, type: 2}
+    - amount: 5
+      type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
+    populations: []
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
   costScaleResources:
     scaleWithLinkType: 0
     scaleWithPopulationLinkType: 0
-    scaleByCurrentPopulation: 0
+    scaleByCurrentPopulation: 1
     scaleWithBuildingOwned: {fileID: 0}
     scaleByOwnRecentUsage: 0
     ignoreAuthority: 1
@@ -48,8 +40,8 @@ MonoBehaviour:
   repeatablePurchase: 1
   addToOwnedBuildings: 0
   buildingAdditionsOnPurchase: []
-  priority: 200
+  priority: 100
   onPurchaseTrigger:
-  - {fileID: 11400000, guid: 79a463159799f334f819a6ab9222d85c, type: 2}
+  - {fileID: 11400000, guid: 823b4993f80ca9848a0846a2a3b4e98f, type: 2}
   onTurnEndTrigger: []
   onYearEndTrigger: []

@@ -44,7 +44,7 @@ namespace Data
         
         public PopulationData CreatePopulationData(int amount, PopulationType.LinkPopulationType linkType)
         {
-            return new PopulationData(amount, gamePopulationTypes[linkType]);
+            return new PopulationData(amount,amount, gamePopulationTypes[linkType]);
         }
     }
 }

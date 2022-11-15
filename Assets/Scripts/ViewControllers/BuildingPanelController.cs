@@ -101,7 +101,7 @@ public class BuildingPanelController : MonoBehaviour
             
             buildingBox.Q<Label>("building_name_label").text = buildingObject.buildingData.buildingName;
             buildingBox.Q<Label>("building_details_label").text = buildingObject.buildingData.buildingDetails;
-            buildingBox.Q<Label>("building_auth_label").text = buildingObject.buildingData.costRequirements
+            buildingBox.Q<Label>("building_auth_label").text = buildingObject.buildingData.ScaledResourceBundle()
                 .GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Authority).amount.ToString();
             String resourceCost = buildingObject.buildingData.GetBuildingCostAndRequirementString();
 

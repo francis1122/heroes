@@ -75,7 +75,7 @@ public class PopulationPanelController : MonoBehaviour
             String resourceCost = buildingObject.buildingData.ScaledResourceBundle()
                 .GetStringDisplay();
             resourceCost += "\n";
-            resourceCost += "available: " +
+            resourceCost += "Limit: " +
                             buildingObject.buildingData.ScaledResourceBundle().GetPopulationRecruitAvailableStringDisplay();
             buildingBox.Q<Label>("population_cost_label").text = resourceCost;
             

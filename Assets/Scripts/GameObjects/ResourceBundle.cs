@@ -107,7 +107,7 @@ namespace Data
             String resourceString = "";
             foreach (PopulationData populationData in populations)
             {
-                resourceString += populationData.type.populationName + " " + populationData.activeAmount + " (" + populationData.amount + ")";
+                resourceString += populationData.type.populationName + " (" + populationData.activeAmount + ")" + populationData.amount + "";
             }
             
             return resourceString;
@@ -115,14 +115,16 @@ namespace Data
         
         public String GetPopulationRecruitAvailableStringDisplay()
         {
+            ResourceBundle playerMaxResourceAmounts = GameCenter.instance.playerMaxResourceAmounts;
             ResourceBundle playerResourceBundle = GameCenter.instance.playerResources;
             
             String resourceString = "";
             foreach (PopulationData populationData in populations)
             {
                 var playerPop = playerResourceBundle.GetOrCreateMatchingPopulationType(populationData.type);
-                if(populationData.annualRecruitsAvailable > 0)
-                resourceString += populationData.type.populationName + " " + playerPop.annualRecruitsAvailable + " (" + playerPop.annualRecruitLimit + ")";
+                var maxPlayerPop = playerMaxResourceAmounts.GetOrCreateMatchingPopulationType(populationData.type);
+                if(populationData.amount > 0)
+                resourceString += populationData.type.populationName + " " + playerPop.amount + " - " + maxPlayerPop.amount + "";
             }
             
             return resourceString;
@@ -234,10 +236,10 @@ namespace Data
                 return false;
             }
 
-            if (populationData.annualRecruitsAvailable >= subtractPopulationData.annualRecruitsAvailable)
-            {
-                if ((populationData.amount >= subtractPopulationData.amount &&
-                     populationData.activeAmount >= subtractPopulationData.activeAmount)
+         //   if (populationData.annualRecruitsAvailable >= subtractPopulationData.annualRecruitsAvailable)
+          //  {
+                if ((populationData.amount >= subtractPopulationData.amount
+                     && populationData.activeAmount >= subtractPopulationData.activeAmount)
                     || populationData.type.amountCanBeNegative)
                 {
                     if (isPlayersResourceBundle && populationData.type.checkForPlayerResourceMinLimit)
@@ -255,7 +257,7 @@ namespace Data
 
                     return true;
                 }
-            }
+         //   }
 
             return false;
         }
@@ -313,9 +315,9 @@ namespace Data
             PopulationData populationData = GetOrCreateMatchingPopulationType(subtractPopulationData.type);
             
             if ((populationData.amount >= subtractPopulationData.amount 
-                 && populationData.activeAmount >= subtractPopulationData.activeAmount 
-                 && populationData.annualRecruitsAvailable >= subtractPopulationData.annualRecruitsAvailable
-                 && populationData.annualRecruitLimit >= subtractPopulationData.annualRecruitLimit) 
+                 && populationData.activeAmount >= subtractPopulationData.activeAmount )
+               //  && populationData.annualRecruitsAvailable >= subtractPopulationData.annualRecruitsAvailable
+               //  && populationData.annualRecruitLimit >= subtractPopulationData.annualRecruitLimit) 
                 || isPlayersBufferResourceBundle)
             {
                 if (isPlayersResourceBundle && populationData.type.checkForPlayerResourceMinLimit)
@@ -325,7 +327,7 @@ namespace Data
                     {
                         populationData.amount -= subtractPopulationData.amount;
                         populationData.activeAmount -= subtractPopulationData.activeAmount;
-                        populationData.annualRecruitsAvailable -= subtractPopulationData.annualRecruitsAvailable;
+                        //populationData.annualRecruitsAvailable -= subtractPopulationData.annualRecruitsAvailable;
                         return true;
                     }
                     Debug.Log("Should call CanSubtractResources to check purchase before player " + subtractPopulationData.type.populationName);
@@ -333,8 +335,8 @@ namespace Data
                 }
                 populationData.amount -= subtractPopulationData.amount;
                 populationData.activeAmount -= subtractPopulationData.activeAmount;
-                populationData.annualRecruitsAvailable -= subtractPopulationData.annualRecruitsAvailable;
-                populationData.annualRecruitLimit -= subtractPopulationData.annualRecruitLimit;
+                //populationData.annualRecruitsAvailable -= subtractPopulationData.annualRecruitsAvailable;
+               // populationData.annualRecruitLimit -= subtractPopulationData.annualRecruitLimit;
                 return true;
             }
             Debug.Log("Should call CanSubtractResources to check purchase before " + subtractPopulationData.type.populationName);

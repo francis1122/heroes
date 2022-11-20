@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f49e67e04cd423e8a2dec95e8992657, type: 3}
-  m_Name: SoldierRecruit
+  m_Name: FarmerRecruit
   m_EditorClassIdentifier: 
   isEndOfTurnTrigger: 0
   checkIfTriggerCanHappen: 1
@@ -21,7 +21,7 @@ MonoBehaviour:
       activeAmount: 0
       annualRecruitLimit: 0
       annualRecruitsAvailable: 0
-      type: {fileID: 11400000, guid: 5f7e66f7ad304e8459384ed9d8af010d, type: 2}
+      type: {fileID: 11400000, guid: 54c3a12b1b0c67c40bd4155ebaae3c7a, type: 2}
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
   scaleWithPlayerAmount: 0

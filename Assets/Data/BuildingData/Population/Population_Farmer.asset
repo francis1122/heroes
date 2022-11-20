@@ -10,21 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9710acaf6ae64d249fee5fd4ec0dff99, type: 3}
-  m_Name: FarmLand
+  m_Name: Population_Farmer
   m_EditorClassIdentifier: 
-  buildingName: Farm
-  uniqueName: 
-  buildingDetails: generates 1 food a turn
+  buildingName: Train Farmer
+  uniqueName: population_farmer
+  buildingDetails: 
   buildingThumbnail: 
   costRequirements:
     resources:
-    - amount: 1
-      type: {fileID: 11400000, guid: d0486e35f66495b47b8bcb629a698965, type: 2}
-    - amount: 20
+    - amount: 5
       type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
-    - amount: 10
-      type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
-    populations: []
+    populations:
+    - amount: 1
+      activeAmount: 0
+      annualRecruitLimit: 0
+      annualRecruitsAvailable: 0
+      type: {fileID: 11400000, guid: fc7aba9c3a0c73e4e926a9d3f442cc58, type: 2}
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
   costScaleResources:
@@ -34,17 +35,15 @@ MonoBehaviour:
     scaleWithBuildingOwned: {fileID: 0}
     scaleByOwnRecentUsage: 0
     ignoreAuthority: 1
-  category: 0
-  buildingRequirement:
-  - amount: 0
-    buildingData: {fileID: 0}
+  category: 2
+  buildingRequirement: []
   sellRequiredBuildings: 0
   destroyRequiredBuildings: 0
   removeFromPurchasableOnPurchase: 0
   repeatablePurchase: 1
-  addToOwnedBuildings: 1
+  addToOwnedBuildings: 0
   buildingAdditionsOnPurchase: []
-  priority: 20
+  priority: 300
   onPurchaseTrigger:
   - {fileID: 11400000, guid: 74c9c758aa0fcfb4f8644d0f0f694cd7, type: 2}
   onTurnEndTrigger: []

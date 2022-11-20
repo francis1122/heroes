@@ -14,7 +14,28 @@ namespace Triggers
 
         public bool scaleWithPlayerAmount = false;
         public ScaleResources endOfTurnScaleResources = new ScaleResources();
-        
+
+        public override bool CanTriggerFire(StatusIdentifier statusIdentifier = null)
+        {
+            // get building owner
+
+            var bundleToUse = resourceBundle;
+            if (scaleWithPlayerAmount)
+            {
+                bundleToUse = new ResourceBundle(resourceBundle, (int)endOfTurnScaleResources.GetScaler());
+            }
+
+            if (isEndOfTurnTrigger)
+            {
+                //GameCenter.instance.ChangePlayerResourcesEndOfTurn(bundleToUse, statusIdentifier);
+            }
+            else
+            {
+                return GameCenter.instance.CanChangePlayerResources(bundleToUse, false, statusIdentifier);
+            }
+
+            return true;
+        }
         public override void Trigger(StatusIdentifier statusIdentifier = null)
         {
             

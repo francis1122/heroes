@@ -341,27 +341,32 @@ namespace Data
             return false;
         }
 
-        /*
-        public bool CanAddResource(ResourceData addResourceData, bool canPartiallyAdd)
-        {
-            if (this.type != addResourceData.type) return false;
-            //test if this resource matches type and has proper amount to subtract
-            if (canPartiallyAdd)
-            {
-                return this.amount < this.maxAmount;
-                
-            }
-            else
-            {
-                int spaceAvailable = this.maxAmount - this.amount;
-                return addResourceData.amount <= spaceAvailable;
-                
-            }
- 
-        }
-        */
         
-        public void AddResourceBundle(ResourceBundle addResourceBundle)
+        public bool CanAddResourceBundle(ResourceBundle addResourceBundle, bool canPartiallyAdd = true)
+        {
+            // Check max limits
+            foreach (var addResourceData in addResourceBundle.resources)
+            {
+                if (!CanAddResourceData(addResourceData, canPartiallyAdd))
+                {
+                    return false;
+                }
+
+            }
+
+            foreach (var addPopulationData in addResourceBundle.populations)
+            {
+                if (!CanAddPopulationData(addPopulationData, canPartiallyAdd))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+        
+        
+        public void AddResourceBundle(ResourceBundle addResourceBundle, bool canPartiallyAdd = true)
         {
             foreach (var addResourceData in addResourceBundle.resources)
             {
@@ -375,7 +380,51 @@ namespace Data
             }
         }
 
-        public void AddResourceData(ResourceData addResourceData)
+        public bool CanAddResourceData(ResourceData addResourceData, bool canPartiallyAdd = true)
+        {
+            ResourceData resourceData = GetOrCreateMatchingResourceType(addResourceData.type);
+            resourceData.amount += addResourceData.amount;
+
+            // check and reduce to max limit if resource 
+            if (isPlayersResourceBundle)
+            {
+                
+                if (resourceData.type.checkForPlayerResourceMaxLimit)
+                {
+                    
+                    ResourceData playerMaxResource = GameCenter.instance.playerMaxResourceAmounts.GetOrCreateMatchingResourceType(resourceData.type);
+                    if (resourceData.amount > playerMaxResource.amount)
+                    {
+                        
+                        resourceData.amount = playerMaxResource.amount;
+                    }
+                }
+            }
+
+            return true;
+        }
+        public bool CanAddPopulationData(PopulationData addPopulationData, bool canPartiallyAdd = true)
+        {
+            PopulationData populationData = GetOrCreateMatchingPopulationType(addPopulationData.type);
+            //populationData.AddResource(addPopulationData);
+            int newPopAmount = populationData.amount + addPopulationData.amount;
+            // check and reduce to max limit if resource 
+            if (isPlayersResourceBundle)
+            {
+                
+                if (populationData.type.checkForPlayerResourceMaxLimit && !canPartiallyAdd)
+                {
+                    PopulationData playerMaxResource = GameCenter.instance.playerMaxResourceAmounts.GetOrCreateMatchingPopulationType(populationData.type);
+                    if (newPopAmount > playerMaxResource.amount)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
+        public void AddResourceData(ResourceData addResourceData, bool canPartiallyAdd = true)
         {
             ResourceData resourceData = GetOrCreateMatchingResourceType(addResourceData.type);
             resourceData.amount += addResourceData.amount;
@@ -396,7 +445,7 @@ namespace Data
                 }
             }
         }
-        public void AddPopulationData(PopulationData addPopulationData)
+        public void AddPopulationData(PopulationData addPopulationData, bool canPartiallyAdd = true)
         {
             PopulationData populationData = GetOrCreateMatchingPopulationType(addPopulationData.type);
             populationData.AddResource(addPopulationData);

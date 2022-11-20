@@ -13,10 +13,14 @@ MonoBehaviour:
   m_Name: ProspectorRecruit
   m_EditorClassIdentifier: 
   isEndOfTurnTrigger: 0
+  checkIfTriggerCanHappen: 1
   resourceBundle:
     resources: []
     populations:
     - amount: 1
+      activeAmount: 0
+      annualRecruitLimit: 0
+      annualRecruitsAvailable: 0
       type: {fileID: 11400000, guid: 54c3a12b1b0c67c40bd4155ebaae3c7a, type: 2}
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
@@ -24,5 +28,7 @@ MonoBehaviour:
   endOfTurnScaleResources:
     scaleWithLinkType: 0
     scaleWithPopulationLinkType: 0
+    scaleByCurrentPopulation: 0
     scaleWithBuildingOwned: {fileID: 0}
     scaleByOwnRecentUsage: 0
+    ignoreAuthority: 1

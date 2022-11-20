@@ -8,6 +8,13 @@ namespace Triggers
     public class GameTriggers : ScriptableObject
     {
         public bool isEndOfTurnTrigger = false;
+
+        public bool checkIfTriggerCanHappen = false;
+
+        public virtual bool CanTriggerFire(StatusIdentifier statusIdentifier = null)
+        {
+            return true;
+        }
         public virtual void Trigger(StatusIdentifier statusIdentifier = null)
         {
             

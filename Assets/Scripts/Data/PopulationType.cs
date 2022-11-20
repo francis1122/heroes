@@ -14,6 +14,7 @@ namespace Data
             Villager = 100,
             Soldier = 101,
             Prospector = 102,
+            Farmer = 103,
         }
         
         public LinkPopulationType type = LinkPopulationType.Unset;

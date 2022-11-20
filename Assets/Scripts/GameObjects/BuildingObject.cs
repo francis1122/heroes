@@ -1,4 +1,5 @@
 ﻿using Data;
+using Triggers;
 
 namespace GameObjects
 {
@@ -38,6 +39,17 @@ namespace GameObjects
                 if (buildingsOwned == 0 || buildingData.repeatablePurchase)
                     if (GameCenter.instance.playerResources.CanSubtractResourceBundle(buildingData.ScaledResourceBundle()))
                     {
+                        // check if triggers can fire
+                        foreach (GameTriggers trigger in buildingData.onPurchaseTrigger)
+                        {
+                            if (trigger.checkIfTriggerCanHappen && !trigger.CanTriggerFire(null))
+                            {
+                                return false;
+                            }
+                        }
+                        // &&
+                        // GameCenter.instance.playerResources.CanAddResourceBundle(buildingData.ScaledResourceBundle(), false)
+                        
                         return true;
                     }
             }

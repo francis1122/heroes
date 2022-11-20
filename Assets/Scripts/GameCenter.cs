@@ -194,6 +194,11 @@ public class GameCenter : MonoBehaviour {
         playerBufferResources.AddResourceBundle(useBundle);
     }
 
+    public bool CanChangePlayerResources(ResourceBundle changeBundle, bool canPartiallyAdd, StatusIdentifier statusIdentifier)
+    {
+        return playerResources.CanAddResourceBundle(changeBundle, canPartiallyAdd);
+    }
+    
     public void ChangePlayerResources(ResourceBundle changeBundle, StatusIdentifier statusIdentifier)
     {
         playerResources.AddResourceBundle(changeBundle);

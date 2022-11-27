@@ -22,17 +22,14 @@ MonoBehaviour:
       type: {fileID: 11400000, guid: b2893bf1cfb204843a747a9615b6f347, type: 2}
     - amount: 25
       type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
+    - amount: 0
+      type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
     populations:
     - amount: 1
       activeAmount: 0
       annualRecruitLimit: 0
       annualRecruitsAvailable: 0
       type: {fileID: 11400000, guid: fc7aba9c3a0c73e4e926a9d3f442cc58, type: 2}
-    - amount: 0
-      activeAmount: 0
-      annualRecruitLimit: 0
-      annualRecruitsAvailable: 1
-      type: {fileID: 11400000, guid: 54c3a12b1b0c67c40bd4155ebaae3c7a, type: 2}
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
   costScaleResources:
@@ -51,6 +48,7 @@ MonoBehaviour:
   addToOwnedBuildings: 0
   buildingAdditionsOnPurchase: []
   priority: 300
+  populationGain: {fileID: 11400000, guid: 54c3a12b1b0c67c40bd4155ebaae3c7a, type: 2}
   onPurchaseTrigger:
   - {fileID: 11400000, guid: e3bdeb72b98148f4ca161579e80f9651, type: 2}
   onTurnEndTrigger: []

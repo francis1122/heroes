@@ -21,7 +21,7 @@ MonoBehaviour:
       activeAmount: 0
       annualRecruitLimit: 0
       annualRecruitsAvailable: 0
-      type: {fileID: 11400000, guid: 54c3a12b1b0c67c40bd4155ebaae3c7a, type: 2}
+      type: {fileID: 11400000, guid: bf3d3ef69427633408afa4c49b95a0e1, type: 2}
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
   scaleWithPlayerAmount: 0

@@ -49,6 +49,8 @@ namespace Data
         public List<BuildingData> buildingAdditionsOnPurchase;
         public int priority = 1;
 
+        [Header("population UI - pop ")] public PopulationType populationGain;
+        
         [SerializeField]
         public List<GameTriggers> onPurchaseTrigger;
         [SerializeField]
@@ -81,6 +83,19 @@ namespace Data
             }
 
             return buildingRequirementString;
+        }
+
+        public String GetBuildingPopulationGainMax()
+        {
+            if (category == BuildingCategory.Population && populationGain != null)
+            {
+                ResourceBundle playerResourceAmounts = GameCenter.instance.playerResources;
+                ResourceBundle playerMaxResourceAmounts = GameCenter.instance.playerMaxResourceAmounts;
+                var maxPlayerPop = playerResourceAmounts.GetOrCreateMatchingPopulationType(populationGain).amount + " - " + playerMaxResourceAmounts.GetOrCreateMatchingPopulationType(populationGain).amount;
+                return maxPlayerPop;
+            }
+
+            return "not population";
         }
 
         public ResourceBundle ScaledResourceBundle()

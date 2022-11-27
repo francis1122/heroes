@@ -180,7 +180,7 @@ MonoBehaviour:
       annualRecruitLimit: 0
       annualRecruitsAvailable: 0
       type: {fileID: 11400000, guid: 5f7e66f7ad304e8459384ed9d8af010d, type: 2}
-    isPlayersResourceBundle: 0
+    isPlayersResourceBundle: 1
     isPlayersBufferResourceBundle: 0
   playerMaxResourceAmounts:
     resources: []

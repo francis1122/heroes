@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 101
   populationName: Soldier
-  resourceShortHand: 
+  resourceShortHand: sol
   tempThumbnailResource: 
   UIPriority: 0
   UITexture: {fileID: 0}

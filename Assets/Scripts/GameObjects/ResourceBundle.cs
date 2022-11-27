@@ -115,16 +115,16 @@ namespace Data
         
         public String GetPopulationRecruitAvailableStringDisplay()
         {
-            ResourceBundle playerMaxResourceAmounts = GameCenter.instance.playerMaxResourceAmounts;
+            //ResourceBundle playerMaxResourceAmounts = GameCenter.instance.playerMaxResourceAmounts;
             ResourceBundle playerResourceBundle = GameCenter.instance.playerResources;
             
             String resourceString = "";
             foreach (PopulationData populationData in populations)
             {
                 var playerPop = playerResourceBundle.GetOrCreateMatchingPopulationType(populationData.type);
-                var maxPlayerPop = playerMaxResourceAmounts.GetOrCreateMatchingPopulationType(populationData.type);
+              //  var maxPlayerPop = playerMaxResourceAmounts.GetOrCreateMatchingPopulationType(populationData.type);
                 if(populationData.amount > 0)
-                resourceString += populationData.type.populationName + " " + playerPop.amount + " - " + maxPlayerPop.amount + "";
+                resourceString +=  playerPop.amount;
             }
             
             return resourceString;
@@ -149,7 +149,7 @@ namespace Data
             String popCost = GetPopulationStringDisplay();
             if (popCost.NullIfEmpty() != null)
             {
-                resourceString += "\n";
+                resourceString += " ";
                 resourceString += popCost;
             }
 

@@ -29,6 +29,13 @@ MonoBehaviour:
     populations: []
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
+  costScaleResources:
+    scaleWithLinkType: 0
+    scaleWithPopulationLinkType: 0
+    scaleByCurrentPopulation: 0
+    scaleWithBuildingOwned: {fileID: 0}
+    scaleByOwnRecentUsage: 0
+    ignoreAuthority: 1
   category: 0
   buildingRequirement:
   - amount: 1
@@ -47,6 +54,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5007c42cda9ee0b448d2e47c3fa03155, type: 2}
   - {fileID: 11400000, guid: 98bc4a8deb6a04f4e829adf019ef0951, type: 2}
   - {fileID: 11400000, guid: 3a3df117db9cf5f48afcf340de9f6a62, type: 2}
+  - {fileID: 11400000, guid: 7996aafa0e724184c87b8a720f1349bd, type: 2}
   priority: 1
   onPurchaseTrigger:
   - {fileID: 11400000, guid: 15cc53d6d85c7fb488f55d2113768cd1, type: 2}

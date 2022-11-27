@@ -75,10 +75,11 @@ public class PopulationPanelController : MonoBehaviour
             String resourceCost = buildingObject.buildingData.ScaledResourceBundle()
                 .GetStringDisplay();
             resourceCost += "\n";
-            resourceCost += "Limit: " +
-                            buildingObject.buildingData.ScaledResourceBundle().GetPopulationRecruitAvailableStringDisplay();
+                //var test = buildingObject.buildingData.ScaledResourceBundle().GetPopulationRecruitAvailableStringDisplay() +
+                 //           " - ";
+
             buildingBox.Q<Label>("population_cost_label").text = resourceCost;
-            
+            buildingBox.Q<Label>("population_limit_label").text = buildingObject.buildingData.GetBuildingPopulationGainMax();
             
             // should show purchase button or not
             if(!buildingObject.buildingData.repeatablePurchase && buildingObject.timesPurchased > 0)

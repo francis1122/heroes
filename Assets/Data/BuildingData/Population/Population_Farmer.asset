@@ -20,6 +20,8 @@ MonoBehaviour:
     resources:
     - amount: 5
       type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
+    - amount: 0
+      type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
     populations:
     - amount: 1
       activeAmount: 0
@@ -43,8 +45,9 @@ MonoBehaviour:
   repeatablePurchase: 1
   addToOwnedBuildings: 0
   buildingAdditionsOnPurchase: []
-  priority: 300
+  priority: 110
+  populationGain: {fileID: 11400000, guid: bf3d3ef69427633408afa4c49b95a0e1, type: 2}
   onPurchaseTrigger:
-  - {fileID: 11400000, guid: 74c9c758aa0fcfb4f8644d0f0f694cd7, type: 2}
+  - {fileID: 11400000, guid: b0b9c59c7764dfd4792261a407e71a8c, type: 2}
   onTurnEndTrigger: []
   onYearEndTrigger: []

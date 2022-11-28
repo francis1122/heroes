@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9710acaf6ae64d249fee5fd4ec0dff99, type: 3}
-  m_Name: Population_Soldier
+  m_Name: Population_StoneWorker
   m_EditorClassIdentifier: 
-  buildingName: Recruit Soldier
-  uniqueName: population_soldier
+  buildingName: Recruit Stone Worker
+  uniqueName: population_stoneworker
   buildingDetails: 
   buildingThumbnail: 
   costRequirements:
@@ -45,9 +45,9 @@ MonoBehaviour:
   repeatablePurchase: 1
   addToOwnedBuildings: 0
   buildingAdditionsOnPurchase: []
-  priority: 202
-  populationGain: {fileID: 11400000, guid: 5f7e66f7ad304e8459384ed9d8af010d, type: 2}
+  priority: 200
+  populationGain: {fileID: 11400000, guid: 186b407b800b7d44bbbd61ab5771bb3d, type: 2}
   onPurchaseTrigger:
-  - {fileID: 11400000, guid: 79a463159799f334f819a6ab9222d85c, type: 2}
+  - {fileID: 11400000, guid: 9327783bb68620d4a9a976e0b6ecbe4f, type: 2}
   onTurnEndTrigger: []
   onYearEndTrigger: []

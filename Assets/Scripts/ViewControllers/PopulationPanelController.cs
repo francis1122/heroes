@@ -59,7 +59,7 @@ public class PopulationPanelController : MonoBehaviour
         foreach (BuildingObject buildingObject in onlyCategory)
         {
 
-            if (count % 4 == 0)
+            if (count % 2 == 0)
             {
                 TemplateContainer buildingGroup = populationGroupTemplate.Instantiate();
                 currentGroup = buildingGroup.Q<GroupBox>("population-container-group");

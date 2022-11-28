@@ -15,6 +15,9 @@ namespace Data
             Soldier = 101,
             Prospector = 102,
             Farmer = 103,
+            WoodCutter = 104,
+            StoneWorker = 105,
+            IronWorker = 106,
         }
         
         public LinkPopulationType type = LinkPopulationType.Unset;

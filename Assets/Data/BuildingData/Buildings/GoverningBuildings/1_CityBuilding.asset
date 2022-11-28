@@ -55,7 +55,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 98bc4a8deb6a04f4e829adf019ef0951, type: 2}
   - {fileID: 11400000, guid: 3a3df117db9cf5f48afcf340de9f6a62, type: 2}
   - {fileID: 11400000, guid: 7996aafa0e724184c87b8a720f1349bd, type: 2}
+  - {fileID: 11400000, guid: 1e14707abbcfc8343bcfe94d4327bd88, type: 2}
+  - {fileID: 11400000, guid: b2bdb136bccaa6c4bb2f3eab1143feb1, type: 2}
+  - {fileID: 11400000, guid: c1d0f8bedfb45ef459857f11b0fe75a2, type: 2}
   priority: 1
+  populationGain: {fileID: 0}
   onPurchaseTrigger:
   - {fileID: 11400000, guid: 15cc53d6d85c7fb488f55d2113768cd1, type: 2}
   - {fileID: 11400000, guid: 15cc53d6d85c7fb488f55d2113768cd1, type: 2}

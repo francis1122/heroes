@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 493b8443ce3b4a7daac01afce4720c67, type: 3}
+  m_Name: StoneWorkerPopLimitIncrease
+  m_EditorClassIdentifier: 
+  isEndOfTurnTrigger: 0
+  checkIfTriggerCanHappen: 0
+  resourceBundle:
+    resources: []
+    populations:
+    - amount: 1
+      activeAmount: 0
+      annualRecruitLimit: 0
+      annualRecruitsAvailable: 0
+      type: {fileID: 11400000, guid: 5f7e66f7ad304e8459384ed9d8af010d, type: 2}
+    isPlayersResourceBundle: 0
+    isPlayersBufferResourceBundle: 0
+  scaleWithPlayerAmount: 0
+  endOfTurnScaleResources:
+    scaleWithLinkType: 0
+    scaleWithPopulationLinkType: 0
+    scaleByCurrentPopulation: 0
+    scaleWithBuildingOwned: {fileID: 0}
+    scaleByOwnRecentUsage: 0
+    ignoreAuthority: 1

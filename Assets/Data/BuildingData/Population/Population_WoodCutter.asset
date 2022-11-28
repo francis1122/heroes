@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9710acaf6ae64d249fee5fd4ec0dff99, type: 3}
-  m_Name: Population_Soldier
+  m_Name: Population_WoodCutter
   m_EditorClassIdentifier: 
-  buildingName: Recruit Soldier
-  uniqueName: population_soldier
+  buildingName: Recruit Wood Cutter
+  uniqueName: population_woodcutter
   buildingDetails: 
   buildingThumbnail: 
   costRequirements:
@@ -45,9 +45,9 @@ MonoBehaviour:
   repeatablePurchase: 1
   addToOwnedBuildings: 0
   buildingAdditionsOnPurchase: []
-  priority: 202
-  populationGain: {fileID: 11400000, guid: 5f7e66f7ad304e8459384ed9d8af010d, type: 2}
+  priority: 201
+  populationGain: {fileID: 11400000, guid: 0ccfa2f1bb0eb3340a7fb3fa58604d7d, type: 2}
   onPurchaseTrigger:
-  - {fileID: 11400000, guid: 79a463159799f334f819a6ab9222d85c, type: 2}
+  - {fileID: 11400000, guid: 57f1e7eaa0f6b194e902ebefb1b2424c, type: 2}
   onTurnEndTrigger: []
   onYearEndTrigger: []

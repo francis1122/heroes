@@ -239,10 +239,20 @@ public class GameCenter : MonoBehaviour {
             }
         }
         
+        /*foreach (var population in playerResources.populations)
+        {
+            foreach (var trigger in population.type.playerEndOfTurnTriggers)
+            {
+                    //trigger.Trigger();
+                trigger.Trigger(new StatusIdentifier(new List<String> { buildingObject.buildingData.uniqueName }));
+            }
+
+        }*/
+        
         // might want this to increase buffer stuff
         //EventManager.TriggerEvent(EventManager.EVENT_END_TURN);
         
-        if (currentTurn % seasonsInAYear == 0)
+        /*if (currentTurn % seasonsInAYear == 0)
         {
             //PopulationGrowth();
 
@@ -253,7 +263,7 @@ public class GameCenter : MonoBehaviour {
             }
             
             //EventManager.TriggerEvent(EventManager.EVENT_END_YEAR);
-        }
+        }*/
     }
     
     public void EndTurn()

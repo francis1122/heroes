@@ -48,6 +48,6 @@ MonoBehaviour:
   priority: 200
   populationGain: {fileID: 11400000, guid: 186b407b800b7d44bbbd61ab5771bb3d, type: 2}
   onPurchaseTrigger:
-  - {fileID: 11400000, guid: 9327783bb68620d4a9a976e0b6ecbe4f, type: 2}
+  - {fileID: 11400000, guid: 171d492786fdbdb49abb58d61d6beeb1, type: 2}
   onTurnEndTrigger: []
   onYearEndTrigger: []

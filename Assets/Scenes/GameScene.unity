@@ -174,6 +174,8 @@ MonoBehaviour:
       type: {fileID: 11400000, guid: a8d2874b560b46344b232f8891c70426, type: 2}
     - amount: 2000
       type: {fileID: 11400000, guid: d0486e35f66495b47b8bcb629a698965, type: 2}
+    - amount: 2000
+      type: {fileID: 11400000, guid: 7d2daed89146e48449cca00eedf78ce2, type: 2}
     populations:
     - amount: 10
       activeAmount: 0

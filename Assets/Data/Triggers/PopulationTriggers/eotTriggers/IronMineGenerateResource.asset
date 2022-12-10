@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: IronMineGenerateResource
   m_EditorClassIdentifier: 
   isEndOfTurnTrigger: 1
+  checkIfTriggerCanHappen: 0
   resourceBundle:
     resources:
     - amount: 1
@@ -20,9 +21,11 @@ MonoBehaviour:
     populations: []
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
-  scaleWithPlayerAmount: 0
+  scaleWithPlayerAmount: 1
   endOfTurnScaleResources:
     scaleWithLinkType: 0
-    scaleWithPopulationLinkType: 0
+    scaleWithPopulationLinkType: 106
+    scaleByCurrentPopulation: 0
     scaleWithBuildingOwned: {fileID: 0}
     scaleByOwnRecentUsage: 0
+    ignoreAuthority: 1

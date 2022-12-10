@@ -13,11 +13,19 @@ MonoBehaviour:
   m_Name: LumberYardGenerateResource
   m_EditorClassIdentifier: 
   isEndOfTurnTrigger: 1
+  checkIfTriggerCanHappen: 0
   resourceBundle:
     resources:
     - amount: 1
       type: {fileID: 11400000, guid: a8d2874b560b46344b232f8891c70426, type: 2}
+    populations: []
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
-  scaleWithPlayerAmount: 0
-  scaleWithLinkType: 4
+  scaleWithPlayerAmount: 1
+  endOfTurnScaleResources:
+    scaleWithLinkType: 0
+    scaleWithPopulationLinkType: 104
+    scaleByCurrentPopulation: 0
+    scaleWithBuildingOwned: {fileID: 0}
+    scaleByOwnRecentUsage: 0
+    ignoreAuthority: 1

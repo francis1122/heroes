@@ -51,24 +51,24 @@ public class LandResourceController : MonoBehaviour
 
         if (usePopulation)
         {
-            foreach (var resource in GameCenter.instance.playerResources.populations)
-            {
-                TemplateContainer buildingBox = landResourceTemplate.Instantiate();
-
-                //buildingBox.Q<Label>("resource-thumbnail")
-                buildingBox.Q<Label>("land-owned").text =
-                    resource.type.populationName + ": " + resource.activeAmount.ToString() + "(" + resource.amount + ")";
-
-                //buildingBox.Q<Label>("land-gain").text = "";
-                if (resource.type.UITexture != null)
-                {
-                    buildingBox.Q<UIToolKitImage>("land-thumbnail").image = resource.type.UITexture;
-                }
-
-                resourceContainer.Add(buildingBox.Q<GroupBox>("land-unit"));
-
-
-            }
+            // foreach (var resource in GameCenter.instance.playerResources.populations)
+            // {
+            //     TemplateContainer buildingBox = landResourceTemplate.Instantiate();
+            //
+            //     //buildingBox.Q<Label>("resource-thumbnail")
+            //     buildingBox.Q<Label>("land-owned").text =
+            //         resource.type.populationName + ": " + resource.activeAmount.ToString() + "(" + resource.amount + ")";
+            //
+            //     //buildingBox.Q<Label>("land-gain").text = "";
+            //     if (resource.type.UITexture != null)
+            //     {
+            //         buildingBox.Q<UIToolKitImage>("land-thumbnail").image = resource.type.UITexture;
+            //     }
+            //
+            //     resourceContainer.Add(buildingBox.Q<GroupBox>("land-unit"));
+            //
+            //
+            // }
         }
         else
         {

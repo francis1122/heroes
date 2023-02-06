@@ -19,10 +19,10 @@ namespace Data
                 gameResourceTypes.Add(resourceType.type, resourceType);
             }
 
-            foreach (var populationType in populationTypes)
-            {
-                gamePopulationTypes.Add(populationType.type, populationType);
-            }
+            // foreach (var populationType in populationTypes)
+            // {
+            //     gamePopulationTypes.Add(populationType.type, populationType);
+            // }
         }
         
         

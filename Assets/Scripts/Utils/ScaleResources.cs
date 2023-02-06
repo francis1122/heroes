@@ -26,14 +26,14 @@ namespace Utils
                 return Math.Max(1, amount);
             }else if (scaleWithPopulationLinkType != PopulationType.LinkPopulationType.Unset)
             {
-                int amount = GameCenter.instance.playerResources
-                    .GetOrCreateMatchingPopulationLinkType(scaleWithPopulationLinkType)
-                    .amount;
-                return Math.Max(1, amount);
+                // int amount = GameCenter.instance.playerResources
+                //     .GetOrCreateMatchingPopulationLinkType(scaleWithPopulationLinkType)
+                //     .amount;
+                // return Math.Max(1, amount);
             }else if(scaleByCurrentPopulation)
             {
-                int popsTotal = GameCenter.instance.playerResources.populations.Sum(e => e.amount);
-                return popsTotal;
+                // int popsTotal = GameCenter.instance.playerResources.populations.Sum(e => e.amount);
+                // return popsTotal;
             }else if (scaleWithBuildingOwned != null)
             {
                 

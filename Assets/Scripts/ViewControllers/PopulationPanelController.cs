@@ -79,7 +79,7 @@ public class PopulationPanelController : MonoBehaviour
                  //           " - ";
 
             buildingBox.Q<Label>("population_cost_label").text = resourceCost;
-            buildingBox.Q<Label>("population_limit_label").text = buildingObject.buildingData.GetBuildingPopulationGainMax();
+            //buildingBox.Q<Label>("population_limit_label").text = buildingObject.buildingData.GetBuildingPopulationGainMax();
             
             // should show purchase button or not
             if(!buildingObject.buildingData.repeatablePurchase && buildingObject.timesPurchased > 0)

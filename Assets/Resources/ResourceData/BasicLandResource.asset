@@ -24,4 +24,4 @@ MonoBehaviour:
   checkForPlayerResourceMaxLimit: 0
   checkForPlayerResourceMinLimit: 0
   playerEndOfTurnTriggers: []
-  resourceCategory: 2
+  resourceCategory: 1

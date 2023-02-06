@@ -12,7 +12,10 @@ namespace Data
     public class ResourceBundle
     {
         [SerializeField] public List<ResourceData> resources = new();
-        [SerializeField] public List<PopulationData> populations = new();
+
+        //public int population = 0;
+        //[SerializeField] public List<PopulationData> populations = new();
+        
         public Boolean isPlayersResourceBundle = false;
         public Boolean isPlayersBufferResourceBundle = false;
 
@@ -25,11 +28,11 @@ namespace Data
                 AddResourceData(newData);
             }
             
-            foreach (var populationData in oldBundle.populations)
-            {
-                PopulationData newData = new PopulationData(populationData.amount * scale, populationData.activeAmount * scale, populationData.type);
-                AddPopulationData(newData);
-            }
+            // foreach (var populationData in oldBundle.populations)
+            // {
+            //     PopulationData newData = new PopulationData(populationData.amount * scale, populationData.activeAmount * scale, populationData.type);
+            //     AddPopulationData(newData);
+            // }
         }
         
         public ResourceBundle(ResourceBundle oldBundle, ResourceStatusEffects resourceStatusEffects)
@@ -41,18 +44,18 @@ namespace Data
                 AddResourceData(newData);
             }
             
-            foreach (var populationData in oldBundle.populations)
-            {
-                int change = resourceStatusEffects.GetPopulationStatus(populationData.type.type);
-                PopulationData newData = new PopulationData(populationData.amount + change, populationData.activeAmount + change, populationData.type);
-                AddPopulationData(newData);
-            }
+            // foreach (var populationData in oldBundle.populations)
+            // {
+            //     int change = resourceStatusEffects.GetPopulationStatus(populationData.type.type);
+            //     PopulationData newData = new PopulationData(populationData.amount + change, populationData.activeAmount + change, populationData.type);
+            //     AddPopulationData(newData);
+            // }
         }
 
         public void ClearResources()
         {
             resources = new();
-            populations = new();
+            //populations = new();
         }
 
         public ResourceData GetOrCreateMatchingResourceType(ResourceType resourceType)
@@ -70,20 +73,20 @@ namespace Data
             return newResourceData;
         }
         
-        public PopulationData GetOrCreateMatchingPopulationType(PopulationType populationType)
-        {
-            foreach (PopulationData population in populations)
-            {
-                if (population.type == populationType)
-                {
-                    return population;
-                }
-            }
-
-            PopulationData newResourceData = new PopulationData(0,0,  populationType);
-            populations.Add(newResourceData);
-            return newResourceData;
-        }
+        // public PopulationData GetOrCreateMatchingPopulationType(PopulationType populationType)
+        // {
+        //     foreach (PopulationData population in populations)
+        //     {
+        //         if (population.type == populationType)
+        //         {
+        //             return population;
+        //         }
+        //     }
+        //
+        //     PopulationData newResourceData = new PopulationData(0,0,  populationType);
+        //     populations.Add(newResourceData);
+        //     return newResourceData;
+        // }
         
         
         
@@ -92,43 +95,43 @@ namespace Data
             return GetOrCreateMatchingResourceType(GameCenter.instance.resourceOrganizer.GetResourceType(linkType));
         }
         
-        public PopulationData GetOrCreateMatchingPopulationLinkType(PopulationType.LinkPopulationType linkType)
-        {
-            return GetOrCreateMatchingPopulationType(GameCenter.instance.resourceOrganizer.GetPopulationType(linkType));
-        }
+        // public PopulationData GetOrCreateMatchingPopulationLinkType(PopulationType.LinkPopulationType linkType)
+        // {
+        //     return GetOrCreateMatchingPopulationType(GameCenter.instance.resourceOrganizer.GetPopulationType(linkType));
+        // }
 
         public List<ResourceData> GetMatchingResourceCategory(ResourceType.ResourceCategory category)
         {
             return resources.FindAll(e => e.type.resourceCategory == category);
         }
 
-        public String GetPopulationStringDisplay()
-        {
-            String resourceString = "";
-            foreach (PopulationData populationData in populations)
-            {
-                resourceString += populationData.type.populationName + " (" + populationData.activeAmount + ")" + populationData.amount + "";
-            }
-            
-            return resourceString;
-        }
+        // public String GetPopulationStringDisplay()
+        // {
+        //     String resourceString = "";
+        //     foreach (PopulationData populationData in populations)
+        //     {
+        //         resourceString += populationData.type.populationName + " (" + populationData.activeAmount + ")" + populationData.amount + "";
+        //     }
+        //     
+        //     return resourceString;
+        // }
         
-        public String GetPopulationRecruitAvailableStringDisplay()
-        {
-            //ResourceBundle playerMaxResourceAmounts = GameCenter.instance.playerMaxResourceAmounts;
-            ResourceBundle playerResourceBundle = GameCenter.instance.playerResources;
-            
-            String resourceString = "";
-            foreach (PopulationData populationData in populations)
-            {
-                var playerPop = playerResourceBundle.GetOrCreateMatchingPopulationType(populationData.type);
-              //  var maxPlayerPop = playerMaxResourceAmounts.GetOrCreateMatchingPopulationType(populationData.type);
-                if(populationData.amount > 0)
-                resourceString +=  playerPop.amount;
-            }
-            
-            return resourceString;
-        }
+        // public String GetPopulationRecruitAvailableStringDisplay()
+        // {
+        //     //ResourceBundle playerMaxResourceAmounts = GameCenter.instance.playerMaxResourceAmounts;
+        //     ResourceBundle playerResourceBundle = GameCenter.instance.playerResources;
+        //     
+        //     String resourceString = "";
+        //     foreach (PopulationData populationData in populations)
+        //     {
+        //         var playerPop = playerResourceBundle.GetOrCreateMatchingPopulationType(populationData.type);
+        //       //  var maxPlayerPop = playerMaxResourceAmounts.GetOrCreateMatchingPopulationType(populationData.type);
+        //         if(populationData.amount > 0)
+        //         resourceString +=  playerPop.amount;
+        //     }
+        //     
+        //     return resourceString;
+        // }
 
         public String GetResourceStringDisplay()
         {
@@ -146,12 +149,12 @@ namespace Data
 
             String resourceString = GetResourceStringDisplay();
 
-            String popCost = GetPopulationStringDisplay();
-            if (popCost.NullIfEmpty() != null)
-            {
-                resourceString += " ";
-                resourceString += popCost;
-            }
+           // String popCost = GetPopulationStringDisplay();
+            // if (popCost.NullIfEmpty() != null)
+            // {
+            //     resourceString += " ";
+            //     resourceString += popCost;
+            // }
 
             return resourceString;
         }
@@ -179,14 +182,14 @@ namespace Data
                 }*/
             }
 
-            foreach (var populationData in subtractResourceBundle.populations)
-            {
-                if (!CanSubtractPopulationData(populationData))
-                {
-                    Debug.Log("can't build: not enough population");
-                    return false;
-                }
-            }
+            // foreach (var populationData in subtractResourceBundle.populations)
+            // {
+            //     if (!CanSubtractPopulationData(populationData))
+            //     {
+            //         Debug.Log("can't build: not enough population");
+            //         return false;
+            //     }
+            // }
 
             Debug.Log("can build");
             return true;
@@ -222,45 +225,45 @@ namespace Data
             return false;
         }
 
-        public bool CanSubtractPopulationData(PopulationData subtractPopulationData)
-        {
-            if (isPlayersBufferResourceBundle) return true;
-            //test if this resource matches type and has proper amount to subtract 
-            /*if (this.amount >= subtractionAmount.amount && this.type == subtractionAmount.type)
-                return true;*/
-            PopulationData populationData = GetOrCreateMatchingPopulationType(subtractPopulationData.type);
-            // test if this resource matches type and has proper amount to subtract 
-
-            if (populationData.type != subtractPopulationData.type)
-            {
-                return false;
-            }
-
-         //   if (populationData.annualRecruitsAvailable >= subtractPopulationData.annualRecruitsAvailable)
-          //  {
-                if ((populationData.amount >= subtractPopulationData.amount
-                     && populationData.activeAmount >= subtractPopulationData.activeAmount)
-                    || populationData.type.amountCanBeNegative)
-                {
-                    if (isPlayersResourceBundle && populationData.type.checkForPlayerResourceMinLimit)
-                    {
-                        PopulationData playerMinResource =
-                            GameCenter.instance.playerMinResourceAmounts.GetOrCreateMatchingPopulationType(
-                                populationData.type);
-                        if (populationData.amount - subtractPopulationData.amount < playerMinResource.amount)
-                        {
-                            return true;
-                        }
-
-                        return false;
-                    }
-
-                    return true;
-                }
-         //   }
-
-            return false;
-        }
+        // public bool CanSubtractPopulationData(PopulationData subtractPopulationData)
+        // {
+        //     if (isPlayersBufferResourceBundle) return true;
+        //     //test if this resource matches type and has proper amount to subtract 
+        //     /*if (this.amount >= subtractionAmount.amount && this.type == subtractionAmount.type)
+        //         return true;*/
+        //     PopulationData populationData = GetOrCreateMatchingPopulationType(subtractPopulationData.type);
+        //     // test if this resource matches type and has proper amount to subtract 
+        //
+        //     if (populationData.type != subtractPopulationData.type)
+        //     {
+        //         return false;
+        //     }
+        //
+        //  //   if (populationData.annualRecruitsAvailable >= subtractPopulationData.annualRecruitsAvailable)
+        //   //  {
+        //         if ((populationData.amount >= subtractPopulationData.amount
+        //              && populationData.activeAmount >= subtractPopulationData.activeAmount)
+        //             || populationData.type.amountCanBeNegative)
+        //         {
+        //             if (isPlayersResourceBundle && populationData.type.checkForPlayerResourceMinLimit)
+        //             {
+        //                 PopulationData playerMinResource =
+        //                     GameCenter.instance.playerMinResourceAmounts.GetOrCreateMatchingPopulationType(
+        //                         populationData.type);
+        //                 if (populationData.amount - subtractPopulationData.amount < playerMinResource.amount)
+        //                 {
+        //                     return true;
+        //                 }
+        //
+        //                 return false;
+        //             }
+        //
+        //             return true;
+        //         }
+        //  //   }
+        //
+        //     return false;
+        // }
         
         
         public bool SubtractResourceBundle(ResourceBundle subtractResourceBundle)
@@ -275,14 +278,14 @@ namespace Data
                 }
             }
 
-            foreach (var population in subtractResourceBundle.populations)
-            {
-                if (!SubtractPopulationData(population))
-                {
-                    Debug.Log("Should call CanSubtractBundle to check purchase before");
-             //       return false;
-                }
-            }
+            // foreach (var population in subtractResourceBundle.populations)
+            // {
+            //     if (!SubtractPopulationData(population))
+            //     {
+            //         Debug.Log("Should call CanSubtractBundle to check purchase before");
+            //  //       return false;
+            //     }
+            // }
 
             return true;
         }
@@ -310,38 +313,38 @@ namespace Data
             return false;
         }
         
-        public bool SubtractPopulationData(PopulationData subtractPopulationData)
-        {
-            PopulationData populationData = GetOrCreateMatchingPopulationType(subtractPopulationData.type);
-            
-            if ((populationData.amount >= subtractPopulationData.amount 
-                 && populationData.activeAmount >= subtractPopulationData.activeAmount )
-               //  && populationData.annualRecruitsAvailable >= subtractPopulationData.annualRecruitsAvailable
-               //  && populationData.annualRecruitLimit >= subtractPopulationData.annualRecruitLimit) 
-                || isPlayersBufferResourceBundle)
-            {
-                if (isPlayersResourceBundle && populationData.type.checkForPlayerResourceMinLimit)
-                {
-                    PopulationData playerMinResource = GameCenter.instance.playerMinResourceAmounts.GetOrCreateMatchingPopulationType(populationData.type);
-                    if (populationData.amount - subtractPopulationData.amount >= playerMinResource.amount)
-                    {
-                        populationData.amount -= subtractPopulationData.amount;
-                        populationData.activeAmount -= subtractPopulationData.activeAmount;
-                        //populationData.annualRecruitsAvailable -= subtractPopulationData.annualRecruitsAvailable;
-                        return true;
-                    }
-                    Debug.Log("Should call CanSubtractResources to check purchase before player " + subtractPopulationData.type.populationName);
-                    return false;
-                }
-                populationData.amount -= subtractPopulationData.amount;
-                populationData.activeAmount -= subtractPopulationData.activeAmount;
-                //populationData.annualRecruitsAvailable -= subtractPopulationData.annualRecruitsAvailable;
-               // populationData.annualRecruitLimit -= subtractPopulationData.annualRecruitLimit;
-                return true;
-            }
-            Debug.Log("Should call CanSubtractResources to check purchase before " + subtractPopulationData.type.populationName);
-            return false;
-        }
+        // public bool SubtractPopulationData(PopulationData subtractPopulationData)
+        // {
+        //     PopulationData populationData = GetOrCreateMatchingPopulationType(subtractPopulationData.type);
+        //     
+        //     if ((populationData.amount >= subtractPopulationData.amount 
+        //          && populationData.activeAmount >= subtractPopulationData.activeAmount )
+        //        //  && populationData.annualRecruitsAvailable >= subtractPopulationData.annualRecruitsAvailable
+        //        //  && populationData.annualRecruitLimit >= subtractPopulationData.annualRecruitLimit) 
+        //         || isPlayersBufferResourceBundle)
+        //     {
+        //         if (isPlayersResourceBundle && populationData.type.checkForPlayerResourceMinLimit)
+        //         {
+        //             PopulationData playerMinResource = GameCenter.instance.playerMinResourceAmounts.GetOrCreateMatchingPopulationType(populationData.type);
+        //             if (populationData.amount - subtractPopulationData.amount >= playerMinResource.amount)
+        //             {
+        //                 populationData.amount -= subtractPopulationData.amount;
+        //                 populationData.activeAmount -= subtractPopulationData.activeAmount;
+        //                 //populationData.annualRecruitsAvailable -= subtractPopulationData.annualRecruitsAvailable;
+        //                 return true;
+        //             }
+        //             Debug.Log("Should call CanSubtractResources to check purchase before player " + subtractPopulationData.type.populationName);
+        //             return false;
+        //         }
+        //         populationData.amount -= subtractPopulationData.amount;
+        //         populationData.activeAmount -= subtractPopulationData.activeAmount;
+        //         //populationData.annualRecruitsAvailable -= subtractPopulationData.annualRecruitsAvailable;
+        //        // populationData.annualRecruitLimit -= subtractPopulationData.annualRecruitLimit;
+        //         return true;
+        //     }
+        //     Debug.Log("Should call CanSubtractResources to check purchase before " + subtractPopulationData.type.populationName);
+        //     return false;
+        // }
 
         
         public bool CanAddResourceBundle(ResourceBundle addResourceBundle, bool canPartiallyAdd = true)
@@ -356,13 +359,13 @@ namespace Data
 
             }
 
-            foreach (var addPopulationData in addResourceBundle.populations)
-            {
-                if (!CanAddPopulationData(addPopulationData, canPartiallyAdd))
-                {
-                    return false;
-                }
-            }
+            // foreach (var addPopulationData in addResourceBundle.populations)
+            // {
+            //     if (!CanAddPopulationData(addPopulationData, canPartiallyAdd))
+            //     {
+            //         return false;
+            //     }
+            // }
 
             return true;
         }
@@ -375,11 +378,11 @@ namespace Data
                 AddResourceData(addResourceData);
 
             }
-
-            foreach (var addPopulationData in addResourceBundle.populations)
-            {
-                AddPopulationData(addPopulationData);
-            }
+            //
+            // foreach (var addPopulationData in addResourceBundle.populations)
+            // {
+            //     AddPopulationData(addPopulationData);
+            // }
         }
 
         public bool CanAddResourceData(ResourceData addResourceData, bool canPartiallyAdd = true)
@@ -405,27 +408,27 @@ namespace Data
 
             return true;
         }
-        public bool CanAddPopulationData(PopulationData addPopulationData, bool canPartiallyAdd = true)
-        {
-            PopulationData populationData = GetOrCreateMatchingPopulationType(addPopulationData.type);
-            //populationData.AddResource(addPopulationData);
-            int newPopAmount = populationData.amount + addPopulationData.amount;
-            // check and reduce to max limit if resource 
-            if (isPlayersResourceBundle)
-            {
-                
-                if (populationData.type.checkForPlayerResourceMaxLimit && !canPartiallyAdd)
-                {
-                    PopulationData playerMaxResource = GameCenter.instance.playerMaxResourceAmounts.GetOrCreateMatchingPopulationType(populationData.type);
-                    if (newPopAmount > playerMaxResource.amount)
-                    {
-                        return false;
-                    }
-                }
-            }
-
-            return true;
-        }
+        // public bool CanAddPopulationData(PopulationData addPopulationData, bool canPartiallyAdd = true)
+        // {
+        //     PopulationData populationData = GetOrCreateMatchingPopulationType(addPopulationData.type);
+        //     //populationData.AddResource(addPopulationData);
+        //     int newPopAmount = populationData.amount + addPopulationData.amount;
+        //     // check and reduce to max limit if resource 
+        //     if (isPlayersResourceBundle)
+        //     {
+        //         
+        //         if (populationData.type.checkForPlayerResourceMaxLimit && !canPartiallyAdd)
+        //         {
+        //             PopulationData playerMaxResource = GameCenter.instance.playerMaxResourceAmounts.GetOrCreateMatchingPopulationType(populationData.type);
+        //             if (newPopAmount > playerMaxResource.amount)
+        //             {
+        //                 return false;
+        //             }
+        //         }
+        //     }
+        //
+        //     return true;
+        // }
         public void AddResourceData(ResourceData addResourceData, bool canPartiallyAdd = true)
         {
             ResourceData resourceData = GetOrCreateMatchingResourceType(addResourceData.type);
@@ -447,26 +450,26 @@ namespace Data
                 }
             }
         }
-        public void AddPopulationData(PopulationData addPopulationData, bool canPartiallyAdd = true)
-        {
-            PopulationData populationData = GetOrCreateMatchingPopulationType(addPopulationData.type);
-            populationData.AddResource(addPopulationData);
-
-            // check and reduce to max limit if resource 
-            if (isPlayersResourceBundle)
-            {
-                
-                if (populationData.type.checkForPlayerResourceMaxLimit)
-                {
-                    PopulationData playerMaxResource = GameCenter.instance.playerMaxResourceAmounts.GetOrCreateMatchingPopulationType(populationData.type);
-                    if (populationData.amount > playerMaxResource.amount)
-                    {
-                        populationData.amount = playerMaxResource.amount;
-                    }
-                }
-            }
-        }
-        
+        // public void AddPopulationData(PopulationData addPopulationData, bool canPartiallyAdd = true)
+        // {
+        //     PopulationData populationData = GetOrCreateMatchingPopulationType(addPopulationData.type);
+        //     populationData.AddResource(addPopulationData);
+        //
+        //     // check and reduce to max limit if resource 
+        //     if (isPlayersResourceBundle)
+        //     {
+        //         
+        //         if (populationData.type.checkForPlayerResourceMaxLimit)
+        //         {
+        //             PopulationData playerMaxResource = GameCenter.instance.playerMaxResourceAmounts.GetOrCreateMatchingPopulationType(populationData.type);
+        //             if (populationData.amount > playerMaxResource.amount)
+        //             {
+        //                 populationData.amount = playerMaxResource.amount;
+        //             }
+        //         }
+        //     }
+        // }
+        //
         
         //
         //
@@ -482,13 +485,13 @@ namespace Data
                 }
             }
             
-            foreach (var resourceData in GameCenter.instance.playerResources.populations)
-            {
-                foreach (var trigger in resourceData.type.playerEndOfTurnTriggers)
-                {
-                    trigger.Trigger((new StatusIdentifier()));
-                }
-            }
+            // foreach (var resourceData in GameCenter.instance.playerResources.populations)
+            // {
+            //     foreach (var trigger in resourceData.type.playerEndOfTurnTriggers)
+            //     {
+            //         trigger.Trigger((new StatusIdentifier()));
+            //     }
+            // }
         }
     }
 }

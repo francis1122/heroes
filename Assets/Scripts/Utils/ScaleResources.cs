@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Data;
+using GameObjects;
 using UnityEngine;
 
 namespace Utils
@@ -36,7 +37,11 @@ namespace Utils
                 // return popsTotal;
             }else if (scaleWithBuildingOwned != null)
             {
-                
+                BuildingObject scaleBuilding = GameCenter.instance.playerBuildings.Find((buildingObject) =>
+                {
+                    return buildingObject.buildingData.buildingName == scaleWithBuildingOwned.buildingName;
+                });
+                return Math.Max(1, scaleBuilding.buildingsOwned + 1);
             }else if (scaleByOwnRecentUsage)
             {
                 

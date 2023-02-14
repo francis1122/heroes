@@ -48,7 +48,7 @@ public class GameCenter : MonoBehaviour {
     public List<ResourceStatusEffects> endOfTurnStatusEffectsList = new();
     
     [SerializeField]
-    public int currentTurn = 1;
+    public int currentTurn = 0;
 
     public int seasonsInAYear = 4;
     
@@ -129,45 +129,47 @@ public class GameCenter : MonoBehaviour {
         EventManager.TriggerEvent(EventManager.RESOURCES_CHANGED);
     }
 //     
-//     private void ManagePopulation()
-//     {
-//         
-//         /*
-//         ResourceData playerPopulation = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Villager);
-//         ResourceData soldier = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Soldier);
-//         ResourceData playerFood = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Food);
-//         */
+     private void ManagePopulation()
+     {
+         
+         /*
+         ResourceData playerPopulation = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Villager);
+         ResourceData soldier = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Soldier);
+         ResourceData playerFood = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Food);
+         */
+
+         int totalPopulation =
+             GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(
+                 ResourceType.LinkType.MaxPopulation).amount;
+         GameCenter.instance.playerBufferResources.AddResourceData(resourceOrganizer.CreateResourceData(totalPopulation, ResourceType.LinkType.Gold));
+
+         //ResourceData playerFood = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Food);
+
+
+
+
+//         // var totalPopulation = soldier.amount + playerPopulation.amount;
+//          if (playerFood.amount < totalPopulation)
+//          {
+//              /*
+//              double playerAuthF = Math.Abs(playerAuthority.amount);
 //
-//         int totalPopulation = GameCenter.instance.playerResources.populations
-//             .Sum(e => e.amount);
-//         
-//         ResourceData playerFood = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Food);
-//
-//         
-//
-//         
-//        // var totalPopulation = soldier.amount + playerPopulation.amount;
-//         if (playerFood.amount < totalPopulation)
-//         {
-//             /*
-//             double playerAuthF = Math.Abs(playerAuthority.amount);
-//
-//             int loss = (int)Math.Ceiling((playerAuthF / 10.0f));
-//             
-//             
-//             
-//             GameCenter.instance.playerResources.SubtractResourceData(new ResourceData( loss, stabilityType));
-//             //ResourceData playerStabilityType = GameCenter.instance.playerResources.GetOrCreateMatchingResourceType(stabilityType);
-//             */
-//                 
-//         }
-//         else
-//         {
-//             GameCenter.instance.playerBufferResources.SubtractResourceData(resourceOrganizer.CreateResourceData(totalPopulation, ResourceType.LinkType.Food));
-//             //GameCenter.instance.playerResources.AddResourceData(resourceOrganizer.CreateResourceData(totalPopulation, ResourceType.LinkType.Gold));
-//         }
-//
-//     }
+//              int loss = (int)Math.Ceiling((playerAuthF / 10.0f));
+//              
+//              
+//              
+//              GameCenter.instance.playerResources.SubtractResourceData(new ResourceData( loss, stabilityType));
+//              //ResourceData playerStabilityType = GameCenter.instance.playerResources.GetOrCreateMatchingResourceType(stabilityType);
+//              */
+//                  
+//          }
+//          else
+//          {
+//              GameCenter.instance.playerBufferResources.SubtractResourceData(resourceOrganizer.CreateResourceData(totalPopulation, ResourceType.LinkType.Food));
+//              //GameCenter.instance.playerResources.AddResourceData(resourceOrganizer.CreateResourceData(totalPopulation, ResourceType.LinkType.Gold));
+//          }
+
+     }
 
     // private void PopulationGrowth()
     // {
@@ -215,7 +217,7 @@ public class GameCenter : MonoBehaviour {
         //
         playerResources.EndOfTurnTriggers();
 
-        //ManagePopulation();
+        ManagePopulation();
         
         //
         // Building end of turn and year triggers
@@ -230,7 +232,7 @@ public class GameCenter : MonoBehaviour {
                     trigger.Trigger(new StatusIdentifier(new List<String> { buildingObject.buildingData.uniqueName }));
                 }
 
-                if (currentTurn % seasonsInAYear == 0)
+                if ((currentTurn + 1) % seasonsInAYear == 0)
                 {
                     foreach (var trigger in buildingObject.buildingData.onYearEndTrigger)
                     {
@@ -283,7 +285,7 @@ public class GameCenter : MonoBehaviour {
         playerResources.AddResourceBundle(playerBufferResources);
         playerBufferResources.ClearResources();
 
-        if (currentTurn % seasonsInAYear == 0)
+        if ((currentTurn + 1) % seasonsInAYear == 0)
         {
             //PopulationGrowth();
             EventManager.TriggerEvent(EventManager.EVENT_END_YEAR);

@@ -19,20 +19,26 @@ MonoBehaviour:
   costRequirements:
     resources:
     - amount: 5
-      type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
-    - amount: 5
       type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
-    populations: []
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
+  costScaleResources:
+    scaleWithLinkType: 0
+    scaleWithPopulationLinkType: 0
+    scaleByCurrentPopulation: 0
+    scaleWithBuildingOwned: {fileID: 0}
+    scaleByOwnRecentUsage: 0
+    ignoreAuthority: 1
   category: 1
   buildingRequirement: []
+  sellRequiredBuildings: 0
   destroyRequiredBuildings: 0
   removeFromPurchasableOnPurchase: 0
   repeatablePurchase: 1
   addToOwnedBuildings: 0
   buildingAdditionsOnPurchase: []
   priority: 101
+  populationGain: {fileID: 0}
   onPurchaseTrigger:
   - {fileID: 11400000, guid: 1541b724c6fcfd149a9b9526b9dc3b8a, type: 2}
   onTurnEndTrigger: []

@@ -18,10 +18,9 @@ MonoBehaviour:
     resources:
     - amount: 1
       type: {fileID: 11400000, guid: bc91da6924ab7454fb88eb0b49da03c7, type: 2}
-    populations: []
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
-  scaleWithPlayerAmount: 1
+  scaleWithPlayerAmount: 0
   endOfTurnScaleResources:
     scaleWithLinkType: 0
     scaleWithPopulationLinkType: 105

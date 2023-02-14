@@ -13,19 +13,18 @@ MonoBehaviour:
   m_Name: MilitaryGroundsLimitRaiserGenerateResources
   m_EditorClassIdentifier: 
   isEndOfTurnTrigger: 0
+  checkIfTriggerCanHappen: 0
   resourceBundle:
-    resources: []
-    populations:
-    - amount: 0
-      activeAmount: 0
-      annualRecruitLimit: 1
-      annualRecruitsAvailable: 1
-      type: {fileID: 11400000, guid: 5f7e66f7ad304e8459384ed9d8af010d, type: 2}
+    resources:
+    - amount: 1
+      type: {fileID: 11400000, guid: 7f4262ee722934d82ac80ac6c7e33378, type: 2}
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
   scaleWithPlayerAmount: 0
   endOfTurnScaleResources:
     scaleWithLinkType: 0
     scaleWithPopulationLinkType: 0
+    scaleByCurrentPopulation: 0
     scaleWithBuildingOwned: {fileID: 0}
     scaleByOwnRecentUsage: 0
+    ignoreAuthority: 1

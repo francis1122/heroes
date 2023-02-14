@@ -26,21 +26,27 @@ MonoBehaviour:
       type: {fileID: 11400000, guid: bc91da6924ab7454fb88eb0b49da03c7, type: 2}
     - amount: 100
       type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
-    populations: []
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
+  costScaleResources:
+    scaleWithLinkType: 0
+    scaleWithPopulationLinkType: 0
+    scaleByCurrentPopulation: 0
+    scaleWithBuildingOwned: {fileID: 0}
+    scaleByOwnRecentUsage: 0
+    ignoreAuthority: 1
   category: 0
   buildingRequirement: []
+  sellRequiredBuildings: 0
   destroyRequiredBuildings: 0
   removeFromPurchasableOnPurchase: 1
   repeatablePurchase: 0
   addToOwnedBuildings: 1
   buildingAdditionsOnPurchase:
-  - {fileID: 11400000, guid: 51fccfc073fbdd44ea2ade42bbb469ff, type: 2}
   - {fileID: 11400000, guid: f46b7aa3c2ffaf44a8420fc0abb64291, type: 2}
   - {fileID: 11400000, guid: b7676dd979e187a45a8d239a54ca5312, type: 2}
   priority: 3
-  onPurchaseTrigger:
-  - {fileID: 11400000, guid: 1d4bd1851f7113c4db6705d60c5e3378, type: 2}
+  populationGain: {fileID: 0}
+  onPurchaseTrigger: []
   onTurnEndTrigger: []
   onYearEndTrigger: []

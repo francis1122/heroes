@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a691e3dc3508458ebdf3fd0ad5ba88f4, type: 3}
   m_Name: AdventureTrigger
   m_EditorClassIdentifier: 
+  isEndOfTurnTrigger: 0
+  checkIfTriggerCanHappen: 0
   Triggers:
   - weight: 3
     triggers: {fileID: 11400000, guid: 9d8136d23b1dec640a5a0da06bb47a1f, type: 2}
-  - weight: 1
-    triggers: {fileID: 11400000, guid: cabf7f08bf7207b44b7a070bde097c72, type: 2}
-  - weight: 1
-    triggers: {fileID: 11400000, guid: 2adac2dee955d17429ece6ed9028baf0, type: 2}

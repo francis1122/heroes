@@ -46,7 +46,7 @@ public class UIBuildingCardController : MonoBehaviour
     {
         // set values
         //amount.GetComponent<TextMeshProUGUI>().text = data.type.resourceName + " " + data.amount;
-        buildingName.GetComponent<TextMeshProUGUI>().text = buildingObject.buildingData.name;
+        buildingName.GetComponent<TextMeshProUGUI>().text = buildingObject.buildingData.buildingName;
         buildingDescription.GetComponent<TextMeshProUGUI>().text = buildingObject.buildingData.buildingDetails;
         buildingAuthCost.GetComponent<TextMeshProUGUI>().text = buildingObject.buildingData.ScaledResourceBundle()
             .GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Authority).amount.ToString();

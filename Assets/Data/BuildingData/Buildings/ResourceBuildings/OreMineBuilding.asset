@@ -30,13 +30,11 @@ MonoBehaviour:
     scaleWithLinkType: 0
     scaleWithPopulationLinkType: 0
     scaleByCurrentPopulation: 0
-    scaleWithBuildingOwned: {fileID: 0}
+    scaleWithBuildingOwned: {fileID: 11400000}
     scaleByOwnRecentUsage: 0
     ignoreAuthority: 1
   category: 0
-  buildingRequirement:
-  - amount: 0
-    buildingData: {fileID: 0}
+  buildingRequirement: []
   sellRequiredBuildings: 0
   destroyRequiredBuildings: 0
   removeFromPurchasableOnPurchase: 0
@@ -45,7 +43,7 @@ MonoBehaviour:
   buildingAdditionsOnPurchase: []
   priority: 40
   populationGain: {fileID: 0}
-  onPurchaseTrigger:
-  - {fileID: 11400000, guid: 9327783bb68620d4a9a976e0b6ecbe4f, type: 2}
-  onTurnEndTrigger: []
+  onPurchaseTrigger: []
+  onTurnEndTrigger:
+  - {fileID: 11400000, guid: fa0829ea2ee976344bfd49fdc3a052e8, type: 2}
   onYearEndTrigger: []

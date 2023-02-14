@@ -29,7 +29,8 @@ namespace Data
             
             // Empire
             Stability = 400,
-            MaxPopulation = 401
+            MaxPopulation = 401,
+            MilitaryPower = 402
         }
         
         public enum ResourceCategory

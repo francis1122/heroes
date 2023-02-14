@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingName: Tavern
   uniqueName: building_tavern
-  buildingDetails: Go on adventures to far off lands
+  buildingDetails: Go on adventures and gain access to new lands
   buildingThumbnail: 
   costRequirements:
     resources:
@@ -26,13 +26,20 @@ MonoBehaviour:
       type: {fileID: 11400000, guid: a8d2874b560b46344b232f8891c70426, type: 2}
     - amount: 10
       type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
-    populations: []
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
+  costScaleResources:
+    scaleWithLinkType: 0
+    scaleWithPopulationLinkType: 0
+    scaleByCurrentPopulation: 0
+    scaleWithBuildingOwned: {fileID: 0}
+    scaleByOwnRecentUsage: 0
+    ignoreAuthority: 1
   category: 0
   buildingRequirement:
   - amount: 0
     buildingData: {fileID: 0}
+  sellRequiredBuildings: 0
   destroyRequiredBuildings: 0
   removeFromPurchasableOnPurchase: 1
   repeatablePurchase: 0
@@ -40,6 +47,7 @@ MonoBehaviour:
   buildingAdditionsOnPurchase:
   - {fileID: 11400000, guid: e9ac03f2a2e17ca4d896ca0a76034462, type: 2}
   priority: 10
+  populationGain: {fileID: 0}
   onPurchaseTrigger: []
   onTurnEndTrigger: []
   onYearEndTrigger: []

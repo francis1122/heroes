@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: ProspectTrigger
   m_EditorClassIdentifier: 
   isEndOfTurnTrigger: 0
+  checkIfTriggerCanHappen: 0
   Triggers:
-  - weight: 1
-    triggers: {fileID: 11400000, guid: edf3ce02380392a4e91792b333952ffc, type: 2}
-  - weight: 1
-    triggers: {fileID: 11400000, guid: 1590d1bcdae1bde46a0f74a6d8efda60, type: 2}
+  - weight: 0
+    triggers: {fileID: 11400000, guid: 9d8136d23b1dec640a5a0da06bb47a1f, type: 2}

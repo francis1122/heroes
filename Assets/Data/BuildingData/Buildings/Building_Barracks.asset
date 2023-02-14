@@ -20,25 +20,36 @@ MonoBehaviour:
     resources:
     - amount: 10
       type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
-    - amount: 50
+    - amount: 30
       type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
     - amount: 5
-      type: {fileID: 11400000, guid: d825b5e4447b45443b2d0c2e337904de, type: 2}
-    - amount: 20
+      type: {fileID: 11400000, guid: bc91da6924ab7454fb88eb0b49da03c7, type: 2}
+    - amount: 10
       type: {fileID: 11400000, guid: a8d2874b560b46344b232f8891c70426, type: 2}
-    populations: []
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
+  costScaleResources:
+    scaleWithLinkType: 0
+    scaleWithPopulationLinkType: 0
+    scaleByCurrentPopulation: 0
+    scaleWithBuildingOwned: {fileID: 11400000}
+    scaleByOwnRecentUsage: 0
+    ignoreAuthority: 1
   category: 0
   buildingRequirement: []
+  sellRequiredBuildings: 0
   destroyRequiredBuildings: 0
   removeFromPurchasableOnPurchase: 1
-  repeatablePurchase: 0
+  repeatablePurchase: 1
   addToOwnedBuildings: 1
   buildingAdditionsOnPurchase:
   - {fileID: 11400000, guid: 71047945b177b4f45a272d300c70637e, type: 2}
   priority: 103
+  populationGain: {fileID: 0}
   onPurchaseTrigger:
-  - {fileID: 11400000, guid: 7f1fc6ea9c64ad64382e37d5ff13235c, type: 2}
+  - {fileID: 11400000, guid: 00df8fdc62b554c96ba60484b9abe401, type: 2}
+  - {fileID: 11400000, guid: 00df8fdc62b554c96ba60484b9abe401, type: 2}
   onTurnEndTrigger: []
-  onYearEndTrigger: []
+  onYearEndTrigger:
+  - {fileID: 11400000, guid: d5e344ea747349f43bca3440dc4f92cc, type: 2}
+  - {fileID: 11400000, guid: d5e344ea747349f43bca3440dc4f92cc, type: 2}

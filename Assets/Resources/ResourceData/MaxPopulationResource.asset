@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MaxPopulationResource
   m_EditorClassIdentifier: 
   type: 401
-  resourceName: Population Limit
+  resourceName: Population
   resourceShortHand: Max Pop
   tempThumbnailResource: 
   UIPriority: 0

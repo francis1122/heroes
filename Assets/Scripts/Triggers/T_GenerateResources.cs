@@ -27,7 +27,7 @@ namespace Triggers
 
             if (isEndOfTurnTrigger)
             {
-                //GameCenter.instance.ChangePlayerResourcesEndOfTurn(bundleToUse, statusIdentifier);
+                GameCenter.instance.ChangePlayerResourcesEndOfTurn(bundleToUse, statusIdentifier);
             }
             else
             {

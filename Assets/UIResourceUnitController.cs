@@ -36,4 +36,12 @@ public class UIResourceUnitController : MonoBehaviour
         //data.type.resourceName
     }
     
+    public void UpdateUIWithResourceLimit(ResourceData data, ResourceData limit, ResourceData buffer)
+    {
+        amount.GetComponent<TextMeshProUGUI>().text = data.type.resourceName + " " + data.amount + "/" + limit.amount;
+        futureGain.GetComponent<TextMeshProUGUI>().text = buffer.amount + "";
+        //data.amount
+        //data.type.resourceName
+    }
+    
 }

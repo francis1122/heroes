@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingName: Militia Training Grounds
   uniqueName: building_traininggrounds
-  buildingDetails: generate 3 soldiers a year
+  buildingDetails: Increases army max by 1 and generates 1 military power at end
+    of year
   buildingThumbnail: 
   costRequirements:
     resources:
@@ -26,11 +27,18 @@ MonoBehaviour:
       type: {fileID: 11400000, guid: bc91da6924ab7454fb88eb0b49da03c7, type: 2}
     - amount: 10
       type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
-    populations: []
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
+  costScaleResources:
+    scaleWithLinkType: 0
+    scaleWithPopulationLinkType: 0
+    scaleByCurrentPopulation: 0
+    scaleWithBuildingOwned: {fileID: 0}
+    scaleByOwnRecentUsage: 0
+    ignoreAuthority: 1
   category: 0
   buildingRequirement: []
+  sellRequiredBuildings: 0
   destroyRequiredBuildings: 0
   removeFromPurchasableOnPurchase: 1
   repeatablePurchase: 0
@@ -39,7 +47,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1e14707abbcfc8343bcfe94d4327bd88, type: 2}
   - {fileID: 11400000, guid: fcc874cb2c7d3d7428c52b0d06fed855, type: 2}
   priority: 10
+  populationGain: {fileID: 0}
   onPurchaseTrigger:
-  - {fileID: 11400000, guid: 6db635b3852cff547b0353cc5fae188b, type: 2}
+  - {fileID: 11400000, guid: 00df8fdc62b554c96ba60484b9abe401, type: 2}
   onTurnEndTrigger: []
-  onYearEndTrigger: []
+  onYearEndTrigger:
+  - {fileID: 11400000, guid: d5e344ea747349f43bca3440dc4f92cc, type: 2}

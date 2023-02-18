@@ -12,12 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9710acaf6ae64d249fee5fd4ec0dff99, type: 3}
   m_Name: Event_DefendTheCity
   m_EditorClassIdentifier: 
-  buildingName: 
-  uniqueName: 
-  buildingDetails: 
+  buildingName: Defend The City
+  uniqueName: defend_the_city
+  buildingDetails: defend the city or lose the game
   buildingThumbnail: 
   costRequirements:
-    resources: []
+    resources:
+    - amount: 2
+      type: {fileID: 11400000, guid: 0e98776f1b4bc994eb8477ca8ae4d8c8, type: 2}
+    - amount: 5
+      type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
   costScaleResources:
@@ -27,13 +31,13 @@ MonoBehaviour:
     scaleWithBuildingOwned: {fileID: 0}
     scaleByOwnRecentUsage: 0
     ignoreAuthority: 1
-  category: 0
+  category: 3
   buildingRequirement: []
   sellRequiredBuildings: 0
   destroyRequiredBuildings: 0
-  removeFromPurchasableOnPurchase: 1
+  destroyOnPurchase: 1
   repeatablePurchase: 0
-  addToOwnedBuildings: 1
+  addToOwnedBuildings: 0
   buildingAdditionsOnPurchase: []
   priority: 1
   populationGain: {fileID: 0}
@@ -41,4 +45,5 @@ MonoBehaviour:
   onTurnEndTrigger: []
   onYearEndTrigger: []
   eventLifeSpan: 4
-  onExpiredEvent: []
+  onExpiredEvent:
+  - {fileID: 11400000, guid: dbc2d6fe554765745873e28423a2e05a, type: 2}

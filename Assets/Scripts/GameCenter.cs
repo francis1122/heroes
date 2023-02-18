@@ -1,11 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Data;
 using GameObjects;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using Utils;
 
@@ -21,8 +18,9 @@ public class GameCenter : MonoBehaviour {
    // public GameObject buddyText;
 
     public static GameCenter instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
-    ////
+   
     
+    public GameEventManager gameEventManager;
     
     //public ObjectFactory objectFactory;
 
@@ -80,6 +78,7 @@ public class GameCenter : MonoBehaviour {
     //Initializes the game for each level.
     void InitGame()
     {
+        gameEventManager = GetComponent<GameEventManager>();
         resourceOrganizer = new ResourceOrganizer(Resources.LoadAll<ResourceType>("ResourceData"),
             Resources.LoadAll<PopulationType>("ResourceData/Population"));
         EventManager.StartListening(EventManager.BUILDING_CHANGED, RefreshEndOfTurnBuffer );
@@ -286,7 +285,7 @@ public class GameCenter : MonoBehaviour {
         
         
         // clear buildings time purchased Stat
-        for(int i = playerBuildings.Count-1; i <= 0; i-- )
+        for(int i = playerBuildings.Count-1; i >= 0; i-- )
         {
             var buildingObject = playerBuildings[i];
             buildingObject.timesPurchasedThisTurn = 0;
@@ -324,6 +323,10 @@ public class GameCenter : MonoBehaviour {
         }
         
         currentTurn += 1;
+        
+        
+        //Start of New Turn
+        gameEventManager.OnTurnStart(currentTurn, (currentTurn) % seasonsInAYear == 0);
         // recalculate buffer
         EventManager.TriggerEvent(EventManager.EVENT_END_TURN);
 

@@ -9,12 +9,25 @@ using UnityEngine.UIElements;
 public class UIBuidingPanelController : MonoBehaviour
 {
     
+    public Stack<GameObject> activeBuildingBoxes = new Stack<GameObject>();
+    
+    public Stack<GameObject> poolBuildingBoxes = new Stack<GameObject>();
+
+    
     [SerializeField] GameObject buildingTemplate;
     public BuildingData.BuildingCategory category = BuildingData.BuildingCategory.Building;
     
     // Start is called before the first frame update
     void Start()
     {
+        
+        for (int i = 0; i < 50; i++)
+        {
+            GameObject newBuildingCard = Instantiate(buildingTemplate, this.transform);
+            newBuildingCard.SetActive(false);
+            poolBuildingBoxes.Push(newBuildingCard);
+        }
+        
         UpdateUI();
         EventManager.StartListening(EventManager.EVENT_END_TURN, UpdateUI );
         EventManager.StartListening(EventManager.RESOURCES_CHANGED, UpdateUI );
@@ -24,43 +37,31 @@ public class UIBuidingPanelController : MonoBehaviour
 
     public void UpdateUI()
     {
-        foreach (Transform child in transform)
+        
+        // remove all active
+        while (activeBuildingBoxes.Count > 0)
         {
-            Destroy(child.gameObject);
+            
+            var activeBuilding = activeBuildingBoxes.Pop();
+            activeBuilding.SetActive(false);
+            activeBuilding.transform.parent = null;
+            //test.transform.parent = this.transform;
+            poolBuildingBoxes.Push(activeBuilding);
         }
-        
-        
+
+
         List<BuildingObject> buildings = GameCenter.instance.playerBuildings;   
         List<BuildingObject> onlyCategory = buildings.FindAll(e => e.buildingData.category == category);
         onlyCategory.Sort((a,b) => a.buildingData.priority.CompareTo(b.buildingData.priority) );
-        GroupBox currentGroup = null;
-        int count = 0;
+
         foreach (BuildingObject buildingObject in onlyCategory)
         {
-            GameObject newBuildingCard = Instantiate(buildingTemplate, this.transform);
-            //Vector3 newPos = newBuildingCard.transform.localPosition;
-            // newPos.x = count%4 * 350;
-            // newPos.y = count/4 * -350;
-            // newBuildingCard.transform.localPosition = newPos;
-            count++;
-            if (count % 4 == 0)
-            {
-                
-                // TemplateContainer buildingGroup = buildingGroupTemplate.Instantiate();
-                // currentGroup = buildingGroup.Q<GroupBox>("building-container-group");
-                // buildingPanel.Add(currentGroup);
-                // buildingGroups.Add(currentGroup);
-            }
-            //GroupBox buildingBox = poolBuildingBoxes.Pop();
-            //activeBuildingBoxes.Push(buildingBox);
-                //buildingTemplate.Instantiate();
-                
-            // clear values
+            GameObject newBuildingCard = poolBuildingBoxes.Pop();
+            activeBuildingBoxes.Push(newBuildingCard);
+            newBuildingCard.SetActive(true);
+            newBuildingCard.transform.parent = this.transform;
             
-            
-            
-            // set values
-            
+
             newBuildingCard.GetComponent<UIBuildingCardController>().UpdateUIWithBuilding(buildingObject);
             
             //

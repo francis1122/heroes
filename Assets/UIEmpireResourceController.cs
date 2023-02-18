@@ -7,9 +7,20 @@ public class UIEmpireResourceController : MonoBehaviour
 {
     [SerializeField] GameObject resourceTemplate;
 
+    public Stack<GameObject> activeResourceBoxes = new Stack<GameObject>();
+    public Stack<GameObject> poolResourceBoxes = new Stack<GameObject>();
+    
     // Start is called before the first frame update
     void Start()
     {
+        
+        for (int i = 0; i < 30; i++)
+        {
+            GameObject newResourceCard = Instantiate(resourceTemplate, this.transform);
+            newResourceCard.SetActive(false);
+            poolResourceBoxes.Push(newResourceCard);
+        }
+        
         UpdateUI();
         EventManager.StartListening(EventManager.EVENT_END_TURN, UpdateUI);
         EventManager.StartListening(EventManager.RESOURCES_CHANGED, UpdateUI);
@@ -18,9 +29,14 @@ public class UIEmpireResourceController : MonoBehaviour
 
     public void UpdateUI()
     {
-        foreach (Transform child in transform)
+        while (activeResourceBoxes.Count > 0)
         {
-            Destroy(child.gameObject);
+            
+            var activeBuilding = activeResourceBoxes.Pop();
+            activeBuilding.SetActive(false);
+            activeBuilding.transform.parent = null;
+            //test.transform.parent = this.transform;
+            poolResourceBoxes.Push(activeBuilding);
         }
 
         var position = 0;
@@ -37,29 +53,7 @@ public class UIEmpireResourceController : MonoBehaviour
         CreateMilitaryUI();
         CreateStabilityUI();
         CreatePopulationUI();
-
-
-        // Vector3 newPos = newResource.transform.localPosition;
-        // newPos.x = position * 150;
-        //newResource.transform.localPosition = newPos;
-        //position++;
-
-
-
-        // TemplateContainer buildingBox = resourceTemplate.Instantiate();
-        //
-        // //buildingBox.Q<Label>("resource-thumbnail")
-        // buildingBox.Q<Label>("resource-owned").text = resource.type.resourceName + ": " + resource.amount.ToString();
-        // ResourceData bufferResourceData =
-        //     GameCenter.instance.playerBufferResources.GetOrCreateMatchingResourceType(resource.type);
-        //
-        // buildingBox.Q<Label>("resource-gain").text = bufferResourceData.amount.ToString();
-        // if (resource.type.UITexture != null)
-        // {
-        //     buildingBox.Q<UIToolKitImage>("resource-thumbnail").image = resource.type.UITexture;
-        // }
-        // resourceContainer.Add(buildingBox.Q<GroupBox>("resource-unit"));
-        // }
+        
     }
 
     // Update is called once per frame
@@ -73,7 +67,12 @@ public class UIEmpireResourceController : MonoBehaviour
             
         ResourceData bufferResourceData =
             GameCenter.instance.playerBufferResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Authority);
-        GameObject newResource = Instantiate(resourceTemplate, this.transform);
+        
+        GameObject newResource = poolResourceBoxes.Pop();
+        activeResourceBoxes.Push(newResource);
+        newResource.SetActive(true);
+        newResource.transform.parent = transform;
+        
         newResource.GetComponent<UIResourceUnitController>().UpdateUIWithResourceLimit(resourceData, maxResource, bufferResourceData);
 
     }
@@ -86,7 +85,10 @@ void CreateMilitaryUI()
             
         ResourceData bufferResourceData =
             GameCenter.instance.playerBufferResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.MilitaryPower);
-        GameObject newResource = Instantiate(resourceTemplate, this.transform);
+        GameObject newResource = poolResourceBoxes.Pop();
+        activeResourceBoxes.Push(newResource);
+        newResource.SetActive(true);
+        newResource.transform.parent = transform;
         newResource.GetComponent<UIResourceUnitController>().UpdateUIWithResourceLimit(resourceData, maxResource, bufferResourceData);
 
     }
@@ -98,7 +100,10 @@ void CreateMilitaryUI()
             
         ResourceData bufferResourceData =
             GameCenter.instance.playerBufferResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Stability);
-        GameObject newResource = Instantiate(resourceTemplate, this.transform);
+        GameObject newResource = poolResourceBoxes.Pop();
+        activeResourceBoxes.Push(newResource);
+        newResource.SetActive(true);
+        newResource.transform.parent = transform;
         newResource.GetComponent<UIResourceUnitController>().UpdateUIWithResource(resourceData, bufferResourceData);
  
     }
@@ -110,7 +115,10 @@ void CreateMilitaryUI()
             
         ResourceData bufferResourceData =
             GameCenter.instance.playerBufferResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.MaxPopulation);
-        GameObject newResource = Instantiate(resourceTemplate, this.transform);
+        GameObject newResource = poolResourceBoxes.Pop();
+        activeResourceBoxes.Push(newResource);
+        newResource.SetActive(true);
+        newResource.transform.parent = transform;
         newResource.GetComponent<UIResourceUnitController>().UpdateUIWithResource(resourceData, bufferResourceData);
 
     }

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using Data;
 using UnityEngine;
@@ -7,9 +6,19 @@ public class UIResourceController : MonoBehaviour
 {
     [SerializeField] GameObject resourceTemplate;
 
+    public Stack<GameObject> activeResourceBoxes = new Stack<GameObject>();
+    public Stack<GameObject> poolResourceBoxes = new Stack<GameObject>();
+    
     // Start is called before the first frame update
     void Start()
     {
+        
+        for (int i = 0; i < 30; i++)
+        {
+            GameObject newResourceCard = Instantiate(resourceTemplate, this.transform);
+            newResourceCard.SetActive(false);
+            poolResourceBoxes.Push(newResourceCard);
+        }
         UpdateUI();
         EventManager.StartListening(EventManager.EVENT_END_TURN, UpdateUI);
         EventManager.StartListening(EventManager.RESOURCES_CHANGED, UpdateUI);
@@ -18,9 +27,13 @@ public class UIResourceController : MonoBehaviour
 
     public void UpdateUI()
     {
-        foreach (Transform child in transform)
+        while (activeResourceBoxes.Count > 0)
         {
-            Destroy(child.gameObject);
+            
+            var newResource = activeResourceBoxes.Pop();
+            newResource.SetActive(false);
+            newResource.transform.parent = transform;
+            poolResourceBoxes.Push(newResource);
         }
 
         var position = 0;
@@ -33,27 +46,16 @@ public class UIResourceController : MonoBehaviour
                 GameCenter.instance.playerResources.GetOrCreateMatchingResourceType(resource.type);
             ResourceData bufferResourceData =
                 GameCenter.instance.playerBufferResources.GetOrCreateMatchingResourceType(resource.type);
-            GameObject newResource = Instantiate(resourceTemplate, this.transform);
-            // Vector3 newPos = newResource.transform.localPosition;
-            // newPos.x = position * 150;
-            //newResource.transform.localPosition = newPos;
+            
+            GameObject newResource = poolResourceBoxes.Pop();
+            activeResourceBoxes.Push(newResource);
+            newResource.SetActive(true);
+            newResource.transform.parent = transform;
+
             position++;
 
             newResource.GetComponent<UIResourceUnitController>().UpdateUIWithResource(resourceData, bufferResourceData);
-            
-            // TemplateContainer buildingBox = resourceTemplate.Instantiate();
-            //
-            // //buildingBox.Q<Label>("resource-thumbnail")
-            // buildingBox.Q<Label>("resource-owned").text = resource.type.resourceName + ": " + resource.amount.ToString();
-            // ResourceData bufferResourceData =
-            //     GameCenter.instance.playerBufferResources.GetOrCreateMatchingResourceType(resource.type);
-            //
-            // buildingBox.Q<Label>("resource-gain").text = bufferResourceData.amount.ToString();
-            // if (resource.type.UITexture != null)
-            // {
-            //     buildingBox.Q<UIToolKitImage>("resource-thumbnail").image = resource.type.UITexture;
-            // }
-            // resourceContainer.Add(buildingBox.Q<GroupBox>("resource-unit"));
+
         }
     }
 

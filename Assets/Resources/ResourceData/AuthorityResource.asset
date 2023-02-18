@@ -21,7 +21,7 @@ MonoBehaviour:
   dropObject: {fileID: 0}
   dropSprite: {fileID: 0}
   amountCanBeNegative: 0
-  checkForPlayerResourceMaxLimit: 0
+  checkForPlayerResourceMaxLimit: 1
   checkForPlayerResourceMinLimit: 0
   playerEndOfTurnTriggers: []
-  resourceCategory: 4
+  resourceCategory: 3

@@ -1070,7 +1070,9 @@ MonoBehaviour:
     isPlayersResourceBundle: 1
     isPlayersBufferResourceBundle: 0
   playerMaxResourceAmounts:
-    resources: []
+    resources:
+    - amount: 10
+      type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
   playerMinResourceAmounts:
@@ -3021,7 +3023,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1746701748}
   m_HandleRect: {fileID: 1746701747}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

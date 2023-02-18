@@ -138,10 +138,15 @@ public class GameCenter : MonoBehaviour {
          ResourceData playerFood = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Food);
          */
 
+         
+         
+         
+         /*
          int totalPopulation =
              GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(
                  ResourceType.LinkType.MaxPopulation).amount;
-         GameCenter.instance.playerBufferResources.AddResourceData(resourceOrganizer.CreateResourceData(totalPopulation, ResourceType.LinkType.Gold));
+         GameCenter.instance.playerBufferResources.AddResourceData(resourceOrganizer.CreateResourceData(totalPopulation * 2, ResourceType.LinkType.Gold));
+         */
 
          //ResourceData playerFood = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Food);
 
@@ -217,7 +222,7 @@ public class GameCenter : MonoBehaviour {
         //
         playerResources.EndOfTurnTriggers();
 
-        ManagePopulation();
+       // ManagePopulation();
         
         //
         // Building end of turn and year triggers
@@ -244,15 +249,15 @@ public class GameCenter : MonoBehaviour {
             }
         }
         
-        /*foreach (var population in playerResources.populations)
+        foreach (var resourceType in playerResources.resources)
         {
-            foreach (var trigger in population.type.playerEndOfTurnTriggers)
+            foreach (var trigger in resourceType.type.playerEndOfTurnTriggers)
             {
                     //trigger.Trigger();
-                trigger.Trigger(new StatusIdentifier(new List<String> { buildingObject.buildingData.uniqueName }));
+                trigger.Trigger(new StatusIdentifier(new List<String> {resourceType.getShortString() }));
             }
 
-        }*/
+        }
         
         // might want this to increase buffer stuff
         //EventManager.TriggerEvent(EventManager.EVENT_END_TURN);

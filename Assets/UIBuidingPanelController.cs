@@ -32,6 +32,7 @@ public class UIBuidingPanelController : MonoBehaviour
         
         List<BuildingObject> buildings = GameCenter.instance.playerBuildings;   
         List<BuildingObject> onlyCategory = buildings.FindAll(e => e.buildingData.category == category);
+        onlyCategory.Sort((a,b) => a.buildingData.priority.CompareTo(b.buildingData.priority) );
         GroupBox currentGroup = null;
         int count = 0;
         foreach (BuildingObject buildingObject in onlyCategory)

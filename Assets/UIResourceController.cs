@@ -24,9 +24,9 @@ public class UIResourceController : MonoBehaviour
         }
 
         var position = 0;
+        //onlyCategory.Sort((a,b) => a.buildingData.priority.CompareTo(b.buildingData.priority) );
         foreach (var resource in GameCenter.instance.playerResources.resources.FindAll(e =>
-                     e.type.resourceCategory is ResourceType.ResourceCategory.Material
-                         or ResourceType.ResourceCategory.Unique))
+                     e.type.resourceCategory is ResourceType.ResourceCategory.Material))
 
         {
             ResourceData resourceData =

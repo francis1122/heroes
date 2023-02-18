@@ -50,7 +50,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ec9c567d58846b54d9a446d2621f3f0a, type: 2}
   priority: 1
   populationGain: {fileID: 0}
-  onPurchaseTrigger: []
+  onPurchaseTrigger:
+  - {fileID: 11400000, guid: dbc2d6fe554765745873e28423a2e05a, type: 2}
   onTurnEndTrigger:
   - {fileID: 11400000, guid: 05bfd636596d0484d97c31c31807aed1, type: 2}
   onYearEndTrigger: []

@@ -30,6 +30,8 @@ public class UIResourceUnitController : MonoBehaviour
 
     public void UpdateUIWithResource(ResourceData data, ResourceData buffer)
     {
+
+        
         amount.GetComponent<TextMeshProUGUI>().text = data.type.resourceName + " " + data.amount;
         futureGain.GetComponent<TextMeshProUGUI>().text = buffer.amount + "";
         //data.amount

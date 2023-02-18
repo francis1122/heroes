@@ -122,8 +122,12 @@ namespace GameObjects
                     {
                         foreach (var buildingAdditionData in buildingData.buildingAdditionsOnPurchase)
                         {
-                            GameCenter.instance.playerBuildings.Add(
-                                new BuildingObject(buildingAdditionData));
+                            if (!GameCenter.instance.playerBuildings.Exists(element =>
+                                    element.buildingData.uniqueName == buildingAdditionData.uniqueName))
+                            {
+                                GameCenter.instance.playerBuildings.Add(
+                                    new BuildingObject(buildingAdditionData));
+                            }
                         }
                     }
 

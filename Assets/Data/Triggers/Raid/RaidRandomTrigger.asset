@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: RaidRandomTrigger
   m_EditorClassIdentifier: 
   isEndOfTurnTrigger: 0
+  checkIfTriggerCanHappen: 0
   Triggers:
-  - weight: 0
-    triggers: {fileID: 11400000, guid: ec86b445556bdee40a82bfb89f9984c1, type: 2}
   - weight: 4
     triggers: {fileID: 11400000, guid: afb24da983460e649bc0d39daf431ecb, type: 2}

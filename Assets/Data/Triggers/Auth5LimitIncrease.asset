@@ -9,20 +9,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f49e67e04cd423e8a2dec95e8992657, type: 3}
-  m_Name: VillagerGoldGeneration
+  m_Script: {fileID: 11500000, guid: 493b8443ce3b4a7daac01afce4720c67, type: 3}
+  m_Name: Auth5LimitIncrease
   m_EditorClassIdentifier: 
-  isEndOfTurnTrigger: 1
+  isEndOfTurnTrigger: 0
   checkIfTriggerCanHappen: 0
   resourceBundle:
     resources:
-    - amount: 1
-      type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
+    - amount: 5
+      type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
-  scaleWithPlayerAmount: 1
+  scaleWithPlayerAmount: 0
   endOfTurnScaleResources:
-    scaleWithLinkType: 401
+    scaleWithLinkType: 0
     scaleWithPopulationLinkType: 0
     scaleByCurrentPopulation: 0
     scaleWithBuildingOwned: {fileID: 0}

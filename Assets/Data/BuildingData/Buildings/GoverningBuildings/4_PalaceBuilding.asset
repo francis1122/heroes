@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9710acaf6ae64d249fee5fd4ec0dff99, type: 3}
-  m_Name: Action_Conquest
+  m_Name: 4_PalaceBuilding
   m_EditorClassIdentifier: 
-  buildingName: Conquest
-  uniqueName: action_conquest
-  buildingDetails: attack and take land
+  buildingName: Capitol
+  uniqueName: building_capitol
+  buildingDetails: Give 30 gold a turn
   buildingThumbnail: 
   costRequirements:
     resources:
-    - amount: 20
+    - amount: 200
       type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
-    - amount: 5
+    - amount: 20
       type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
@@ -31,17 +31,20 @@ MonoBehaviour:
     scaleWithBuildingOwned: {fileID: 0}
     scaleByOwnRecentUsage: 0
     ignoreAuthority: 1
-  category: 1
-  buildingRequirement: []
+  category: 0
+  buildingRequirement:
+  - amount: 1
+    buildingData: {fileID: 11400000, guid: d6c91d4bcd5bfcc4088faaf0d445c260, type: 2}
   sellRequiredBuildings: 0
-  destroyRequiredBuildings: 0
-  removeFromPurchasableOnPurchase: 0
-  repeatablePurchase: 1
-  addToOwnedBuildings: 0
+  destroyRequiredBuildings: 1
+  removeFromPurchasableOnPurchase: 1
+  repeatablePurchase: 0
+  addToOwnedBuildings: 1
   buildingAdditionsOnPurchase: []
-  priority: 205
+  priority: 1
   populationGain: {fileID: 0}
   onPurchaseTrigger:
-  - {fileID: 11400000, guid: 833e44dbd832c0443affdac7fa20ef40, type: 2}
-  onTurnEndTrigger: []
+  - {fileID: 11400000, guid: dbc2d6fe554765745873e28423a2e05a, type: 2}
+  onTurnEndTrigger:
+  - {fileID: 11400000, guid: 98688a4323d1fdc44992b95350ce4c78, type: 2}
   onYearEndTrigger: []

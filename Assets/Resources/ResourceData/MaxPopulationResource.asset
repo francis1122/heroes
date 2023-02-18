@@ -23,5 +23,7 @@ MonoBehaviour:
   amountCanBeNegative: 0
   checkForPlayerResourceMaxLimit: 0
   checkForPlayerResourceMinLimit: 0
-  playerEndOfTurnTriggers: []
+  playerEndOfTurnTriggers:
+  - {fileID: 11400000, guid: f6a0f403dff886848be24613c8d64aac, type: 2}
+  - {fileID: 11400000, guid: f6a0f403dff886848be24613c8d64aac, type: 2}
   resourceCategory: 3

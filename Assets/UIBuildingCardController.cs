@@ -1,11 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Data;
 using GameObjects;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 using Button = UnityEngine.UI.Button;
 
 public class UIBuildingCardController : MonoBehaviour
@@ -13,7 +14,7 @@ public class UIBuildingCardController : MonoBehaviour
     
     
     [SerializeField]
-    GameObject buildingName;
+    GameObject buildingNameTextView;
     
     [SerializeField]
     GameObject buildingCost;
@@ -45,15 +46,45 @@ public class UIBuildingCardController : MonoBehaviour
     public void UpdateUIWithBuilding(BuildingObject buildingObject)
     {
         // set values
-        //amount.GetComponent<TextMeshProUGUI>().text = data.type.resourceName + " " + data.amount;
-        buildingName.GetComponent<TextMeshProUGUI>().text = buildingObject.buildingData.buildingName;
+      //  var cansub = buildingObject.CanPurchaseBuilding();
+        
+        
+        
+        String buildingName = buildingObject.buildingData.buildingName;
+        if (buildingObject.buildingsOwned > 0 && buildingObject.buildingData.repeatablePurchase)
+        {
+            buildingName = buildingName + "(" + buildingObject.buildingsOwned + ") ";
+        }
+
+        if (buildingObject.buildingsOwned > 0 && !buildingObject.buildingData.repeatablePurchase)
+        {
+            this.GetComponent<Image>().color = Color.yellow;
+        }
+        else
+        {
+            this.GetComponent<Image>().color = Color.grey;
+        }
+
+        buildingNameTextView.GetComponent<TextMeshProUGUI>().text = buildingName;
+        
         buildingDescription.GetComponent<TextMeshProUGUI>().text = buildingObject.buildingData.buildingDetails;
         buildingAuthCost.GetComponent<TextMeshProUGUI>().text = buildingObject.buildingData.ScaledResourceBundle()
             .GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Authority).amount.ToString();
         String resourceCost = buildingObject.buildingData.GetBuildingCostAndRequirementString();
 
         buildingCost.GetComponent<TextMeshProUGUI>().text = resourceCost;
-            
+
+        
+        
+        if (buildingObject.CanPurchaseBuilding())
+        {
+            purchaseButton.GetComponent<Image>().color = Color.green;
+        }
+        else
+        {
+            purchaseButton.GetComponent<Image>().color = Color.red;
+        }
+        
         // should show purchase button or not
         if(!buildingObject.buildingData.repeatablePurchase && buildingObject.timesPurchased > 0)
         {
@@ -70,13 +101,5 @@ public class UIBuildingCardController : MonoBehaviour
             buildingObject.PurchaseBuilding();
         });
 
-        // buildingBox.Q<Button>("building_purchase_button").clickable = null;
-        // buildingBox.Q<Button>("building_purchase_button").clickable =
-        //     new Clickable(buildingObject.PurchaseBuilding); 
-        // //buildingObject.PurchaseBuilding;
-        //     
-        // //currentGroup?.Add(buildingBox.Q<GroupBox>("building_box_group"));
-        // currentGroup?.Add(buildingBox);
-        // count++;
     }
 }

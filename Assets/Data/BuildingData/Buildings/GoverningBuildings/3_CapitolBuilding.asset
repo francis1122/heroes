@@ -22,6 +22,10 @@ MonoBehaviour:
       type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
     - amount: 20
       type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
+    - amount: 40
+      type: {fileID: 11400000, guid: a8d2874b560b46344b232f8891c70426, type: 2}
+    - amount: 30
+      type: {fileID: 11400000, guid: bc91da6924ab7454fb88eb0b49da03c7, type: 2}
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
   costScaleResources:
@@ -40,7 +44,8 @@ MonoBehaviour:
   removeFromPurchasableOnPurchase: 1
   repeatablePurchase: 0
   addToOwnedBuildings: 1
-  buildingAdditionsOnPurchase: []
+  buildingAdditionsOnPurchase:
+  - {fileID: 11400000, guid: 4d0ee45c0291e73449d5517e2f96068e, type: 2}
   priority: 1
   populationGain: {fileID: 0}
   onPurchaseTrigger:
@@ -48,3 +53,5 @@ MonoBehaviour:
   onTurnEndTrigger:
   - {fileID: 11400000, guid: 98688a4323d1fdc44992b95350ce4c78, type: 2}
   onYearEndTrigger: []
+  eventLifeSpan: 4
+  onExpiredEvent: []

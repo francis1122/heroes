@@ -12,16 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9710acaf6ae64d249fee5fd4ec0dff99, type: 3}
   m_Name: 4_PalaceBuilding
   m_EditorClassIdentifier: 
-  buildingName: Capitol
-  uniqueName: building_capitol
-  buildingDetails: Give 30 gold a turn
+  buildingName: Palace
+  uniqueName: building_palace
+  buildingDetails: Win the game
   buildingThumbnail: 
   costRequirements:
     resources:
-    - amount: 200
+    - amount: 1000
       type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
     - amount: 20
       type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
+    - amount: 100
+      type: {fileID: 11400000, guid: a8d2874b560b46344b232f8891c70426, type: 2}
+    - amount: 100
+      type: {fileID: 11400000, guid: bc91da6924ab7454fb88eb0b49da03c7, type: 2}
+    - amount: 30
+      type: {fileID: 11400000, guid: d825b5e4447b45443b2d0c2e337904de, type: 2}
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
   costScaleResources:
@@ -32,9 +38,7 @@ MonoBehaviour:
     scaleByOwnRecentUsage: 0
     ignoreAuthority: 1
   category: 0
-  buildingRequirement:
-  - amount: 1
-    buildingData: {fileID: 11400000, guid: d6c91d4bcd5bfcc4088faaf0d445c260, type: 2}
+  buildingRequirement: []
   sellRequiredBuildings: 0
   destroyRequiredBuildings: 1
   removeFromPurchasableOnPurchase: 1
@@ -48,3 +52,5 @@ MonoBehaviour:
   onTurnEndTrigger:
   - {fileID: 11400000, guid: 98688a4323d1fdc44992b95350ce4c78, type: 2}
   onYearEndTrigger: []
+  eventLifeSpan: 4
+  onExpiredEvent: []

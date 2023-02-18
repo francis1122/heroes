@@ -32,14 +32,15 @@ public class UIResourceController : MonoBehaviour
             
             var newResource = activeResourceBoxes.Pop();
             newResource.SetActive(false);
-            newResource.transform.parent = transform;
             poolResourceBoxes.Push(newResource);
         }
 
         var position = 0;
         //onlyCategory.Sort((a,b) => a.buildingData.priority.CompareTo(b.buildingData.priority) );
-        foreach (var resource in GameCenter.instance.playerResources.resources.FindAll(e =>
-                     e.type.resourceCategory is ResourceType.ResourceCategory.Material))
+        var resources = GameCenter.instance.playerResources.resources.FindAll(e =>
+            e.type.resourceCategory is ResourceType.ResourceCategory.Material);
+        resources.Reverse();
+        foreach (var resource in resources)
 
         {
             ResourceData resourceData =
@@ -50,7 +51,6 @@ public class UIResourceController : MonoBehaviour
             GameObject newResource = poolResourceBoxes.Pop();
             activeResourceBoxes.Push(newResource);
             newResource.SetActive(true);
-            newResource.transform.parent = transform;
 
             position++;
 

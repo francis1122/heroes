@@ -51,20 +51,28 @@ public class UIBuildingCardController : MonoBehaviour
         
         
         String buildingName = buildingObject.buildingData.buildingName;
-        if (buildingObject.buildingsOwned > 0 && buildingObject.buildingData.repeatablePurchase)
-        {
-            buildingName = buildingName + "(" + buildingObject.buildingsOwned + ") ";
-        }
 
-        if (buildingObject.buildingsOwned > 0 && !buildingObject.buildingData.repeatablePurchase)
-        {
-            this.GetComponent<Image>().color = Color.yellow;
-        }
-        else
-        {
-            this.GetComponent<Image>().color = Color.grey;
-        }
 
+
+            if (buildingObject.buildingsOwned > 0 && buildingObject.buildingData.repeatablePurchase)
+            {
+                buildingName = buildingName + "(" + buildingObject.buildingsOwned + ") ";
+            }
+
+            if (buildingObject.buildingsOwned > 0 && !buildingObject.buildingData.repeatablePurchase)
+            {
+                this.GetComponent<Image>().color = Color.yellow;
+            }
+            else
+            {
+                this.GetComponent<Image>().color = Color.grey;
+            }
+        
+            if (buildingObject.buildingData.category == BuildingData.BuildingCategory.Event)
+            {
+                buildingName = buildingName + " time left - " + buildingObject.eventLifeSpanLeft;
+            }
+            
         buildingNameTextView.GetComponent<TextMeshProUGUI>().text = buildingName;
         
         buildingDescription.GetComponent<TextMeshProUGUI>().text = buildingObject.buildingData.buildingDetails;

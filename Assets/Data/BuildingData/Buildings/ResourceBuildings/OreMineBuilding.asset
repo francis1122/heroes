@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: OreMineBuilding
   m_EditorClassIdentifier: 
   buildingName: Ore Mine
-  uniqueName: 
+  uniqueName: ore_mine
   buildingDetails: mine 1 ore a turn
   buildingThumbnail: 
   costRequirements:
@@ -47,3 +47,5 @@ MonoBehaviour:
   onTurnEndTrigger:
   - {fileID: 11400000, guid: fa0829ea2ee976344bfd49fdc3a052e8, type: 2}
   onYearEndTrigger: []
+  eventLifeSpan: 4
+  onExpiredEvent: []

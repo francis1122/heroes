@@ -10,20 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9710acaf6ae64d249fee5fd4ec0dff99, type: 3}
-  m_Name: Building_AdvancedFarm
+  m_Name: Event_DefendTheCity
   m_EditorClassIdentifier: 
-  buildingName: Advanced Farm
-  uniqueName: advanced_farm
-  buildingDetails: generates 2 food a turn
+  buildingName: 
+  uniqueName: 
+  buildingDetails: 
   buildingThumbnail: 
   costRequirements:
-    resources:
-    - amount: 50
-      type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
-    - amount: 10
-      type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
-    - amount: 2
-      type: {fileID: 11400000, guid: d825b5e4447b45443b2d0c2e337904de, type: 2}
+    resources: []
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
   costScaleResources:
@@ -34,16 +28,14 @@ MonoBehaviour:
     scaleByOwnRecentUsage: 0
     ignoreAuthority: 1
   category: 0
-  buildingRequirement:
-  - amount: 1
-    buildingData: {fileID: 11400000, guid: 98bc4a8deb6a04f4e829adf019ef0951, type: 2}
+  buildingRequirement: []
   sellRequiredBuildings: 0
-  destroyRequiredBuildings: 1
-  removeFromPurchasableOnPurchase: 0
-  repeatablePurchase: 1
+  destroyRequiredBuildings: 0
+  removeFromPurchasableOnPurchase: 1
+  repeatablePurchase: 0
   addToOwnedBuildings: 1
   buildingAdditionsOnPurchase: []
-  priority: 20
+  priority: 1
   populationGain: {fileID: 0}
   onPurchaseTrigger: []
   onTurnEndTrigger: []

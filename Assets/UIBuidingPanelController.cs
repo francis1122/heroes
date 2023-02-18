@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Data;
 using GameObjects;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 public class UIBuidingPanelController : MonoBehaviour
@@ -44,7 +45,7 @@ public class UIBuidingPanelController : MonoBehaviour
             
             var activeBuilding = activeBuildingBoxes.Pop();
             activeBuilding.SetActive(false);
-            activeBuilding.transform.parent = null;
+           // activeBuilding.transform.parent = null;
             //test.transform.parent = this.transform;
             poolBuildingBoxes.Push(activeBuilding);
         }
@@ -53,13 +54,13 @@ public class UIBuidingPanelController : MonoBehaviour
         List<BuildingObject> buildings = GameCenter.instance.playerBuildings;   
         List<BuildingObject> onlyCategory = buildings.FindAll(e => e.buildingData.category == category);
         onlyCategory.Sort((a,b) => a.buildingData.priority.CompareTo(b.buildingData.priority) );
-
+        onlyCategory.Reverse();
         foreach (BuildingObject buildingObject in onlyCategory)
         {
             GameObject newBuildingCard = poolBuildingBoxes.Pop();
             activeBuildingBoxes.Push(newBuildingCard);
             newBuildingCard.SetActive(true);
-            newBuildingCard.transform.parent = this.transform;
+          //  newBuildingCard.transform.parent = this.transform;
             
 
             newBuildingCard.GetComponent<UIBuildingCardController>().UpdateUIWithBuilding(buildingObject);

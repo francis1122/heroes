@@ -14,7 +14,8 @@ namespace Data
         {
             Building,
             Action,
-            Population
+            Population,
+            Event
         }
         
         public string buildingName = "";
@@ -42,13 +43,16 @@ namespace Data
         [Header("removes them from the game")]
         public bool destroyRequiredBuildings = false;
         [Header("allow only one of the building")]
-        public bool removeFromPurchasableOnPurchase = true;
+        public bool destroyOnPurchase = false;
         public bool repeatablePurchase = false;
         public bool addToOwnedBuildings = true;
 
         public List<BuildingData> buildingAdditionsOnPurchase;
         public int priority = 1;
 
+        
+
+        
         [Header("population UI - pop ")] public PopulationType populationGain;
         
         [SerializeField]
@@ -57,6 +61,12 @@ namespace Data
         public List<GameTriggers> onTurnEndTrigger;
         [SerializeField]
         public List<GameTriggers> onYearEndTrigger;
+
+        [Header("Event specific ")] 
+        
+        public int eventLifeSpan = 4;
+        [SerializeField]
+        public List<GameTriggers> onExpiredEvent;
 
 
         public String GetBuildingCostAndRequirementString()

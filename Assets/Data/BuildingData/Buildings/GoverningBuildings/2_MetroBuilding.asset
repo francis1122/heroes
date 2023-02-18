@@ -45,7 +45,7 @@ MonoBehaviour:
   repeatablePurchase: 0
   addToOwnedBuildings: 1
   buildingAdditionsOnPurchase:
-  - {fileID: 11400000, guid: 4d0ee45c0291e73449d5517e2f96068e, type: 2}
+  - {fileID: 11400000, guid: 6831632eea7c8ee41b27d87441aedd2c, type: 2}
   - {fileID: 11400000, guid: f7de2bba4cabeb44cb588befba6b7931, type: 2}
   - {fileID: 11400000, guid: ec9c567d58846b54d9a446d2621f3f0a, type: 2}
   priority: 1
@@ -55,3 +55,5 @@ MonoBehaviour:
   onTurnEndTrigger:
   - {fileID: 11400000, guid: 05bfd636596d0484d97c31c31807aed1, type: 2}
   onYearEndTrigger: []
+  eventLifeSpan: 4
+  onExpiredEvent: []

@@ -10,10 +10,15 @@ namespace GameObjects
 
         public int buildingsOwned = 0;
         public int timesPurchased = 0;
+        public int timesPurchasedThisTurn = 0;
+        public int timesPurchasedThisYear = 0;
+
+        public int eventLifeSpanLeft;
 
         public BuildingObject(BuildingData buildingData)
         {
             this.buildingData = buildingData;
+            eventLifeSpanLeft = buildingData.eventLifeSpan;
         }
 
         public bool CheckBuildingRequirement()
@@ -111,7 +116,9 @@ namespace GameObjects
             {
                 if (GameCenter.instance.playerResources.SubtractResourceBundle(buildingData.ScaledResourceBundle()))
                 {
-                    this.timesPurchased++;
+                    timesPurchased++;
+                    timesPurchasedThisTurn++;
+                    timesPurchasedThisYear++;
                     if (buildingData.addToOwnedBuildings)
                     {
                         this.buildingsOwned++;
@@ -149,6 +156,11 @@ namespace GameObjects
                     foreach (var trigger in buildingData.onPurchaseTrigger)
                     {
                         trigger.Trigger();
+                    }
+
+                    if (buildingData.destroyOnPurchase)
+                    {
+                        GameCenter.instance.playerBuildings.Remove(this);
                     }
 
                     EventManager.TriggerEvent(EventManager.RESOURCES_CHANGED);

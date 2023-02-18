@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Building_IronMine
   m_EditorClassIdentifier: 
   buildingName: Iron Mine
-  uniqueName: 
+  uniqueName: iron_mine
   buildingDetails: Generates Iron
   buildingThumbnail: 
   costRequirements:
@@ -49,3 +49,5 @@ MonoBehaviour:
   onTurnEndTrigger:
   - {fileID: 11400000, guid: b357b574c65eeda49a28c2b4e3980602, type: 2}
   onYearEndTrigger: []
+  eventLifeSpan: 4
+  onExpiredEvent: []

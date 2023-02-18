@@ -284,6 +284,29 @@ public class GameCenter : MonoBehaviour {
         
         EndOfTurnResourceBuffering();
         
+        
+        // clear buildings time purchased Stat
+        for(int i = playerBuildings.Count-1; i <= 0; i-- )
+        {
+            var buildingObject = playerBuildings[i];
+            buildingObject.timesPurchasedThisTurn = 0;
+            if (buildingObject.buildingData.category == BuildingData.BuildingCategory.Event)
+            {
+                buildingObject.eventLifeSpanLeft--;
+                if (buildingObject.eventLifeSpanLeft <= 0)
+                {
+                    foreach (var trigger in buildingObject.buildingData.onExpiredEvent)
+                    {
+                        //trigger.Trigger();
+                        trigger.Trigger(new StatusIdentifier(new List<String> {buildingObject.buildingData.buildingName }));
+
+                    }
+                    playerBuildings.RemoveAt(i);
+                }
+            }
+        }
+
+
         // push buffer
         // resource clean up
         //
@@ -292,7 +315,11 @@ public class GameCenter : MonoBehaviour {
 
         if ((currentTurn + 1) % seasonsInAYear == 0)
         {
-            //PopulationGrowth();
+            // clear buildings time purchased Stat
+            foreach (var buildingObject in playerBuildings)
+            {
+                buildingObject.timesPurchasedThisYear = 0;
+            }
             EventManager.TriggerEvent(EventManager.EVENT_END_YEAR);
         }
         

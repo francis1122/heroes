@@ -46,4 +46,4 @@ MonoBehaviour:
   onYearEndTrigger: []
   eventLifeSpan: 4
   onExpiredEvent:
-  - {fileID: 11400000, guid: dbc2d6fe554765745873e28423a2e05a, type: 2}
+  - {fileID: 11400000, guid: 8c23942a015160a4590c46adebc82626, type: 2}

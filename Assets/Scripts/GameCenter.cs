@@ -128,6 +128,21 @@ public class GameCenter : MonoBehaviour {
         EventManager.TriggerEvent(EventManager.RESOURCES_CHANGED);
     }
 //     
+    private void EvaluateStability()
+    {
+        // negative Happiness means we lose stability
+        ResourceData happiness = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Happiness);
+        ResourceData happinessBuffer = GameCenter.instance.playerBufferResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Happiness);
+        if ((happinessBuffer.amount + happiness.amount) < 0)
+        {
+            int loss = (int)Math.Ceiling((Math.Abs(happiness.amount + happinessBuffer.amount) / 10.0f));
+              
+            instance.playerBufferResources.SubtractResourceData(new ResourceData( loss, resourceOrganizer.GetResourceType(ResourceType.LinkType.Stability) ));
+            //ResourceData playerStabilityType = GameCenter.instance.playerResources.GetOrCreateMatchingResourceType(stabilityType);
+        }
+        
+    }
+
      private void ManagePopulation()
      {
          
@@ -251,7 +266,7 @@ public class GameCenter : MonoBehaviour {
         
         
         ManagePopulation();
-        
+        EvaluateStability(); // if player starts turn with an unhappiness score, loss stability
         // might want this to increase buffer stuff
         //EventManager.TriggerEvent(EventManager.EVENT_END_TURN);
         
@@ -305,6 +320,11 @@ public class GameCenter : MonoBehaviour {
         //
         playerResources.AddResourceBundle(playerBufferResources);
         playerBufferResources.ClearResources();
+        
+        //
+        // Start of turn
+        //
+        
 
         if ((currentTurn + 1) % seasonsInAYear == 0)
         {

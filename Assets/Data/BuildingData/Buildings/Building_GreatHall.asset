@@ -10,20 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9710acaf6ae64d249fee5fd4ec0dff99, type: 3}
-  m_Name: FarmLand
+  m_Name: Building_GreatHall
   m_EditorClassIdentifier: 
-  buildingName: Farm
-  uniqueName: 
-  buildingDetails: generates 1 food a turn
+  buildingName: Great Hall
+  uniqueName: building_great_hall
+  buildingDetails: provides a place of merriment for your people
   buildingThumbnail: 
   costRequirements:
     resources:
-    - amount: 1
-      type: {fileID: 11400000, guid: d0486e35f66495b47b8bcb629a698965, type: 2}
-    - amount: 10
+    - amount: 100
       type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
     - amount: 10
       type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
+    - amount: 20
+      type: {fileID: 11400000, guid: a8d2874b560b46344b232f8891c70426, type: 2}
+    - amount: 30
+      type: {fileID: 11400000, guid: bc91da6924ab7454fb88eb0b49da03c7, type: 2}
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
   costScaleResources:
@@ -38,14 +40,14 @@ MonoBehaviour:
   sellRequiredBuildings: 0
   destroyRequiredBuildings: 0
   destroyOnPurchase: 0
-  repeatablePurchase: 1
+  repeatablePurchase: 0
   addToOwnedBuildings: 1
-  buildingAdditionsOnPurchase: []
-  priority: 20
+  buildingAdditionsOnPurchase:
+  - {fileID: 11400000, guid: ed373d3cf1d1ead4a98d1a6dfff710c2, type: 2}
+  priority: 1
   populationGain: {fileID: 0}
   onPurchaseTrigger: []
-  onTurnEndTrigger:
-  - {fileID: 11400000, guid: 3c922fbec059d36449fc2bbf9c1633c9, type: 2}
+  onTurnEndTrigger: []
   onYearEndTrigger: []
   eventLifeSpan: 4
   onExpiredEvent: []

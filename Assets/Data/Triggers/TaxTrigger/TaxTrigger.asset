@@ -9,24 +9,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 493b8443ce3b4a7daac01afce4720c67, type: 3}
-  m_Name: WoodCutterPopLimitIncrease
+  m_Script: {fileID: 11500000, guid: 7f49e67e04cd423e8a2dec95e8992657, type: 3}
+  m_Name: TaxTrigger
   m_EditorClassIdentifier: 
   isEndOfTurnTrigger: 0
   checkIfTriggerCanHappen: 0
   resourceBundle:
-    resources: []
-    populations:
-    - amount: 1
-      activeAmount: 0
-      annualRecruitLimit: 0
-      annualRecruitsAvailable: 0
-      type: {fileID: 11400000, guid: 0ccfa2f1bb0eb3340a7fb3fa58604d7d, type: 2}
+    resources:
+    - amount: 2
+      type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
-  scaleWithPlayerAmount: 0
+  scaleWithPlayerAmount: 1
   endOfTurnScaleResources:
-    scaleWithLinkType: 0
+    scaleWithLinkType: 401
     scaleWithPopulationLinkType: 0
     scaleByCurrentPopulation: 0
     scaleWithBuildingOwned: {fileID: 0}

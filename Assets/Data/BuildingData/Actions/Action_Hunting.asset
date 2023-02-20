@@ -19,15 +19,7 @@ MonoBehaviour:
   costRequirements:
     resources:
     - amount: 5
-      type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
-    - amount: 5
       type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
-    populations:
-    - amount: 0
-      activeAmount: 1
-      annualRecruitLimit: 0
-      annualRecruitsAvailable: 0
-      type: {fileID: 11400000, guid: fc7aba9c3a0c73e4e926a9d3f442cc58, type: 2}
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
   costScaleResources:
@@ -41,12 +33,15 @@ MonoBehaviour:
   buildingRequirement: []
   sellRequiredBuildings: 0
   destroyRequiredBuildings: 0
-  removeFromPurchasableOnPurchase: 0
+  destroyOnPurchase: 0
   repeatablePurchase: 1
   addToOwnedBuildings: 0
   buildingAdditionsOnPurchase: []
   priority: 100
+  populationGain: {fileID: 0}
   onPurchaseTrigger:
   - {fileID: 11400000, guid: 81474f7b14003624ea15ef5cc6e7c534, type: 2}
   onTurnEndTrigger: []
   onYearEndTrigger: []
+  eventLifeSpan: 4
+  onExpiredEvent: []

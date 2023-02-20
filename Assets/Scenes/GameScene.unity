@@ -1161,6 +1161,8 @@ MonoBehaviour:
       type: {fileID: 11400000, guid: b90f7c0d1c1cb3b4c876de78eb99c57a, type: 2}
     - amount: 10
       type: {fileID: 11400000, guid: 71da1d9913d554e4d8d480762202139d, type: 2}
+    - amount: 10
+      type: {fileID: 11400000, guid: 63e93e443bbad8840ab04df55747917a, type: 2}
     isPlayersResourceBundle: 1
     isPlayersBufferResourceBundle: 0
   playerMaxResourceAmounts:
@@ -1180,12 +1182,6 @@ MonoBehaviour:
     timesPurchasedThisTurn: 0
     timesPurchasedThisYear: 0
     eventLifeSpanLeft: 0
-  - buildingData: {fileID: 11400000, guid: 83b6ab044656f0a49b8d3fd4eb09150f, type: 2}
-    buildingsOwned: 0
-    timesPurchased: 0
-    timesPurchasedThisTurn: 0
-    timesPurchasedThisYear: 0
-    eventLifeSpanLeft: 12
   endOfTurnStatusEffectsList:
   - resourceStatusList:
     - resourceType: 201
@@ -1226,9 +1222,11 @@ MonoBehaviour:
   eventList:
   - eventData: {fileID: 11400000, guid: 83b6ab044656f0a49b8d3fd4eb09150f, type: 2}
     amountOfTimesTriggered: 0
-    canTriggerMultipleTimes: 0
-    triggerOnTurn: 4
     timeSinceEventTriggered: 0
+    triggerOnTurn: 10
+    canTriggerMultipleTimes: 0
+    triggerXTimes: 1
+    turnsTillRepeat: 4
 --- !u!114 &970420826
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -53,7 +53,8 @@ public class UIEmpireResourceController : MonoBehaviour
         CreateMilitaryUI();
         CreateStabilityUI();
         CreatePopulationUI();
-        
+        CreateHappinessUI();
+
     }
 
     // Update is called once per frame
@@ -100,6 +101,21 @@ void CreateMilitaryUI()
             
         ResourceData bufferResourceData =
             GameCenter.instance.playerBufferResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Stability);
+        GameObject newResource = poolResourceBoxes.Pop();
+        activeResourceBoxes.Push(newResource);
+        newResource.SetActive(true);
+        newResource.transform.parent = transform;
+        newResource.GetComponent<UIResourceUnitController>().UpdateUIWithResource(resourceData, bufferResourceData);
+ 
+    }
+    
+    void CreateHappinessUI()
+    {
+        ResourceData resourceData =
+            GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Happiness);
+            
+        ResourceData bufferResourceData =
+            GameCenter.instance.playerBufferResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Happiness);
         GameObject newResource = poolResourceBoxes.Pop();
         activeResourceBoxes.Push(newResource);
         newResource.SetActive(true);

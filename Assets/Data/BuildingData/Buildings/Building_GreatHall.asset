@@ -44,7 +44,7 @@ MonoBehaviour:
   addToOwnedBuildings: 1
   buildingAdditionsOnPurchase:
   - {fileID: 11400000, guid: ed373d3cf1d1ead4a98d1a6dfff710c2, type: 2}
-  priority: 1
+  priority: 15
   populationGain: {fileID: 0}
   onPurchaseTrigger: []
   onTurnEndTrigger: []

@@ -33,13 +33,15 @@ MonoBehaviour:
   buildingRequirement: []
   sellRequiredBuildings: 0
   destroyRequiredBuildings: 0
-  removeFromPurchasableOnPurchase: 0
+  destroyOnPurchase: 0
   repeatablePurchase: 1
   addToOwnedBuildings: 0
   buildingAdditionsOnPurchase: []
-  priority: 200
+  priority: 140
   populationGain: {fileID: 0}
   onPurchaseTrigger:
   - {fileID: 11400000, guid: 0ff6dc97305c6014c91ca5ff730eb83d, type: 2}
   onTurnEndTrigger: []
   onYearEndTrigger: []
+  eventLifeSpan: 4
+  onExpiredEvent: []

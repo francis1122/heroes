@@ -41,8 +41,8 @@ MonoBehaviour:
     buildingData: {fileID: 0}
   sellRequiredBuildings: 0
   destroyRequiredBuildings: 0
-  removeFromPurchasableOnPurchase: 1
-  repeatablePurchase: 0
+  destroyOnPurchase: 0
+  repeatablePurchase: 1
   addToOwnedBuildings: 1
   buildingAdditionsOnPurchase:
   - {fileID: 11400000, guid: e9ac03f2a2e17ca4d896ca0a76034462, type: 2}
@@ -50,4 +50,7 @@ MonoBehaviour:
   populationGain: {fileID: 0}
   onPurchaseTrigger: []
   onTurnEndTrigger: []
-  onYearEndTrigger: []
+  onYearEndTrigger:
+  - {fileID: 11400000, guid: 7dad3920c04984f4dbe22e3ac71f9500, type: 2}
+  eventLifeSpan: 4
+  onExpiredEvent: []

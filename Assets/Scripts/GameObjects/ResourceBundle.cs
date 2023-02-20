@@ -440,13 +440,17 @@ namespace Data
                 
                 if (resourceData.type.checkForPlayerResourceMaxLimit)
                 {
-                    
                     ResourceData playerMaxResource = GameCenter.instance.playerMaxResourceAmounts.GetOrCreateMatchingResourceType(resourceData.type);
                     if (resourceData.amount > playerMaxResource.amount)
                     {
                         
                         resourceData.amount = playerMaxResource.amount;
                     }
+                }
+
+                if (!resourceData.type.amountCanBeNegative && resourceData.amount < 0)
+                {
+                    resourceData.amount = 0;
                 }
             }
         }

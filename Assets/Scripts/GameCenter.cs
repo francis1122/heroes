@@ -131,47 +131,38 @@ public class GameCenter : MonoBehaviour {
      private void ManagePopulation()
      {
          
-         /*
-         ResourceData playerPopulation = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Villager);
-         ResourceData soldier = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Soldier);
-         ResourceData playerFood = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Food);
-         */
+         
+         ResourceData playerPopulation = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.MaxPopulation);
+         //ResourceData soldier = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Soldier);
+         
+         
+         int playerFood = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Food).amount;
 
-         
-         
-         
-         /*
          int totalPopulation =
              GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(
                  ResourceType.LinkType.MaxPopulation).amount;
-         GameCenter.instance.playerBufferResources.AddResourceData(resourceOrganizer.CreateResourceData(totalPopulation * 2, ResourceType.LinkType.Gold));
-         */
+         
+         
+         
+         
+         ResourceData happiness = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Happiness);
 
-         //ResourceData playerFood = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Food);
-
-
-
-
-//         // var totalPopulation = soldier.amount + playerPopulation.amount;
-//          if (playerFood.amount < totalPopulation)
-//          {
-//              /*
-//              double playerAuthF = Math.Abs(playerAuthority.amount);
-//
-//              int loss = (int)Math.Ceiling((playerAuthF / 10.0f));
-//              
-//              
-//              
-//              GameCenter.instance.playerResources.SubtractResourceData(new ResourceData( loss, stabilityType));
-//              //ResourceData playerStabilityType = GameCenter.instance.playerResources.GetOrCreateMatchingResourceType(stabilityType);
-//              */
-//                  
-//          }
-//          else
-//          {
-//              GameCenter.instance.playerBufferResources.SubtractResourceData(resourceOrganizer.CreateResourceData(totalPopulation, ResourceType.LinkType.Food));
-//              //GameCenter.instance.playerResources.AddResourceData(resourceOrganizer.CreateResourceData(totalPopulation, ResourceType.LinkType.Gold));
-//          }
+                  
+         int bufferFood = GameCenter.instance.playerBufferResources
+             .GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Food).amount;
+         
+         GameCenter.instance.playerBufferResources.AddResourceData(resourceOrganizer.CreateResourceData(totalPopulation, ResourceType.LinkType.Gold));
+         GameCenter.instance.playerBufferResources.SubtractResourceData(resourceOrganizer.CreateResourceData(totalPopulation, ResourceType.LinkType.Food));
+         
+        
+          if ((playerFood + bufferFood) < totalPopulation)
+          {
+              int lackingFood = totalPopulation - (playerFood + bufferFood);
+              int loss = (int)Math.Ceiling((lackingFood / 10.0f));
+              
+              GameCenter.instance.playerBufferResources.SubtractResourceData(new ResourceData( loss, resourceOrganizer.GetResourceType(ResourceType.LinkType.Happiness) ));
+              //ResourceData playerStabilityType = GameCenter.instance.playerResources.GetOrCreateMatchingResourceType(stabilityType);
+          }
 
      }
 
@@ -221,7 +212,7 @@ public class GameCenter : MonoBehaviour {
         //
         playerResources.EndOfTurnTriggers();
 
-       // ManagePopulation();
+    
         
         //
         // Building end of turn and year triggers
@@ -257,6 +248,9 @@ public class GameCenter : MonoBehaviour {
             }
 
         }
+        
+        
+        ManagePopulation();
         
         // might want this to increase buffer stuff
         //EventManager.TriggerEvent(EventManager.EVENT_END_TURN);

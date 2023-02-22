@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class UIEndOfTurnText : MonoBehaviour
+public class PrestigeText : MonoBehaviour
 {
-    [SerializeField] private GameObject currentTurnLabel;
+    [SerializeField] private GameObject prestigeLabel;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +16,8 @@ public class UIEndOfTurnText : MonoBehaviour
 
     void UpdateUI()
     {
-        
-        currentTurnLabel.GetComponent<TextMeshProUGUI>().text = "season " + (GameCenter.instance.currentTurn % GameCenter.instance.seasonsInAYear) + " year " + GameCenter.instance.currentTurn / 4;
+
+        prestigeLabel.GetComponent<TextMeshProUGUI>().text = "Prestige: " + GameCenter.instance.prestigeScore;
     }
     
     // Update is called once per frame

@@ -4,52 +4,57 @@ using System.Linq;
 using Data;
 using GameObjects;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Utils;
 
-public class GameCenter : MonoBehaviour {
-
-  //  private int playerFoods = 20;
- //   private int playerMinerals = 24;
+public class GameCenter : MonoBehaviour
+{
+    //  private int playerFoods = 20;
+    //   private int playerMinerals = 24;
     //private int playerLumber = 20;
-  //  private int playerAmmo = 0;
+    //  private int playerAmmo = 0;
     //public ResourceObject playerResource;
     //public GameObject mineralText;
     //public GameObject healthText;
-   // public GameObject buddyText;
+    // public GameObject buddyText;
 
-    public static GameCenter instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
-   
-    
+    public static GameCenter
+        instance = null; //Static instance of GameManager which allows it to be accessed by any other script.
+
+
     public GameEventManager gameEventManager;
-    
+
     //public ObjectFactory objectFactory;
 
     //public AStarGrid _aStarGrid;
 
     //private BoardManager boardScript;                       //Store a reference to our BoardManager which will set up the level.
     public ResourceOrganizer resourceOrganizer;
-    
+
     public ResourceBundle playerBufferResources;
+
     //public ResourceBundle playerFatiguedPopulation;
     public ResourceBundle playerResources;
     public ResourceBundle playerMaxResourceAmounts;
     public ResourceBundle playerMinResourceAmounts;
 
+
+    public int prestigeScore = 0; // current run prestige
+    public int totalPrestigeScore = 0;
+    
     public List<BuildingObject> playerBuildings = new();
     //public List<BuildingObject> buildingsOwned = new();
-    
-    
+
+
     //
     // Buffs/Debuffs
     //
-    [SerializeField]
-    public List<ResourceStatusEffects> endOfTurnStatusEffectsList = new();
-    
-    [SerializeField]
-    public int currentTurn = 0;
+    [SerializeField] public List<ResourceStatusEffects> endOfTurnStatusEffectsList = new();
+
+    [SerializeField] public int currentTurn = 0;
 
     public int seasonsInAYear = 4;
-    
+
     //Awake is always called before any Start functions
     void Awake()
     {
@@ -81,10 +86,10 @@ public class GameCenter : MonoBehaviour {
         gameEventManager = GetComponent<GameEventManager>();
         resourceOrganizer = new ResourceOrganizer(Resources.LoadAll<ResourceType>("ResourceData"),
             Resources.LoadAll<PopulationType>("ResourceData/Population"));
-        EventManager.StartListening(EventManager.BUILDING_CHANGED, RefreshEndOfTurnBuffer );
+        EventManager.StartListening(EventManager.BUILDING_CHANGED, RefreshEndOfTurnBuffer);
         //playerResources = Instantiate(playerResources);
 
-        
+
         /*
         var temp = new List<BuildingData>();
         foreach (var purchasableBuilding in purchasableBuildings)
@@ -94,12 +99,10 @@ public class GameCenter : MonoBehaviour {
         purchasableBuildings.Clear();
         purchasableBuildings = temp;
         */
-        
-        
-        
+
+
         //Call the SetupScene function of the BoardManager script, pass it current level number.
         //  boardScript.SetupScene(level);
-
     }
 
     // Use this for initialization
@@ -107,14 +110,13 @@ public class GameCenter : MonoBehaviour {
     {
         //_aStarGrid = GetComponent<AStarGrid>();
 //        ResourceObject newInstance = Instantiate(playerResource);
-     //   playerResource = newInstance;
+        //   playerResource = newInstance;
     }
 
     // Update is called once per frame
-    void Update() {
-
+    void Update()
+    {
         //after 20 seconds, reduce resources
-        
     }
 
 
@@ -122,64 +124,70 @@ public class GameCenter : MonoBehaviour {
     {
         //reset buffer
         playerBufferResources.ClearResources();
-        
+
         EndOfTurnResourceBuffering();
-        
+
         EventManager.TriggerEvent(EventManager.RESOURCES_CHANGED);
     }
+
 //     
     private void EvaluateStability()
     {
         // negative Happiness means we lose stability
-        ResourceData happiness = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Happiness);
-        ResourceData happinessBuffer = GameCenter.instance.playerBufferResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Happiness);
+        ResourceData happiness =
+            GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Happiness);
+        ResourceData happinessBuffer =
+            GameCenter.instance.playerBufferResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType
+                .Happiness);
         if ((happinessBuffer.amount + happiness.amount) < 0)
         {
             int loss = (int)Math.Ceiling((Math.Abs(happiness.amount + happinessBuffer.amount) / 10.0f));
-              
-            instance.playerBufferResources.SubtractResourceData(new ResourceData( loss, resourceOrganizer.GetResourceType(ResourceType.LinkType.Stability) ));
+
+            instance.playerBufferResources.SubtractResourceData(new ResourceData(loss,
+                resourceOrganizer.GetResourceType(ResourceType.LinkType.Stability)));
             //ResourceData playerStabilityType = GameCenter.instance.playerResources.GetOrCreateMatchingResourceType(stabilityType);
         }
-        
     }
 
-     private void ManagePopulation()
-     {
-         
-         
-         ResourceData playerPopulation = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.MaxPopulation);
-         //ResourceData soldier = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Soldier);
-         
-         
-         int playerFood = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Food).amount;
+    private void ManagePopulation()
+    {
+        ResourceData playerPopulation =
+            GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType
+                .MaxPopulation);
+        //ResourceData soldier = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Soldier);
 
-         int totalPopulation =
-             GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(
-                 ResourceType.LinkType.MaxPopulation).amount;
-         
-         
-         
-         
-         ResourceData happiness = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Happiness);
 
-                  
-         int bufferFood = GameCenter.instance.playerBufferResources
-             .GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Food).amount;
-         
-         GameCenter.instance.playerBufferResources.AddResourceData(resourceOrganizer.CreateResourceData(totalPopulation, ResourceType.LinkType.Gold));
-         GameCenter.instance.playerBufferResources.SubtractResourceData(resourceOrganizer.CreateResourceData(totalPopulation, ResourceType.LinkType.Food));
-         
-        
-          if ((playerFood + bufferFood) < totalPopulation)
-          {
-              int lackingFood = totalPopulation - (playerFood + bufferFood);
-              int loss = (int)Math.Ceiling((lackingFood / 10.0f));
-              
-              GameCenter.instance.playerBufferResources.SubtractResourceData(new ResourceData( loss, resourceOrganizer.GetResourceType(ResourceType.LinkType.Happiness) ));
-              //ResourceData playerStabilityType = GameCenter.instance.playerResources.GetOrCreateMatchingResourceType(stabilityType);
-          }
+        int playerFood = GameCenter.instance.playerResources
+            .GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Food).amount;
 
-     }
+        int totalPopulation =
+            GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(
+                ResourceType.LinkType.MaxPopulation).amount;
+
+
+        ResourceData happiness =
+            GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Happiness);
+
+
+        int bufferFood = GameCenter.instance.playerBufferResources
+            .GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Food).amount;
+
+        GameCenter.instance.playerBufferResources.AddResourceData(
+            resourceOrganizer.CreateResourceData(totalPopulation, ResourceType.LinkType.Gold));
+        GameCenter.instance.playerBufferResources.SubtractResourceData(
+            resourceOrganizer.CreateResourceData(totalPopulation, ResourceType.LinkType.Food));
+
+
+        if ((playerFood + bufferFood) < totalPopulation)
+        {
+            int lackingFood = totalPopulation - (playerFood + bufferFood);
+            int loss = (int)Math.Ceiling((lackingFood / 10.0f));
+
+            GameCenter.instance.playerBufferResources.SubtractResourceData(new ResourceData(loss,
+                resourceOrganizer.GetResourceType(ResourceType.LinkType.Happiness)));
+            //ResourceData playerStabilityType = GameCenter.instance.playerResources.GetOrCreateMatchingResourceType(stabilityType);
+        }
+    }
 
     // private void PopulationGrowth()
     // {
@@ -198,27 +206,31 @@ public class GameCenter : MonoBehaviour {
     {
         var useBundle = changeBundle;
         // check if there are buffs to do
-        foreach (var resourceStatusEffects in endOfTurnStatusEffectsList)
+        if (statusIdentifier != null)
         {
-            if (statusIdentifier.nameList.Intersect(resourceStatusEffects.statusIdentifier.nameList).Any())
+            foreach (var resourceStatusEffects in endOfTurnStatusEffectsList)
             {
-                useBundle = new ResourceBundle(useBundle, resourceStatusEffects);
-            }    
+                if (statusIdentifier.nameList.Intersect(resourceStatusEffects.statusIdentifier.nameList).Any())
+                {
+                    useBundle = new ResourceBundle(useBundle, resourceStatusEffects);
+                }
+            }
         }
 
         playerBufferResources.AddResourceBundle(useBundle);
     }
 
-    public bool CanChangePlayerResources(ResourceBundle changeBundle, bool canPartiallyAdd, StatusIdentifier statusIdentifier)
+    public bool CanChangePlayerResources(ResourceBundle changeBundle, bool canPartiallyAdd,
+        StatusIdentifier statusIdentifier)
     {
         return playerResources.CanAddResourceBundle(changeBundle, canPartiallyAdd);
     }
-    
+
     public void ChangePlayerResources(ResourceBundle changeBundle, StatusIdentifier statusIdentifier)
     {
         playerResources.AddResourceBundle(changeBundle);
     }
-    
+
 
     public void EndOfTurnResourceBuffering()
     {
@@ -227,8 +239,7 @@ public class GameCenter : MonoBehaviour {
         //
         playerResources.EndOfTurnTriggers();
 
-    
-        
+
         //
         // Building end of turn and year triggers
         //
@@ -253,23 +264,22 @@ public class GameCenter : MonoBehaviour {
                 }
             }
         }
-        
+
         foreach (var resourceType in playerResources.resources)
         {
             foreach (var trigger in resourceType.type.playerEndOfTurnTriggers)
             {
-                    //trigger.Trigger();
-                trigger.Trigger(new StatusIdentifier(new List<String> {resourceType.getShortString() }));
+                //trigger.Trigger();
+                trigger.Trigger(new StatusIdentifier(new List<String> { resourceType.getShortString() }));
             }
-
         }
-        
-        
+
+
         ManagePopulation();
         EvaluateStability(); // if player starts turn with an unhappiness score, loss stability
         // might want this to increase buffer stuff
         //EventManager.TriggerEvent(EventManager.EVENT_END_TURN);
-        
+
         /*if (currentTurn % seasonsInAYear == 0)
         {
             //PopulationGrowth();
@@ -283,18 +293,18 @@ public class GameCenter : MonoBehaviour {
             //EventManager.TriggerEvent(EventManager.EVENT_END_YEAR);
         }*/
     }
-    
+
     public void EndTurn()
     {
         //reset buffer
         playerBufferResources.ClearResources();
 
-        
+
         EndOfTurnResourceBuffering();
-        
-        
+
+
         // clear buildings time purchased Stat
-        for(int i = playerBuildings.Count-1; i >= 0; i-- )
+        for (int i = playerBuildings.Count - 1; i >= 0; i--)
         {
             var buildingObject = playerBuildings[i];
             buildingObject.timesPurchasedThisTurn = 0;
@@ -306,9 +316,10 @@ public class GameCenter : MonoBehaviour {
                     foreach (var trigger in buildingObject.buildingData.onExpiredEvent)
                     {
                         //trigger.Trigger();
-                        trigger.Trigger(new StatusIdentifier(new List<String> {buildingObject.buildingData.buildingName }));
-
+                        trigger.Trigger(new StatusIdentifier(new List<String>
+                            { buildingObject.buildingData.buildingName }));
                     }
+
                     playerBuildings.RemoveAt(i);
                 }
             }
@@ -320,11 +331,11 @@ public class GameCenter : MonoBehaviour {
         //
         playerResources.AddResourceBundle(playerBufferResources);
         playerBufferResources.ClearResources();
-        
+
         //
         // Start of turn
         //
-        
+
 
         if ((currentTurn + 1) % seasonsInAYear == 0)
         {
@@ -333,12 +344,19 @@ public class GameCenter : MonoBehaviour {
             {
                 buildingObject.timesPurchasedThisYear = 0;
             }
+
             EventManager.TriggerEvent(EventManager.EVENT_END_YEAR);
         }
-        
+
         currentTurn += 1;
-        
-        
+        prestigeScore++;
+
+        // Evaluate if player has lost
+        if (playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Stability).amount <= 0)
+        {
+            SceneManager.LoadScene("EndGameNewGameScene");
+        }
+
         //Start of New Turn
         gameEventManager.OnTurnStart(currentTurn, (currentTurn) % seasonsInAYear == 0);
         // recalculate buffer

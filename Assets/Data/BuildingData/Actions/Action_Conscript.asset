@@ -44,8 +44,8 @@ MonoBehaviour:
   priority: 199
   populationGain: {fileID: 0}
   onPurchaseTrigger:
-  - {fileID: 11400000, guid: d5e344ea747349f43bca3440dc4f92cc, type: 2}
-  - {fileID: 11400000, guid: d5e344ea747349f43bca3440dc4f92cc, type: 2}
+  - {fileID: 11400000, guid: 4f4bcbbefd8ec498c83fa08d0efdae7a, type: 2}
+  - {fileID: 11400000, guid: 4f4bcbbefd8ec498c83fa08d0efdae7a, type: 2}
   onTurnEndTrigger: []
   onYearEndTrigger: []
   eventLifeSpan: 4

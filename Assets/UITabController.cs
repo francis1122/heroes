@@ -12,7 +12,8 @@ public class UITabController : MonoBehaviour
     
     [SerializeField]
     public List<GameObject> tabPanels;
-    
+
+    [SerializeField] public GameObject scrollView;
     
     // Start is called before the first frame update
     void Start()
@@ -36,9 +37,11 @@ public class UITabController : MonoBehaviour
 
                 foreach (var tabPanel in tabPanels)
                 {
+                    
                         tabPanel.SetActive(false);
                         
                 }
+                scrollView.GetComponent<ScrollRect>().content = panel.GetComponent<RectTransform>();
                 panel.SetActive(true);
             });
         }

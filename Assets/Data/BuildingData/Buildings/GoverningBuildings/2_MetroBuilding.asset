@@ -47,7 +47,6 @@ MonoBehaviour:
   buildingAdditionsOnPurchase:
   - {fileID: 11400000, guid: 6831632eea7c8ee41b27d87441aedd2c, type: 2}
   - {fileID: 11400000, guid: f7de2bba4cabeb44cb588befba6b7931, type: 2}
-  - {fileID: 11400000, guid: ec9c567d58846b54d9a446d2621f3f0a, type: 2}
   - {fileID: 11400000, guid: d6fa1afb89395ad4c8ed48d63081a10d, type: 2}
   - {fileID: 11400000, guid: 7498127595f11cd4fb520abf69588945, type: 2}
   - {fileID: 11400000, guid: ce730849486a0344083191058408e68a, type: 2}

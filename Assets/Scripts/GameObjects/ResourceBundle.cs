@@ -20,6 +20,11 @@ namespace Data
         public Boolean isPlayersBufferResourceBundle = false;
 
 
+        public ResourceBundle()
+        {
+            
+        }
+        
         public ResourceBundle(ResourceBundle oldBundle, int scale)
         {
             foreach (var resourceData in oldBundle.resources)

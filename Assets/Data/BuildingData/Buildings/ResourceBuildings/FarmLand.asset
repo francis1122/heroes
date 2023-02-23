@@ -20,9 +20,9 @@ MonoBehaviour:
     resources:
     - amount: 1
       type: {fileID: 11400000, guid: d0486e35f66495b47b8bcb629a698965, type: 2}
-    - amount: 10
+    - amount: 5
       type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
-    - amount: 10
+    - amount: 5
       type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
@@ -30,9 +30,10 @@ MonoBehaviour:
     scaleWithLinkType: 0
     scaleWithPopulationLinkType: 0
     scaleByCurrentPopulation: 0
-    scaleWithBuildingOwned: {fileID: 0}
+    scaleWithBuildingOwned: {fileID: 11400000}
     scaleByOwnRecentUsage: 0
     ignoreAuthority: 1
+    ignoreLand: 1
   category: 0
   buildingRequirement: []
   sellRequiredBuildings: 0

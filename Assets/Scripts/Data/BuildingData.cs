@@ -56,17 +56,17 @@ namespace Data
         [Header("population UI - pop ")] public PopulationType populationGain;
         
         [SerializeField]
-        public List<GameTriggers> onPurchaseTrigger;
+        public List<GameTriggers> onPurchaseTrigger = new();
         [SerializeField]
-        public List<GameTriggers> onTurnEndTrigger;
+        public List<GameTriggers> onTurnEndTrigger = new();
         [SerializeField]
-        public List<GameTriggers> onYearEndTrigger;
+        public List<GameTriggers> onYearEndTrigger = new();
 
         [Header("Event specific ")] 
         
         public int eventLifeSpan = 4;
         [SerializeField]
-        public List<GameTriggers> onExpiredEvent;
+        public List<GameTriggers> onExpiredEvent = new List<GameTriggers>();
 
 
         public String GetBuildingCostAndRequirementString()
@@ -122,6 +122,12 @@ namespace Data
                 {
                     scaledResourceBundle.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Authority).amount
                         = costRequirements.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Authority).amount;
+                }
+
+                if (costScaleResources.ignoreLand)
+                {
+                    scaledResourceBundle.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.BasicLand).amount
+                        = costRequirements.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.BasicLand).amount;
                 }
                 return scaledResourceBundle;
             }

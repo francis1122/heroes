@@ -16,6 +16,7 @@ namespace Utils
         public BuildingData scaleWithBuildingOwned;
         public bool scaleByOwnRecentUsage = false;
         public bool ignoreAuthority = true;
+        public bool ignoreLand = false;
 
 
         public float GetScaler()

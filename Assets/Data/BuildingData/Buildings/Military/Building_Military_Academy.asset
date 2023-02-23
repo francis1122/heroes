@@ -20,9 +20,9 @@ MonoBehaviour:
     resources:
     - amount: 10
       type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
-    - amount: 100
+    - amount: 60
       type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
-    - amount: 30
+    - amount: 20
       type: {fileID: 11400000, guid: bc91da6924ab7454fb88eb0b49da03c7, type: 2}
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
@@ -33,6 +33,7 @@ MonoBehaviour:
     scaleWithBuildingOwned: {fileID: 11400000}
     scaleByOwnRecentUsage: 0
     ignoreAuthority: 1
+    ignoreLand: 0
   category: 0
   buildingRequirement: []
   sellRequiredBuildings: 0
@@ -45,6 +46,7 @@ MonoBehaviour:
   priority: 204
   populationGain: {fileID: 0}
   onPurchaseTrigger:
+  - {fileID: 11400000, guid: 00df8fdc62b554c96ba60484b9abe401, type: 2}
   - {fileID: 11400000, guid: 00df8fdc62b554c96ba60484b9abe401, type: 2}
   onTurnEndTrigger: []
   onYearEndTrigger: []

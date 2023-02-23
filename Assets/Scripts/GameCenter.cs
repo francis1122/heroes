@@ -308,6 +308,15 @@ public class GameCenter : MonoBehaviour
         {
             var buildingObject = playerBuildings[i];
             buildingObject.timesPurchasedThisTurn = 0;
+        }
+        
+        //
+        // Handle Events
+        //
+        for (int i = playerBuildings.Count - 1; i >= 0; i--)
+        {
+            var buildingObject = playerBuildings[i];
+            
             if (buildingObject.buildingData.category == BuildingData.BuildingCategory.Event)
             {
                 buildingObject.eventLifeSpanLeft--;

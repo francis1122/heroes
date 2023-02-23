@@ -10,7 +10,7 @@ namespace Triggers
     public class T_GenerateResources : GameTriggers
     {
 
-        public ResourceBundle resourceBundle;
+        public ResourceBundle resourceBundle = new ResourceBundle();
 
         public bool scaleWithPlayerAmount = false;
         public ScaleResources endOfTurnScaleResources = new ScaleResources();

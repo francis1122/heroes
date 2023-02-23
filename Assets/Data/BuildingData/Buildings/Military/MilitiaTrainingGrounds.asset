@@ -36,11 +36,12 @@ MonoBehaviour:
     scaleWithBuildingOwned: {fileID: 0}
     scaleByOwnRecentUsage: 0
     ignoreAuthority: 1
+    ignoreLand: 0
   category: 0
   buildingRequirement: []
   sellRequiredBuildings: 0
   destroyRequiredBuildings: 0
-  removeFromPurchasableOnPurchase: 1
+  destroyOnPurchase: 0
   repeatablePurchase: 0
   addToOwnedBuildings: 1
   buildingAdditionsOnPurchase:
@@ -53,3 +54,6 @@ MonoBehaviour:
   onTurnEndTrigger: []
   onYearEndTrigger:
   - {fileID: 11400000, guid: d5e344ea747349f43bca3440dc4f92cc, type: 2}
+  - {fileID: 11400000, guid: d5e344ea747349f43bca3440dc4f92cc, type: 2}
+  eventLifeSpan: 4
+  onExpiredEvent: []

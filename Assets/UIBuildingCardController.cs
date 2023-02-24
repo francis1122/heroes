@@ -106,7 +106,8 @@ public class UIBuildingCardController : MonoBehaviour
         purchaseButton.GetComponent<Button>().onClick.RemoveAllListeners();
         purchaseButton.GetComponent<Button>().onClick.AddListener(()=>
         {
-            buildingObject.PurchaseBuilding();
+            
+            buildingObject.PurchaseBuilding(purchaseButton.GetComponent<RectTransform>());
         });
 
     }

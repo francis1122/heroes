@@ -9,7 +9,6 @@ namespace Triggers
     [System.Serializable]
     public class T_GenerateResources : GameTriggers
     {
-
         public ResourceBundle resourceBundle = new ResourceBundle();
 
         public bool scaleWithPlayerAmount = false;
@@ -36,10 +35,9 @@ namespace Triggers
 
             return true;
         }
-        public override void Trigger(StatusIdentifier statusIdentifier = null)
+
+        public override void Trigger(StatusIdentifier statusIdentifier = null, RectTransform transform = null)
         {
-            
-            
             // get building owner
 
             var bundleToUse = resourceBundle;
@@ -55,6 +53,19 @@ namespace Triggers
             else
             {
                 GameCenter.instance.ChangePlayerResources(bundleToUse, statusIdentifier);
+                if (transform != null)
+                {
+                    Debug.Log("floating text rendering");
+                    var floatingText = Instantiate(GameCenter.instance.floatingResourceGameObject,
+                        null);
+                    //floatingText.transform
+                    var localPos = transform.localPosition;
+                    var newTra = floatingText.transform.TransformPoint(transform.localPosition);
+                    var screenToWorldPosition = Camera.main.ScreenToWorldPoint(transform.position);
+                    floatingText.GetComponentInChildren<ResourceFloatingScript>().transform.position =
+                        transform.position;
+                    floatingText.GetComponentInChildren<ResourceFloatingScript>().InitializeText(bundleToUse);
+                }
             }
 
             EventManager.TriggerEvent(EventManager.RESOURCES_CHANGED);

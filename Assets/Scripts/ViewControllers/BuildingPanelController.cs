@@ -118,8 +118,8 @@ public class BuildingPanelController : MonoBehaviour
             }
             
             buildingBox.Q<Button>("building_purchase_button").clickable = null;
-            buildingBox.Q<Button>("building_purchase_button").clickable =
-                new Clickable(buildingObject.PurchaseBuilding); 
+            // buildingBox.Q<Button>("building_purchase_button").clickable =
+            //     new Clickable(buildingObject.PurchaseBuilding); 
                 //buildingObject.PurchaseBuilding;
             
             //currentGroup?.Add(buildingBox.Q<GroupBox>("building_box_group"));

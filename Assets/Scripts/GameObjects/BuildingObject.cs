@@ -1,5 +1,6 @@
 ﻿using Data;
 using Triggers;
+using UnityEngine;
 
 namespace GameObjects
 {
@@ -110,7 +111,7 @@ namespace GameObjects
             }
         }
 
-        public void PurchaseBuilding()
+        public void PurchaseBuilding(RectTransform transform = null)
         {
             if (CanPurchaseBuilding())
             {
@@ -155,7 +156,7 @@ namespace GameObjects
 
                     foreach (var trigger in buildingData.onPurchaseTrigger)
                     {
-                        trigger.Trigger();
+                        trigger.Trigger(null, transform);
                     }
 
                     if (buildingData.destroyOnPurchase)

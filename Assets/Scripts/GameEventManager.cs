@@ -29,12 +29,13 @@ public class GameEventManager : MonoBehaviour
     {
     }
 
-    public BuildingData EnemyAttackEvent(int eventLifeSpan, int powerToDefeat, int stabilityLoss)
+    public BuildingData EnemyAttackEvent(int currentTurn, int eventLifeSpan, int powerToDefeat, int stabilityLoss)
     {
         BuildingData eventData = ScriptableObject.CreateInstance<BuildingData>();
         eventData.category = BuildingData.BuildingCategory.Event;
         eventData.buildingName = "We're being attacked!";
-        eventData.uniqueName = "defend_the_city_";
+        eventData.uniqueName = "defend_the_city_" + currentTurn;
+        eventData.buildingDetails = "If attack goes uncheck, we'll lose " + stabilityLoss + "stability";
         eventData.destroyOnPurchase = true;
         eventData.addToOwnedBuildings = false;
         eventData.costRequirements = new ResourceBundle();
@@ -63,7 +64,7 @@ public class GameEventManager : MonoBehaviour
             if (isNewYear)
             {
                 int powerToDefeat = ((currentTurn - 12) / 10) + 2;
-                BuildingData eventData = EnemyAttackEvent(4, powerToDefeat, Math.Max(1, currentTurn / 10));
+                BuildingData eventData = EnemyAttackEvent(currentTurn, 6, powerToDefeat, Math.Max(1, currentTurn / 10));
                 //EventWrapper newEvent = new EventWrapper();
                 GameCenter.instance.playerBuildings.Add(new BuildingObject(eventData));
             }

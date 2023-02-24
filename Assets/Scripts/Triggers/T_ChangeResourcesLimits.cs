@@ -15,7 +15,7 @@ namespace Triggers
         public bool scaleWithPlayerAmount = false;
         public ScaleResources endOfTurnScaleResources = new ScaleResources();
         
-        public override void Trigger(StatusIdentifier statusIdentifier = null)
+        public override void Trigger(StatusIdentifier statusIdentifier = null, RectTransform transform = null)
         {
             
             

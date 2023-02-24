@@ -16,7 +16,7 @@ namespace Triggers
 
 
                 
-        public override void Trigger(StatusIdentifier statusIdentifier = null)
+        public override void Trigger(StatusIdentifier statusIdentifier = null, RectTransform transform = null)
         {
             ResourceData playerPopulation = GameCenter.instance.playerResources.GetOrCreateMatchingResourceType(populationType);
             ResourceData playerFood = GameCenter.instance.playerResources.GetOrCreateMatchingResourceType(foodType);

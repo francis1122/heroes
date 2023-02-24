@@ -11,7 +11,7 @@ namespace Triggers
     public class T_StabilityEndOfTurnCalculator : GameTriggers
     {
         
-        public override void Trigger(StatusIdentifier statusIdentifier = null)
+        public override void Trigger(StatusIdentifier statusIdentifier = null, RectTransform transform = null)
         {
             
             ResourceData playerAuthority = GameCenter.instance.playerResources.GetOrCreateMatchingResourceType(GameCenter.instance.resourceOrganizer.GetResourceType(ResourceType.LinkType.Authority));

@@ -30,10 +30,21 @@ public class UIResourceUnitController : MonoBehaviour
 
     public void UpdateUIWithResource(ResourceData data, ResourceData buffer)
     {
-
-        
-        amount.GetComponent<TextMeshProUGUI>().text = data.type.resourceName + " " + data.amount;
-        futureGain.GetComponent<TextMeshProUGUI>().text = buffer.amount + "";
+        amount.GetComponent<TextMeshProUGUI>().richText = true;
+        var color = "#999999";
+        var sign = "";
+        if (buffer.amount > 0)
+        {
+            sign = "+";
+            color = "#33DD33";
+        }else if (buffer.amount < 0)
+        {
+            color = "#FF8888";
+        }
+        amount.GetComponent<TextMeshProUGUI>().text =
+            data.type.resourceName +": " + data.amount + " <"+color+">" + sign+buffer.amount + "</color>";
+                                                      //<#00ff00>Green text</color> " + ;
+        //futureGain.GetComponent<TextMeshProUGUI>().text = buffer.amount + "";
         //data.amount
         //data.type.resourceName
     }

@@ -15,7 +15,8 @@ namespace Triggers
         {
             return true;
         }
-        public virtual void Trigger(StatusIdentifier statusIdentifier = null)
+        
+        public virtual void Trigger(StatusIdentifier statusIdentifier = null, RectTransform transform = null)
         {
             
         }

@@ -22,6 +22,8 @@ public class GameCenter : MonoBehaviour
         instance = null; //Static instance of GameManager which allows it to be accessed by any other script.
 
 
+    public GameObject overlayCanvas;
+    public GameObject floatingResourceGameObject;
     public GameEventManager gameEventManager;
 
     //public ObjectFactory objectFactory;

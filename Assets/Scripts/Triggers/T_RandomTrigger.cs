@@ -26,7 +26,7 @@ namespace Triggers
         
         public List<WeighTriggers> Triggers;
         
-        public override void Trigger(StatusIdentifier statusIdentifier = null)
+        public override void Trigger(StatusIdentifier statusIdentifier = null, RectTransform transform = null)
         {
             int total = 0;
             foreach (var weightTrigger in Triggers)

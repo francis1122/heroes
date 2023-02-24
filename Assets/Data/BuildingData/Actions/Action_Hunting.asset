@@ -29,6 +29,7 @@ MonoBehaviour:
     scaleWithBuildingOwned: {fileID: 0}
     scaleByOwnRecentUsage: 0
     ignoreAuthority: 1
+    ignoreLand: 0
   category: 1
   buildingRequirement: []
   sellRequiredBuildings: 0
@@ -40,7 +41,7 @@ MonoBehaviour:
   priority: 99
   populationGain: {fileID: 0}
   onPurchaseTrigger:
-  - {fileID: 11400000, guid: 81474f7b14003624ea15ef5cc6e7c534, type: 2}
+  - {fileID: 11400000, guid: baf125d041510bb488903041280f8d41, type: 2}
   onTurnEndTrigger: []
   onYearEndTrigger: []
   eventLifeSpan: 4

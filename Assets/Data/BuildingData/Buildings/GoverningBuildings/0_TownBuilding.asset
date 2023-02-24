@@ -20,7 +20,7 @@ MonoBehaviour:
     resources:
     - amount: 5
       type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
-    - amount: 10
+    - amount: 0
       type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
@@ -31,6 +31,7 @@ MonoBehaviour:
     scaleWithBuildingOwned: {fileID: 0}
     scaleByOwnRecentUsage: 0
     ignoreAuthority: 1
+    ignoreLand: 0
   category: 0
   buildingRequirement: []
   sellRequiredBuildings: 0

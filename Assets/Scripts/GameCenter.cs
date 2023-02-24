@@ -40,11 +40,16 @@ public class GameCenter : MonoBehaviour
     public ResourceBundle playerMaxResourceAmounts;
     public ResourceBundle playerMinResourceAmounts;
 
+    public ResourceBundle playerBaseResources;
+    public ResourceBundle playerBaseMaxResourceAmounts;
+    public ResourceBundle playerBaseMinResourceAmounts;
+
 
     public int prestigeScore = 0; // current run prestige
     public int totalPrestigeScore = 0;
     
     public List<BuildingObject> playerBuildings = new();
+    public List<BuildingObject> playerBaseBuildings = new();
     //public List<BuildingObject> buildingsOwned = new();
 
 
@@ -88,6 +93,7 @@ public class GameCenter : MonoBehaviour
         gameEventManager = GetComponent<GameEventManager>();
         resourceOrganizer = new ResourceOrganizer(Resources.LoadAll<ResourceType>("ResourceData"),
             Resources.LoadAll<PopulationType>("ResourceData/Population"));
+        ResetEmpire();
         EventManager.StartListening(EventManager.BUILDING_CHANGED, RefreshEndOfTurnBuffer);
         //playerResources = Instantiate(playerResources);
 
@@ -122,6 +128,27 @@ public class GameCenter : MonoBehaviour
     }
 
 
+    public void ResetEmpire()
+    {
+        this.currentTurn = 0;
+        this.prestigeScore = 0;
+        this.playerResources.ClearResources();
+        this.playerResources.AddResourceBundle(this.playerBaseResources);
+        this.playerMaxResourceAmounts.ClearResources();
+        this.playerMaxResourceAmounts.AddResourceBundle(this.playerBaseMaxResourceAmounts);
+        this.playerMinResourceAmounts.ClearResources();
+        this.playerMinResourceAmounts.AddResourceBundle(this.playerBaseMinResourceAmounts);
+        playerBufferResources.ClearResources();
+        endOfTurnStatusEffectsList.Clear();
+        playerBuildings = new List<BuildingObject>();
+        foreach (var buildingObject in playerBaseBuildings)
+        {
+            var building = new BuildingObject(buildingObject.buildingData);
+            playerBuildings.Add(building);
+        }
+        
+    }
+    
     private void RefreshEndOfTurnBuffer()
     {
         //reset buffer
@@ -175,7 +202,7 @@ public class GameCenter : MonoBehaviour
             .GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Food).amount;
 
         GameCenter.instance.playerBufferResources.AddResourceData(
-            resourceOrganizer.CreateResourceData(totalPopulation, ResourceType.LinkType.Gold));
+            resourceOrganizer.CreateResourceData(totalPopulation * 2, ResourceType.LinkType.Gold));
         GameCenter.instance.playerBufferResources.SubtractResourceData(
             resourceOrganizer.CreateResourceData(totalPopulation, ResourceType.LinkType.Food));
 
@@ -365,6 +392,7 @@ public class GameCenter : MonoBehaviour
         // Evaluate if player has lost
         if (playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Stability).amount <= 0)
         {
+            
             SceneManager.LoadScene("EndGameNewGameScene");
         }
 

@@ -1290,12 +1290,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4ce9e4a8e4db3f40b1193f79d7efd58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  overlayCanvas: {fileID: 0}
+  floatingResourceGameObject: {fileID: 1064116637249703941, guid: 9eb516ffd817e4b759033b7fda5dc207, type: 3}
   gameEventManager: {fileID: 0}
   playerBufferResources:
     resources: []
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 1
   playerResources:
+    resources: []
+    isPlayersResourceBundle: 1
+    isPlayersBufferResourceBundle: 0
+  playerMaxResourceAmounts:
+    resources: []
+    isPlayersResourceBundle: 0
+    isPlayersBufferResourceBundle: 0
+  playerMinResourceAmounts:
+    resources: []
+    isPlayersResourceBundle: 0
+    isPlayersBufferResourceBundle: 0
+  playerBaseResources:
     resources:
     - amount: 10
       type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
@@ -1315,21 +1329,22 @@ MonoBehaviour:
       type: {fileID: 11400000, guid: 63e93e443bbad8840ab04df55747917a, type: 2}
     - amount: 20
       type: {fileID: 11400000, guid: b2893bf1cfb204843a747a9615b6f347, type: 2}
-    isPlayersResourceBundle: 1
+    isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
-  playerMaxResourceAmounts:
+  playerBaseMaxResourceAmounts:
     resources:
     - amount: 10
       type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
-  playerMinResourceAmounts:
+  playerBaseMinResourceAmounts:
     resources: []
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
   prestigeScore: 0
   totalPrestigeScore: 0
-  playerBuildings:
+  playerBuildings: []
+  playerBaseBuildings:
   - buildingData: {fileID: 11400000, guid: db3a778940cf1b8449f1bd64a9df88ae, type: 2}
     buildingsOwned: 0
     timesPurchased: 0
@@ -2495,7 +2510,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1465401186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2566,7 +2581,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -113, y: -763}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1535595310
 GameObject:

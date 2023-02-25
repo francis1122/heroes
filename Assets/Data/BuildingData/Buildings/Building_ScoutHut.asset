@@ -10,18 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9710acaf6ae64d249fee5fd4ec0dff99, type: 3}
-  m_Name: 0_TownBuilding
+  m_Name: Building_ScoutHut
   m_EditorClassIdentifier: 
-  buildingName: Town
-  uniqueName: building_town
-  buildingDetails: starter building
+  buildingName: 
+  uniqueName: 
+  buildingDetails: 
   buildingThumbnail: 
   costRequirements:
-    resources:
-    - amount: 0
-      type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
-    - amount: 5
-      type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
+    resources: []
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
   costScaleResources:
@@ -32,7 +28,7 @@ MonoBehaviour:
     scaleByOwnRecentUsage: 0
     ignoreAuthority: 1
     ignoreLand: 0
-  prestigeGainedOnPurchase: 1
+  prestigeGainedOnPurchase: 2
   category: 0
   buildingRequirement: []
   sellRequiredBuildings: 0
@@ -40,17 +36,11 @@ MonoBehaviour:
   destroyOnPurchase: 0
   repeatablePurchase: 0
   addToOwnedBuildings: 1
-  buildingAdditionsOnPurchase:
-  - {fileID: 11400000, guid: 5251babc32c90bb4ea0b78cb9e2f9637, type: 2}
-  - {fileID: 11400000, guid: 8327300b2a29e3543ba0993f3a1c6d00, type: 2}
-  - {fileID: 11400000, guid: 556bf7558bb5b7d47835f6dce6aa8c73, type: 2}
-  - {fileID: 11400000, guid: 98bc4a8deb6a04f4e829adf019ef0951, type: 2}
-  - {fileID: 11400000, guid: 46cdf8b160ba31f43841182059b6f148, type: 2}
+  buildingAdditionsOnPurchase: []
   priority: 1
   populationGain: {fileID: 0}
   onPurchaseTrigger: []
-  onTurnEndTrigger:
-  - {fileID: 11400000, guid: 0cd121a096ae3ce458d51e5bfd9b628e, type: 2}
+  onTurnEndTrigger: []
   onYearEndTrigger: []
   eventLifeSpan: 4
   onExpiredEvent: []

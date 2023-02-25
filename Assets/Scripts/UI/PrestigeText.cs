@@ -11,6 +11,7 @@ public class PrestigeText : MonoBehaviour
     {
         UpdateUI();
         EventManager.StartListening(EventManager.EVENT_END_TURN, UpdateUI);
+        EventManager.StartListening(EventManager.BUILDING_CHANGED, UpdateUI);
     }
 
 

@@ -16,7 +16,7 @@ MonoBehaviour:
   resourceName: Iron
   resourceShortHand: Fe
   tempThumbnailResource: 
-  UIPriority: 13
+  UIPriority: 14
   UITexture: {fileID: 0}
   dropObject: {fileID: 0}
   dropSprite: {fileID: 0}

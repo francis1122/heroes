@@ -37,6 +37,8 @@ public class UIResourceController : MonoBehaviour
 
         var position = 0;
         //onlyCategory.Sort((a,b) => a.buildingData.priority.CompareTo(b.buildingData.priority) );
+        GameCenter.instance.playerResources.resources.Sort((a, b) =>
+            a.type.UIPriority.CompareTo(b.type.UIPriority));
         var resources = GameCenter.instance.playerResources.resources.FindAll(e =>
             e.type.resourceCategory is ResourceType.ResourceCategory.Material);
         resources.Reverse();

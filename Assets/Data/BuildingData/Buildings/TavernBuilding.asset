@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingName: Tavern
   uniqueName: building_tavern
-  buildingDetails: Go on adventures and gain access to new lands
+  buildingDetails: Gain action to discover more land. Gain 1 happiness at the end
+    of each year.
   buildingThumbnail: 
   costRequirements:
     resources:

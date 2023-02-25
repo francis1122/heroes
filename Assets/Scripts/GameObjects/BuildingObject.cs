@@ -120,6 +120,7 @@ namespace GameObjects
                     timesPurchased++;
                     timesPurchasedThisTurn++;
                     timesPurchasedThisYear++;
+                    GameCenter.instance.prestigeScore += buildingData.prestigeGainedOnPurchase;
                     if (buildingData.addToOwnedBuildings)
                     {
                         this.buildingsOwned++;

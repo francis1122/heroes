@@ -9,15 +9,6 @@ using Utils;
 
 public class GameCenter : MonoBehaviour
 {
-    //  private int playerFoods = 20;
-    //   private int playerMinerals = 24;
-    //private int playerLumber = 20;
-    //  private int playerAmmo = 0;
-    //public ResourceObject playerResource;
-    //public GameObject mineralText;
-    //public GameObject healthText;
-    // public GameObject buddyText;
-
     public static GameCenter
         instance = null; //Static instance of GameManager which allows it to be accessed by any other script.
 
@@ -43,12 +34,18 @@ public class GameCenter : MonoBehaviour
     public ResourceBundle playerBaseResources;
     public ResourceBundle playerBaseMaxResourceAmounts;
     public ResourceBundle playerBaseMinResourceAmounts;
+    
+    public ResourceBundle playerBoostResources;
+    public ResourceBundle playerBoostMaxResourceAmounts;
+    public ResourceBundle playerBoostMinResourceAmounts;
 
 
     public int prestigeScore = 0; // current run prestige
     public int totalPrestigeScore = 0;
-    
+    public bool inGameOverState = true;
+
     public List<BuildingObject> playerBuildings = new();
+
     public List<BuildingObject> playerBaseBuildings = new();
     //public List<BuildingObject> buildingsOwned = new();
 
@@ -138,17 +135,22 @@ public class GameCenter : MonoBehaviour
         this.playerMaxResourceAmounts.AddResourceBundle(this.playerBaseMaxResourceAmounts);
         this.playerMinResourceAmounts.ClearResources();
         this.playerMinResourceAmounts.AddResourceBundle(this.playerBaseMinResourceAmounts);
+
+        this.playerResources.AddResourceBundle(this.playerBoostResources);
+        this.playerMaxResourceAmounts.AddResourceBundle(this.playerBoostMaxResourceAmounts);
+        this.playerMinResourceAmounts.AddResourceBundle(this.playerBoostMinResourceAmounts);
+        
         playerBufferResources.ClearResources();
         endOfTurnStatusEffectsList.Clear();
+        inGameOverState = false;
         playerBuildings = new List<BuildingObject>();
         foreach (var buildingObject in playerBaseBuildings)
         {
             var building = new BuildingObject(buildingObject.buildingData);
             playerBuildings.Add(building);
         }
-        
     }
-    
+
     private void RefreshEndOfTurnBuffer()
     {
         //reset buffer
@@ -305,7 +307,9 @@ public class GameCenter : MonoBehaviour
 
 
         ManagePopulation();
-        EvaluateStability(); // if player starts turn with an unhappiness score, loss stability
+        if ((currentTurn + 1) % seasonsInAYear == 0){
+            EvaluateStability(); // if player starts turn with an unhappiness score, loss stability
+        }
         // might want this to increase buffer stuff
         //EventManager.TriggerEvent(EventManager.EVENT_END_TURN);
 
@@ -325,6 +329,7 @@ public class GameCenter : MonoBehaviour
 
     public void EndTurn()
     {
+        if (inGameOverState) return;
         //reset buffer
         playerBufferResources.ClearResources();
 
@@ -338,14 +343,14 @@ public class GameCenter : MonoBehaviour
             var buildingObject = playerBuildings[i];
             buildingObject.timesPurchasedThisTurn = 0;
         }
-        
+
         //
         // Handle Events
         //
         for (int i = playerBuildings.Count - 1; i >= 0; i--)
         {
             var buildingObject = playerBuildings[i];
-            
+
             if (buildingObject.buildingData.category == BuildingData.BuildingCategory.Event)
             {
                 buildingObject.eventLifeSpanLeft--;
@@ -387,12 +392,13 @@ public class GameCenter : MonoBehaviour
         }
 
         currentTurn += 1;
-        prestigeScore++;
+        
+        if ((currentTurn) % seasonsInAYear == 0) prestigeScore += (currentTurn/seasonsInAYear);
 
         // Evaluate if player has lost
         if (playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Stability).amount <= 0)
         {
-            
+            inGameOverState = true;
             SceneManager.LoadScene("EndGameNewGameScene");
         }
 

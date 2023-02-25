@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class UITabController : MonoBehaviour
 {
-    
+
+
+    private int currentPanelIndex = 0;
     
     [SerializeField]
     public List<GameObject> tabButtons;
@@ -22,29 +24,50 @@ public class UITabController : MonoBehaviour
         {
             
             GameObject button = tabButtons[i];
-            button.GetComponent<Image>().color = Color.grey;
-            
             GameObject panel = tabPanels[i];
+            int index = i;
+            button.GetComponent<Image>().color = Color.grey;
             button.GetComponent<Button>().onClick.AddListener(() =>
             {
-                for (int i = 0; i < tabButtons.Count; i++)
-                {
-
-                    GameObject buttonY = tabButtons[i];
-                    buttonY.GetComponent<Image>().color = Color.grey;
-                }
-                button.GetComponent<Image>().color = Color.yellow;
-
-                foreach (var tabPanel in tabPanels)
-                {
-                    
-                        tabPanel.SetActive(false);
-                        
-                }
-                scrollView.GetComponent<ScrollRect>().content = panel.GetComponent<RectTransform>();
-                panel.SetActive(true);
+                NavigateToPanelIndex(index);
             });
         }
+    }
+
+    void NavigateToPanelIndex(int index)
+    {
+        
+        GameObject button = tabButtons[index];
+        GameObject panel = tabPanels[index];
+        for (int j = 0; j < tabButtons.Count; j++)
+        {
+            GameObject buttonY = tabButtons[j];
+            GameObject tabPanelY = tabPanels[j];
+            tabPanelY.SetActive(false);
+            buttonY.GetComponent<Image>().color = Color.grey;
+        }
+
+        button.GetComponent<Image>().color = Color.yellow;
+                
+        scrollView.GetComponent<ScrollRect>().content = panel.GetComponent<RectTransform>();
+        panel.SetActive(true);
+        currentPanelIndex = index;
+    }
+
+    public void NavigateRight()
+    {
+        if (currentPanelIndex < tabButtons.Count - 1)
+        {
+            NavigateToPanelIndex(currentPanelIndex + 1);
+        }   
+    }
+    
+    public void NavigateLeft()
+    {
+        if (currentPanelIndex > 0)
+        {
+            NavigateToPanelIndex(currentPanelIndex - 1);
+        }   
     }
 
     // Update is called once per frame

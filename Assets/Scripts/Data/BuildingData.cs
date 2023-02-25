@@ -26,6 +26,8 @@ namespace Data
 
         public ResourceBundle costRequirements;
         public ScaleResources costScaleResources = null;
+
+        [SerializeField] public int prestigeGainedOnPurchase = 2;
         [System.Serializable]
         public struct BuildingBundle
         {

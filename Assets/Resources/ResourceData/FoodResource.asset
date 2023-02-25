@@ -16,7 +16,7 @@ MonoBehaviour:
   resourceName: Food
   resourceShortHand: 
   tempThumbnailResource: 
-  UIPriority: 50
+  UIPriority: 5
   UITexture: {fileID: 0}
   dropObject: {fileID: 0}
   dropSprite: {fileID: 0}

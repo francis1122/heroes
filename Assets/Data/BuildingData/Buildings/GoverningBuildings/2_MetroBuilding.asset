@@ -18,14 +18,14 @@ MonoBehaviour:
   buildingThumbnail: 
   costRequirements:
     resources:
+    - amount: 10
+      type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
     - amount: 50
       type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
     - amount: 10
       type: {fileID: 11400000, guid: a8d2874b560b46344b232f8891c70426, type: 2}
     - amount: 10
       type: {fileID: 11400000, guid: bc91da6924ab7454fb88eb0b49da03c7, type: 2}
-    - amount: 10
-      type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
   costScaleResources:
@@ -35,6 +35,8 @@ MonoBehaviour:
     scaleWithBuildingOwned: {fileID: 0}
     scaleByOwnRecentUsage: 0
     ignoreAuthority: 1
+    ignoreLand: 0
+  prestigeGainedOnPurchase: 10
   category: 0
   buildingRequirement:
   - amount: 1

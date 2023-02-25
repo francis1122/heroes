@@ -18,10 +18,10 @@ MonoBehaviour:
   buildingThumbnail: 
   costRequirements:
     resources:
-    - amount: 1000
-      type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
     - amount: 20
       type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
+    - amount: 1000
+      type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
     - amount: 100
       type: {fileID: 11400000, guid: a8d2874b560b46344b232f8891c70426, type: 2}
     - amount: 100
@@ -37,11 +37,13 @@ MonoBehaviour:
     scaleWithBuildingOwned: {fileID: 0}
     scaleByOwnRecentUsage: 0
     ignoreAuthority: 1
+    ignoreLand: 0
+  prestigeGainedOnPurchase: 100
   category: 0
   buildingRequirement: []
   sellRequiredBuildings: 0
   destroyRequiredBuildings: 1
-  removeFromPurchasableOnPurchase: 1
+  destroyOnPurchase: 0
   repeatablePurchase: 0
   addToOwnedBuildings: 1
   buildingAdditionsOnPurchase: []

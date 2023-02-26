@@ -60,7 +60,7 @@ public class GameEventManager : MonoBehaviour
         {
             //
             // OnSlaught of attackers
-            //
+            // every other year
             if (isNewYear)
             {
                 int powerToDefeat = ((currentTurn - 12) / 10) + 2;

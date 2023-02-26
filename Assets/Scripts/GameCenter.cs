@@ -26,6 +26,11 @@ public class GameCenter : MonoBehaviour
 
     public ResourceBundle playerBufferResources;
 
+    public float populationSize = 1.0f;
+    public float populationBaseSize = 1.0f;
+    public float populationBufferSize = 1.0f;
+
+    public float populationBaseGrowth = .2f;
     //public ResourceBundle playerFatiguedPopulation;
     public ResourceBundle playerResources;
     public ResourceBundle playerMaxResourceAmounts;
@@ -129,6 +134,7 @@ public class GameCenter : MonoBehaviour
     {
         this.currentTurn = 0;
         this.prestigeScore = 0;
+        populationSize = populationBaseSize;
         this.playerResources.ClearResources();
         this.playerResources.AddResourceBundle(this.playerBaseResources);
         this.playerMaxResourceAmounts.ClearResources();
@@ -141,6 +147,7 @@ public class GameCenter : MonoBehaviour
         this.playerMinResourceAmounts.AddResourceBundle(this.playerBoostMinResourceAmounts);
         
         playerBufferResources.ClearResources();
+        populationBufferSize = 0.0f;
         endOfTurnStatusEffectsList.Clear();
         inGameOverState = false;
         playerBuildings = new List<BuildingObject>();
@@ -155,7 +162,7 @@ public class GameCenter : MonoBehaviour
     {
         //reset buffer
         playerBufferResources.ClearResources();
-
+        populationBufferSize = 0.0f;
         EndOfTurnResourceBuffering();
 
         EventManager.TriggerEvent(EventManager.RESOURCES_CHANGED);
@@ -180,17 +187,17 @@ public class GameCenter : MonoBehaviour
         }
     }
 
-    private void ManagePopulation()
+    private void ManagePopulation(bool isNewYear)
     {
-        ResourceData playerPopulation =
-            GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType
-                .MaxPopulation);
+        // ResourceData playerPopulation =
+        //     GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType
+        //         .MaxPopulation);
         //ResourceData soldier = GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Soldier);
 
 
         int playerFood = GameCenter.instance.playerResources
             .GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Food).amount;
-
+        
         int totalPopulation =
             GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(
                 ResourceType.LinkType.MaxPopulation).amount;
@@ -204,9 +211,12 @@ public class GameCenter : MonoBehaviour
             .GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Food).amount;
 
         GameCenter.instance.playerBufferResources.AddResourceData(
-            resourceOrganizer.CreateResourceData(totalPopulation * 2, ResourceType.LinkType.Gold));
+            resourceOrganizer.CreateResourceData( (int)(populationSize)* 2, ResourceType.LinkType.Gold));
         GameCenter.instance.playerBufferResources.SubtractResourceData(
-            resourceOrganizer.CreateResourceData(totalPopulation, ResourceType.LinkType.Food));
+            resourceOrganizer.CreateResourceData((int)populationSize, ResourceType.LinkType.Food));
+        
+
+        
 
 
         if ((playerFood + bufferFood) < totalPopulation)
@@ -218,6 +228,35 @@ public class GameCenter : MonoBehaviour
                 resourceOrganizer.GetResourceType(ResourceType.LinkType.Happiness)));
             //ResourceData playerStabilityType = GameCenter.instance.playerResources.GetOrCreateMatchingResourceType(stabilityType);
         }
+
+        if (isNewYear)
+        {
+            // ResourceData happiness =
+            //     GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.Happiness);
+            int loss = (int)Math.Ceiling((Math.Abs(populationSize) / 10.0f));
+            instance.playerBufferResources.SubtractResourceData(new ResourceData(loss,
+                resourceOrganizer.GetResourceType(ResourceType.LinkType.Happiness)));
+        }
+        
+        // growth ands stuff
+        float poplationGrowth = populationBaseGrowth;
+        if (playerFood > populationSize * 2)
+        {
+            poplationGrowth += 0.1f;
+        }
+
+        if (totalPopulation > populationSize * 1.5f)
+        {
+            poplationGrowth += 0.1f;
+        }
+
+        if (totalPopulation <= populationSize)
+        {
+            poplationGrowth -= 0.1f;
+        }
+        populationBufferSize += poplationGrowth;
+        
+        
     }
 
     // private void PopulationGrowth()
@@ -306,7 +345,7 @@ public class GameCenter : MonoBehaviour
         }
 
 
-        ManagePopulation();
+        ManagePopulation((currentTurn + 1) % seasonsInAYear == 0);
         if ((currentTurn + 1) % seasonsInAYear == 0){
             EvaluateStability(); // if player starts turn with an unhappiness score, loss stability
         }
@@ -332,7 +371,7 @@ public class GameCenter : MonoBehaviour
         if (inGameOverState) return;
         //reset buffer
         playerBufferResources.ClearResources();
-
+        populationBufferSize = 0.0f;
 
         EndOfTurnResourceBuffering();
 
@@ -373,7 +412,9 @@ public class GameCenter : MonoBehaviour
         // resource clean up
         //
         playerResources.AddResourceBundle(playerBufferResources);
+        populationSize += populationBufferSize;
         playerBufferResources.ClearResources();
+        populationBufferSize = 0.0f;
 
         //
         // Start of turn

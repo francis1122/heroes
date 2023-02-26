@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Data;
@@ -44,6 +45,16 @@ public class UIResourceUnitController : MonoBehaviour
         amount.GetComponent<TextMeshProUGUI>().text =
             data.type.resourceName +": " + data.amount + " <"+color+">" + sign+buffer.amount + "</color>";
                                                       //<#00ff00>Green text</color> " + ;
+        //futureGain.GetComponent<TextMeshProUGUI>().text = buffer.amount + "";
+        //data.amount
+        //data.type.resourceName
+    }
+    
+    public void UpdateUIWithResource(float data, int dataMax, float buffer)
+    {
+        amount.GetComponent<TextMeshProUGUI>().text = String.Format( format: "Pop {0:0.##} / {1:0.##}",   data, dataMax );
+        futureGain.GetComponent<TextMeshProUGUI>().text = $"{buffer:0.##}";
+        //<#00ff00>Green text</color> " + ;
         //futureGain.GetComponent<TextMeshProUGUI>().text = buffer.amount + "";
         //data.amount
         //data.type.resourceName

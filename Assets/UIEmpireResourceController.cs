@@ -126,16 +126,18 @@ void CreateMilitaryUI()
 
     void CreatePopulationUI()
     {
+        
+        
         ResourceData resourceData =
             GameCenter.instance.playerResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.MaxPopulation);
             
-        ResourceData bufferResourceData =
-            GameCenter.instance.playerBufferResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.MaxPopulation);
+        // ResourceData bufferResourceData =
+        //     GameCenter.instance.playerBufferResources.GetOrCreateMatchingResourceLinkType(ResourceType.LinkType.MaxPopulation);
         GameObject newResource = poolResourceBoxes.Pop();
         activeResourceBoxes.Push(newResource);
         newResource.SetActive(true);
         newResource.transform.parent = transform;
-        newResource.GetComponent<UIResourceUnitController>().UpdateUIWithResource(resourceData, bufferResourceData);
+        newResource.GetComponent<UIResourceUnitController>().UpdateUIWithResource(GameCenter.instance.populationSize, resourceData.amount, GameCenter.instance.populationBufferSize);
 
     }
     

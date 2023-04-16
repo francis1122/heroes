@@ -20,11 +20,16 @@ public class UIResourceUnitController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        EventManager.StartListening(EventManager.EVENT_BUILDING_ADDED, UpdateUI);
     }
 
     // Update is called once per frame
     void Update()
+    {
+        
+    }
+
+    public void UpdateUI()
     {
         
     }

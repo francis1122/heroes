@@ -15,6 +15,8 @@ public class EventManager : MonoBehaviour {
     public static string RESOURCES_CHANGED = "RESOURCES_CHANGED";
     public static string BUILDING_CHANGED = "BUILDING_CHANGED";
     public static string EVENT_START_NIGHT = "EVENT_START_NIGHT";
+    public static string EVENT_BUILDING_ADDED = "EVENT_BUILDING_ADDED";
+    //public static string EVENT_EVENT_ADDED = "EVENT_EVENT_ADDED";
     
     public static EventManager instance
     {

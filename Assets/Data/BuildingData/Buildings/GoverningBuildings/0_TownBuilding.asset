@@ -42,10 +42,12 @@ MonoBehaviour:
   addToOwnedBuildings: 1
   buildingAdditionsOnPurchase:
   - {fileID: 11400000, guid: 5251babc32c90bb4ea0b78cb9e2f9637, type: 2}
-  - {fileID: 11400000, guid: 8327300b2a29e3543ba0993f3a1c6d00, type: 2}
   - {fileID: 11400000, guid: 556bf7558bb5b7d47835f6dce6aa8c73, type: 2}
   - {fileID: 11400000, guid: 98bc4a8deb6a04f4e829adf019ef0951, type: 2}
   - {fileID: 11400000, guid: 46cdf8b160ba31f43841182059b6f148, type: 2}
+  - {fileID: 11400000, guid: f09f83b259d9346feb93a2299f452de8, type: 2}
+  - {fileID: 11400000, guid: 5007c42cda9ee0b448d2e47c3fa03155, type: 2}
+  - {fileID: 11400000, guid: e84eb46c16bf0fd4aa864690c522dc81, type: 2}
   priority: 1
   populationGain: {fileID: 0}
   onPurchaseTrigger: []

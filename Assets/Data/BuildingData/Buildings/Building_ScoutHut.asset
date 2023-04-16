@@ -12,12 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9710acaf6ae64d249fee5fd4ec0dff99, type: 3}
   m_Name: Building_ScoutHut
   m_EditorClassIdentifier: 
-  buildingName: 
-  uniqueName: 
-  buildingDetails: 
+  buildingName: Scout Hut
+  uniqueName: building_scout_hut
+  buildingDetails: Send out a scout to find new land
   buildingThumbnail: 
   costRequirements:
-    resources: []
+    resources:
+    - amount: 5
+      type: {fileID: 11400000, guid: f09a0967e07401541b4444be16cc1cd7, type: 2}
+    - amount: 10
+      type: {fileID: 11400000, guid: b2330e6b19d35f849b01b1085e031ce1, type: 2}
+    - amount: 5
+      type: {fileID: 11400000, guid: a8d2874b560b46344b232f8891c70426, type: 2}
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
   costScaleResources:
@@ -36,8 +42,9 @@ MonoBehaviour:
   destroyOnPurchase: 0
   repeatablePurchase: 0
   addToOwnedBuildings: 1
-  buildingAdditionsOnPurchase: []
-  priority: 1
+  buildingAdditionsOnPurchase:
+  - {fileID: 11400000, guid: e9ac03f2a2e17ca4d896ca0a76034462, type: 2}
+  priority: 10
   populationGain: {fileID: 0}
   onPurchaseTrigger: []
   onTurnEndTrigger: []

@@ -14,6 +14,9 @@ namespace GameObjects
         public int timesPurchasedThisTurn = 0;
         public int timesPurchasedThisYear = 0;
 
+        //public bool is
+        public bool hasBeenSeen = false;
+
         public int eventLifeSpanLeft;
 
         public BuildingObject(BuildingData buildingData)
@@ -26,7 +29,7 @@ namespace GameObjects
         {
             foreach (BuildingData.BuildingBundle buildingBundle in buildingData.buildingRequirement)
             {
-                int count = GameCenter.instance.playerBuildings
+                int count = GameCenter.instance.GetPlayerBuildings()
                     .FindAll(e => e.buildingData == buildingBundle.buildingData && e.buildingsOwned > 0).Count;
 
                 if (count < buildingBundle.amount)
@@ -67,7 +70,7 @@ namespace GameObjects
         {
             foreach (BuildingData.BuildingBundle buildingBundle in buildingData.buildingRequirement)
             {
-                var ownedBuildings = GameCenter.instance.playerBuildings
+                var ownedBuildings = GameCenter.instance.GetPlayerBuildings()
                     .FindAll(e => e.buildingData == buildingBundle.buildingData);
 
                 int removedBuildings = 0;
@@ -75,8 +78,8 @@ namespace GameObjects
                 {
                     if (removedBuildings < buildingBundle.amount)
                     {
-                        ownedBuilding.buildingsOwned--;
-                        GameCenter.instance.playerBuildings.Remove(ownedBuilding);
+                        //ownedBuilding.buildingsOwned--;
+                        GameCenter.instance.GetPlayerBuildings().Remove(ownedBuilding);
                         //removedBuildings++;
                     }
                     else
@@ -91,7 +94,7 @@ namespace GameObjects
         {
             foreach (BuildingData.BuildingBundle buildingBundle in buildingData.buildingRequirement)
             {
-                var ownedBuildings = GameCenter.instance.playerBuildings
+                var ownedBuildings = GameCenter.instance.GetPlayerBuildings()
                     .FindAll(e => e.buildingData == buildingBundle.buildingData);
 
                 int removedBuildings = 0;
@@ -131,11 +134,10 @@ namespace GameObjects
                     {
                         foreach (var buildingAdditionData in buildingData.buildingAdditionsOnPurchase)
                         {
-                            if (!GameCenter.instance.playerBuildings.Exists(element =>
+                            if (!GameCenter.instance.GetPlayerBuildings().Exists(element =>
                                     element.buildingData.uniqueName == buildingAdditionData.uniqueName))
                             {
-                                GameCenter.instance.playerBuildings.Add(
-                                    new BuildingObject(buildingAdditionData));
+                                GameCenter.instance.AddBuildingToPlayer(new BuildingObject(buildingAdditionData));
                             }
                         }
                     }
@@ -162,7 +164,8 @@ namespace GameObjects
 
                     if (buildingData.destroyOnPurchase)
                     {
-                        GameCenter.instance.playerBuildings.Remove(this);
+                        GameCenter.instance.GetPlayerBuildings().Remove(this);
+                        
                     }
 
                     EventManager.TriggerEvent(EventManager.RESOURCES_CHANGED);

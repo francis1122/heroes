@@ -65,8 +65,8 @@ public class GameEventManager : MonoBehaviour
             {
                 int powerToDefeat = ((currentTurn - 12) / 10) + 2;
                 BuildingData eventData = EnemyAttackEvent(currentTurn, 6, powerToDefeat, Math.Max(1, currentTurn / 10));
-                //EventWrapper newEvent = new EventWrapper();
-                GameCenter.instance.playerBuildings.Add(new BuildingObject(eventData));
+                
+                GameCenter.instance.AddBuildingToPlayer(new BuildingObject(eventData));
             }
         }
     }
@@ -85,7 +85,7 @@ public class GameEventManager : MonoBehaviour
                 || (eventWrapper.amountOfTimesTriggered > 1
                     && eventWrapper.timeSinceEventTriggered >= eventWrapper.turnsTillRepeat))
             {
-                GameCenter.instance.playerBuildings.Add(new BuildingObject(eventWrapper.eventData));
+                GameCenter.instance.AddBuildingToPlayer(new BuildingObject(eventWrapper.eventData));
                 eventWrapper.amountOfTimesTriggered++;
                 eventWrapper.timeSinceEventTriggered = 0;
                 if (!eventWrapper.canTriggerMultipleTimes)

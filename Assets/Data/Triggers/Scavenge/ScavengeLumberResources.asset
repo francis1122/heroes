@@ -16,7 +16,7 @@ MonoBehaviour:
   checkIfTriggerCanHappen: 0
   resourceBundle:
     resources:
-    - amount: 4
+    - amount: 2
       type: {fileID: 11400000, guid: a8d2874b560b46344b232f8891c70426, type: 2}
     isPlayersResourceBundle: 0
     isPlayersBufferResourceBundle: 0
@@ -28,3 +28,4 @@ MonoBehaviour:
     scaleWithBuildingOwned: {fileID: 0}
     scaleByOwnRecentUsage: 0
     ignoreAuthority: 1
+    ignoreLand: 0

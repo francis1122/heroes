@@ -38,7 +38,7 @@ namespace Utils
                 // return popsTotal;
             }else if (scaleWithBuildingOwned != null)
             {
-                BuildingObject scaleBuilding = GameCenter.instance.playerBuildings.Find((buildingObject) =>
+                BuildingObject scaleBuilding = GameCenter.instance.GetPlayerBuildings().Find((buildingObject) =>
                 {
                     return buildingObject.buildingData.buildingName == scaleWithBuildingOwned.buildingName;
                 });

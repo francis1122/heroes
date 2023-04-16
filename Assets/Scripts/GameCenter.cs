@@ -49,7 +49,7 @@ public class GameCenter : MonoBehaviour
     public int totalPrestigeScore = 0;
     public bool inGameOverState = true;
 
-    public List<BuildingObject> playerBuildings = new();
+    private List<BuildingObject> playerBuildings = new();
 
     public List<BuildingObject> playerBaseBuildings = new();
     //public List<BuildingObject> buildingsOwned = new();
@@ -158,6 +158,18 @@ public class GameCenter : MonoBehaviour
         }
     }
 
+    public List<BuildingObject> GetPlayerBuildings()
+    {
+        return playerBuildings;
+    }
+    
+    public void AddBuildingToPlayer(BuildingObject buildingObject)
+    {
+        playerBuildings.Add(buildingObject);
+        EventManager.TriggerEvent(EventManager.EVENT_BUILDING_ADDED);
+        
+    }
+    
     private void RefreshEndOfTurnBuffer()
     {
         //reset buffer

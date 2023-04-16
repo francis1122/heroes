@@ -20,6 +20,11 @@ public class UITabController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+        // Get event for whenever a new 'building'e gets added to player
+        EventManager.StartListening(EventManager.BUILDING_CHANGED, BadgeUpdate);
+        //hasBeenSeen
+        
         for (int i = 0; i < tabButtons.Count; i++)
         {
             
@@ -34,6 +39,11 @@ public class UITabController : MonoBehaviour
         }
     }
 
+    public void BadgeUpdate()
+    {
+        // get count of hasBeenSeen
+    }
+    
     void NavigateToPanelIndex(int index)
     {
         
@@ -51,6 +61,9 @@ public class UITabController : MonoBehaviour
                 
         scrollView.GetComponent<ScrollRect>().content = panel.GetComponent<RectTransform>();
         panel.SetActive(true);
+        
+        // panel that is being moved away from, set all buildings to have been seend
+        
         currentPanelIndex = index;
     }
 
